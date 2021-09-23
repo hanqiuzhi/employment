@@ -19,10 +19,6 @@ public class ResumeEntity {
      */
     private String rskill;
     /**
-     * 经历
-     */
-    private String rexperience;
-    /**
      * 学生
      */
     private Integer rsid;

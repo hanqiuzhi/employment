@@ -1,8 +1,6 @@
 package com.ambow.utils.sqlTools;
 
 
-import java.util.Date;
-
 public class ObtainEntity {
     private Integer oid;
     /**
@@ -10,8 +8,19 @@ public class ObtainEntity {
      */
     private Integer osid;
     /**
-     * 所在岗位
+     * 是否自主就业
      */
-    private Integer ojid;
+    private Integer oself;
+    /**
+     * 就业企业
+     */
+    private String oename;
+    /**
+     * 就业职位
+     */
+    protected String ojname;
+    /**
+     * 结业时间
+     */
     private String otime;
 }

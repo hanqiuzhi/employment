@@ -6,5 +6,4 @@ public class FacultyEntity {
      */
     private Integer fid;
     private String fname;
-    private Integer fuid;
 }
