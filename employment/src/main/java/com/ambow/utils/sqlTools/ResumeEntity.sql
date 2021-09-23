@@ -6,7 +6,7 @@ CREATE TABLE e_resume(
 	rprice DOUBLE (16,4) NOT NULL COMMENT '期望薪资',
 	rcid INT (11) NOT NULL COMMENT '期望城市',
 	rskill VARCHAR (50) NOT NULL COMMENT '技能',
-	rexperience VARCHAR (50) NOT NULL COMMENT '经历',
 	rsid INT (11) NOT NULL COMMENT '学生',
 	PRIMARY KEY (rid)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'e_resume';
+
