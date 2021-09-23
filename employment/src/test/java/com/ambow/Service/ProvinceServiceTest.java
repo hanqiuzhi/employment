@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ProvinceServiceTest {
 
+    //查询所有省份
     @Test
     public void selectProvinceTest(){
         ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
