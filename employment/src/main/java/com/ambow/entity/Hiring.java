@@ -30,7 +30,7 @@ public class Hiring {
      * 招聘信息状态
      * 0未审核、1未通过、2进行中、3已过期
      */
-    private Integer hflag;
+    private int hflag;
     /**
      * 招聘岗位
      */
@@ -92,11 +92,11 @@ public class Hiring {
         this.hetime = hetime;
     }
 
-    public Integer getHflag() {
+    public int getHflag() {
         return hflag;
     }
 
-    public void setHflag(Integer hflag) {
+    public void setHflag(int hflag) {
         this.hflag = hflag;
     }
 
