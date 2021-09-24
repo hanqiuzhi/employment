@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.dao.HiringDao">
+    <resultMap id="hiringMap" type="Hiring">
+        <id property="hid" column="hid"></id>
+        <result property="hname" column="hname"></result>
+        <result property="hnum" column="hum"></result>
+        <result property="hmajor" column="hamjor"></result>
+        <result property="hexperience" column="hexperience"></result>
+        <result property="hprice" column="hprice"></result>
+        <result property="hetime" column="hetime"></result>
+        <result property="hflag" column="hflag"></result>
+        <association property="hjid" column="Job">
+            <id property="jid" column="jid"></id>
+            <result property="jname" column="jname"></result>
+        </association>
+    </resultMap>
+
+    <select id="selectHiringAll" resultMap="hiringMap">
+        select * from e_hiring h,e_job j where h.hjid=j.jid;
+    </select>
+
+    <insert id="addHiring" parameterType="Hiring">
+        insert into e_hiring values(null,#{hname},#{hnum},#{hmajor},#{hexperience},#{hprice},#{hetime},0,#{hjid.jid})
+    </insert>
+
+    <select id="selectHiringById" resultMap="hiringMap">
+        select * from e_hiring where hid = #{hid}
+    </select>
+
+    <update id="updateHiring" parameterType="Hiring">
+        update e_hiring set hname=#{hname},hnum=#{hnum},hmajor=#{hmajor},hexperience=#{hexperience},hprice=#{hprice},hetime=#{hetime},hjid=#{hjid.jid} where hid = #{hid}
+    </update>
+
+    <delete id="delHiring">
+        delete from e_hiring where hid = #{hid}
+    </delete>
+</mapper>
