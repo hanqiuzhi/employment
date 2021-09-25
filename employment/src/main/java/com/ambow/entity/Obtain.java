@@ -20,7 +20,7 @@ public class Obtain {
      */
     protected String ojname;
     /**
-     * 结业时间
+     * 就业时间
      */
     private String otime;
 
