@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.dao.ThroughDao">
+
+    <resultMap id="ThroughMap" type="Through">
+        <id column="tid" property="tid"></id>
+        <result column="tname" property="tname"></result>
+        <result column="tcontent" property="tcontent"></result>
+        <result column="ttime" property="ttime"></result>
+        <association property="trid" javaType="Resume">
+            <id column="rid" property="rid"></id>
+            <result column="rjobs" property="rjobs"></result>
+            <result column="rprice" property="rprice"></result>
+            <result column="rskill" property="rskill"></result>
+            <association property="rcid" javaType="City">
+                <id column="cid"  property="cid"></id>
+                <result column="cname" property="cname"></result>
+                <association property="cpid" javaType="Province">
+                    <id column="pid" property="pid"></id>
+                    <result column="pname" property="pname"></result>
+                </association>
+            </association>
+            <association property="rsid" javaType="Student">
+                <id column="sid" property="sid"></id>
+                <result property="sname" column="sname"></result>
+                <result property="sno" column="sno"></result>
+                <result property="sidcard" column="sidcard"></result>
+                <result property="sage" column="sage"></result>
+                <result property="ssex" column="ssex"></result>
+                <result property="sphone" column="sphone"></result>
+                <result property="semail" column="semail"></result>
+                <result property="spwd" column="spwd"></result>
+                <result property="sbgdate" column="sbgdate"></result>
+                <result property="seducation" column="seducation"></result>
+                <result property="sflag" column="sflag"></result>
+                <association property="smid" javaType="com.ambow.entity.Major">
+                    <id property="mid" column="mid"></id>
+                    <result property="mname" column="mname"></result>
+                    <association property="mfid" javaType="com.ambow.entity.Faculty">
+                        <id property="fid" column="fid"></id>
+                        <result property="fname" column="fname"></result>
+                    </association>
+                </association>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <select id="selectThroughAll" resultMap="ThroughMap">
+        select * from e_through t
+          left join e_resume r on t.trid = r.rid
+          left join e_city c on r.rcid = c.cid
+          left join e_province p on c.cpid = p.pid
+          left join e_student s on r.rsid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid
+    </select>
+
+    <insert id="addThrough"  parameterType="Resume" >
+        insert into e_through values(null,#{tname},#{tcontent},#{ttime},#{trid.rid})
+    </insert>
+
+    <select id="selectThroughById" resultMap="ThroughMap">
+        select * from e_through t
+          left join e_resume r on t.trid = r.rid
+          left join e_city c on r.rcid = c.cid
+          left join e_province p on c.cpid = p.pid
+          left join e_student s on r.rsid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid
+    </select>
+
+    <update id="updateThrough">
+        update e_through
+        <set>
+            <if test="tname != null">
+                tname = #{tname},
+            </if>
+            <if test="tcontent != null ">
+                tcontent = #{tcontent},
+            </if>
+            <if test="ttime != null">
+                ttime = #{ttime},
+            </if>
+            <if test="trid != null ">
+                trid = #{trid.rid},
+            </if>
+        </set>
+        where tid = #{tid}
+    </update>
+
+    <delete id="delThrough">
+        delete from e_through where tid = #{tid}
+    </delete>
+</mapper>

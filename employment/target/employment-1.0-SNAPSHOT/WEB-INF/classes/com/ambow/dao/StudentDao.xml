@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.dao.StudentDao">
+    <resultMap id="studentmap" type="com.ambow.entity.Student">
+        <id property="sid" column="sid"></id>
+        <result property="sname" column="sname"></result>
+        <result property="sno" column="sno"></result>
+        <result property="sidcard" column="sidcard"></result>
+        <result property="sage" column="sage"></result>
+        <result property="ssex" column="ssex"></result>
+        <result property="sphone" column="sphone"></result>
+        <result property="semail" column="semail"></result>
+        <result property="spwd" column="spwd"></result>
+        <result property="sbgdate" column="sbgdate"></result>
+        <result property="seducation" column="seducation"></result>
+        <result property="sflag" column="sflag"></result>
+        <association property="smid" javaType="com.ambow.entity.Major">
+            <id property="mid" column="mid"></id>
+            <result property="mname" column="mname"></result>
+            <association property="mfid" javaType="com.ambow.entity.Faculty">
+                <id property="fid" column="fid"></id>
+                <result property="fname" column="fname"></result>
+            </association>
+        </association>
+    </resultMap>
+
+    <select id="selectStudentAll" resultMap="studentmap">
+        SELECT * FROM e_student AS s,e_major AS m,e_faculty AS f WHERE s.smid=m.mid AND m.mfid=f.fid;
+    </select>
+
+    <select id="selectStudentBySno" resultMap="studentmap">
+        SELECT * FROM e_student AS s,e_major AS m,e_faculty AS f WHERE s.smid=m.mid AND m.mfid=f.fid and sno=#{sno} and spwd=#{spwd};
+    </select>
+
+    <select id="selectStudentById" parameterType="com.ambow.entity.Student" resultMap="studentmap">
+        SELECT * FROM e_student AS s,e_major AS m,e_faculty AS f WHERE s.smid=m.mid AND m.mfid=f.fid AND s.sid=#{sid};
+    </select>
+
+    <update id="updateStudent" parameterType="com.ambow.entity.Student">
+        UPDATE e_student AS s SET s.sname=#{sname},s.sno=#{sno},s.sidcard=#{sidcard},s.sage=#{sage},s.ssex=#{ssex},s.sphone=#{sphone},s.semail=#{semail},s.spwd=#{spwd},s.sbgdate=#{sbgdate},s.seducation=#{seducation},s.sflag=#{sflag} WHERE s.sid=#{sid};
+    </update>
+
+
+    <insert id="addStudent" parameterType="com.ambow.entity.Student">
+        insert into e_student VALUES(null,#{sname},#{sno},#{sidcard},#{sage},#{ssex},#{sphone},#{semail},#{spwd},#{smid.mid},#{sbgdate},#{seducation},#{sflag});
+    </insert>
+
+    <delete id="delStudent" parameterType="com.ambow.entity.Student">
+         DELETE FROM e_student  WHERE sno=#{sno};
+    </delete>
+</mapper>

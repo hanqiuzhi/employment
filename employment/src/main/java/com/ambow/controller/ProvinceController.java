@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -21,6 +22,12 @@ public class ProvinceController {
         List<Province> provinceList = provinceService.selectProvinceAll();
         model.addAttribute("provinceList",provinceList);
         return "success";
+    }
+    @RequestMapping("allProvince")
+    public String selectProvinceAll(HttpServletRequest request){
+        List<Province> list = provinceService.selectProvinceAll();
+        request.setAttribute("listProvince",list);
+        return "province_list";
     }
 
 }
