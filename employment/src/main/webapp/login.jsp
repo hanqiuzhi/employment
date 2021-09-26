@@ -50,7 +50,7 @@
             success: function(data){
                 //alert(data)
                 if(data =='0'){
-                    alert("成功...");
+                    //alert("成功...");
                     //window.location.href='index.jsp';
                     $(location).attr('href', 'index.jsp');
                 } else {

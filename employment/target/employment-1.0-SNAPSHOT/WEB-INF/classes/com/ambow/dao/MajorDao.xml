@@ -13,16 +13,16 @@
         </association>
     </resultMap>
 
-    <select id="selectMajorAll" resultType="Major">
-        select * from e_major;
+    <select id="selectMajorAll" resultMap="majorMap">
+        select * from e_major m,e_faculty f where m.mfid = f.fid;
     </select>
 
     <insert id="addMajor">
         insert into e_major values(null,#{mname},#{mfid.fid})
     </insert>
 
-    <select id="selectMajorById" resultType="Major">
-        select * from e_major where mid = #{mid}
+    <select id="selectMajorById" resultMap="majorMap">
+        select * from e_major m,e_faculty f where m.mfid = f.fid and mid = #{mid}
     </select>
 
     <update id="updateMajor">

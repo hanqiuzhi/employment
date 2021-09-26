@@ -3,10 +3,12 @@ package com.ambow.service.Impl;
 import com.ambow.dao.NoteDao;
 import com.ambow.entity.Note;
 import com.ambow.service.NoteService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class NoteServiceImpl implements NoteService {
 
     @Resource
