@@ -21,13 +21,8 @@ public class ProvinceController {
     public String selectProvinceAll(Model model){
         List<Province> provinceList = provinceService.selectProvinceAll();
         model.addAttribute("provinceList",provinceList);
-        return "success";
-    }
-    @RequestMapping("allProvince")
-    public String selectProvinceAll(HttpServletRequest request){
-        List<Province> list = provinceService.selectProvinceAll();
-        request.setAttribute("listProvince",list);
         return "province_list";
     }
+
 
 }

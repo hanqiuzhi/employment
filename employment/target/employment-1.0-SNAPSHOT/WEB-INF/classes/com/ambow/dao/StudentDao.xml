@@ -34,7 +34,7 @@
         SELECT * FROM e_student AS s,e_major AS m,e_faculty AS f WHERE s.smid=m.mid AND m.mfid=f.fid and sno=#{sno} and spwd=#{spwd};
     </select>
 
-    <select id="selectStudentById" parameterType="com.ambow.entity.Student" resultMap="studentmap">
+    <select id="selectStudentById" resultMap="studentmap">
         SELECT * FROM e_student AS s,e_major AS m,e_faculty AS f WHERE s.smid=m.mid AND m.mfid=f.fid AND s.sid=#{sid};
     </select>
 
@@ -47,7 +47,7 @@
         insert into e_student VALUES(null,#{sname},#{sno},#{sidcard},#{sage},#{ssex},#{sphone},#{semail},#{spwd},#{smid.mid},#{sbgdate},#{seducation},#{sflag});
     </insert>
 
-    <delete id="delStudent" parameterType="com.ambow.entity.Student">
-         DELETE FROM e_student  WHERE sno=#{sno};
+    <delete id="delStudent">
+         DELETE FROM e_student  WHERE sid=#{sid};
     </delete>
 </mapper>

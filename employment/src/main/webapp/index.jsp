@@ -38,6 +38,11 @@
                         <a href="javascript:;">企业管理</a>
                     </li>
                 </c:if>
+                <c:if test="${sessionScope.university != null}">
+                    <li class="layui-nav-item daohang" ids="#table3">
+                        <a href="javascript:;">系统管理</a>
+                    </li>
+                </c:if>
             </ul>
 
             <ul class="layui-nav right" lay-filter="">
@@ -74,7 +79,7 @@
                             <c:if test="${sessionScope.enterprise != null}">
                                 <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/enterprise/selectEnterpriseById/${sessionScope.enterprise.eid}',550,600)">个人信息</a>
                             </c:if>
-                            <c:if test="${sessionScope.university != null}">
+                            <c:if test="${sessionScope.student != null}">
                                 <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/student/selectStudentById/${sessionScope.student.sid}',550,600)">个人信息</a>
                             </c:if>
 
@@ -103,21 +108,26 @@
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                             <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="线路管理"></i>
-                            <cite>信息管理</cite>
+                            <cite>学生信息管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
                                 <a onclick="xadmin.add_tab('个人信息管理','routineServlet?method=all&flag=0')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>个人信息管理</cite></a>
+                                    <cite>学生信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('简历信息管理','routineServlet?method=all&flag=1')">
+                                <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>简历信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('就业信息管理','routineServlet?method=all&flag=1')">
+                                <a onclick="xadmin.add_tab('项目经历管理','through/selectThroughAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>项目经历管理</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('就业信息管理','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>就业信息管理</cite></a>
                             </li>
@@ -141,29 +151,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">
-                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="订单管理"></i>
-                            <cite>审核管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i></a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('企业认证审核','orderServlet?method=all&flag=0')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>企业认证审核</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('招聘信息审核','orderServlet?method=all&flag=1')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息审核</cite></a>
-                            </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('学生就业信息审核','orderServlet?method=all&flag=2')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>学生就业信息审核</cite></a>
-                            </li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -189,7 +177,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('省列表','provinceServlet?method=all')">
+                                <a onclick="xadmin.add_tab('省列表','province/selectProvinceAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>省列表</cite></a>
                             </li>
@@ -234,10 +222,100 @@
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>用户不可用列表</cite></a>
                             </li>
-
                         </ul>
                     </li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="left-nav hide_lits" id="table3">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li>
+                        <a href="javascript:;" onclick="xadmin.add_tab('我的桌面','welcome.jsp')">
+                            <i class="layui-icon left-nav-li" lay-tips="首页">&#xe68e;</i>
+                            <cite>首页</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li icon-shangpinguanli" lay-tips="城市管理"></i>
+                            <cite>城市信息管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('省列表','province/selectProvinceAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>省列表</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('省列表分页','provinceServlet?method=page')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>省列表分页</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('城市列表','cityServlet?method=all')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>城市列表</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('城市列表2','cityServlet?method=all2')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>城市列表2</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('区域列表','areaServlet?method=all')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>区域列表</cite></a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe726;</i>
+                            <cite>院系专业管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('用户可用列表','userServlet?method=all&flag=0')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>用户可用列表</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('用户不可用列表','userServlet?method=all&flag=1')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>用户不可用列表</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="订单管理"></i>
+                            <cite>审核管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('企业认证审核','orderServlet?method=all&flag=0')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>企业认证审核</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('招聘信息审核','orderServlet?method=all&flag=1')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘信息审核</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('学生就业信息审核','orderServlet?method=all&flag=2')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>学生就业信息审核</cite></a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
