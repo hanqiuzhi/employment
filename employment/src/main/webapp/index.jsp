@@ -112,7 +112,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('个人信息管理','routineServlet?method=all&flag=0')">
+                                <a onclick="xadmin.add_tab('个人信息管理','student/selectStudentAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生信息管理</cite></a>
                             </li>
