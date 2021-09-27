@@ -61,7 +61,7 @@
 
                     <div class="layui-card-header">
                         <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加岗位','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
+                        <button class="layui-btn" onclick="xadmin.open('添加岗位','${pageContext.request.contextPath}/job/showAllEnterprise',500,300)"><i class="layui-icon"></i>添加</button>
                     </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
@@ -108,7 +108,7 @@
                                 </td>
                                     <td class="td-manage">
                                         <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/provinceServlet?method=byid&pid=${prov.pid}',700,500)" >
+                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/provinceServlet?method=byid&pid=${job.jid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${prov.pid}')" href="javascript:;" >

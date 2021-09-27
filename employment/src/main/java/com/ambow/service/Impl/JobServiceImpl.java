@@ -16,18 +16,18 @@ public class JobServiceImpl implements JobService {
     private JobDao jobDao;
 
     @Override
-    public void  addJob(Job job) {
-        jobDao.addJob(job);
+    public int addJob(Job job) {
+        return  jobDao.addJob(job);
     }
 
     @Override
-    public void updateJob(Job job) {
-        jobDao.updateJob(job);
+    public int updateJob(Job job) {
+        return  jobDao.updateJob(job);
     }
 
     @Override
-    public void delJob(int jid) {
-        jobDao.delJob(jid);
+    public int  delJob(int jid) {
+        return jobDao.delJob(jid);
     }
 
     @Override
@@ -38,5 +38,10 @@ public class JobServiceImpl implements JobService {
     @Override
     public Job selectJobById(int jid) {
         return jobDao.selectJobById(jid);
+    }
+
+    @Override
+    public Job selectJobByJname(String jname) {
+        return jobDao.selectJobByJname(jname);
     }
 }
