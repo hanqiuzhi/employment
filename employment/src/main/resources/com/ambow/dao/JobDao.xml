@@ -25,6 +25,10 @@
         select * from e_job where jid = #{jid}
     </select>
 
+    <select id="selectJobByJname" resultMap="jobMap">
+        select * from e_job where jname=#{jname}
+    </select>
+
     <update id="updateJob" parameterType="Job">
         update e_job set jname=#{jname},jinfo=#{jinfo},jeid=#{jeid.eid} where jid = #{jid}
     </update>

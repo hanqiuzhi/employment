@@ -14,18 +14,18 @@ public class HiringServiceImpl implements HiringService {
     private HiringDao hiringDao;
 
     @Override
-    public void addHiring(Hiring hiring) {
-        hiringDao.addHiring(hiring);
+    public int addHiring(Hiring hiring) {
+         return hiringDao.addHiring(hiring);
     }
 
     @Override
-    public void updateHiring(Hiring hiring) {
-        hiringDao.updateHiring(hiring);
+    public int updateHiring(Hiring hiring) {
+       return hiringDao.updateHiring(hiring);
     }
 
     @Override
-    public void delHiring(int hid) {
-        hiringDao.delHiring(hid);
+    public int delHiring(int hid) {
+       return hiringDao.delHiring(hid);
     }
 
     @Override
