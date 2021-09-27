@@ -1,6 +1,7 @@
 package com.ambow.service;
 
 import com.ambow.entity.Hiring;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface HiringService {
     //查询职位信息 查全部
     public List<Hiring> selectHiringAll();
     //根据id查职位信息
-    public Hiring selectJobById(int hid);
+    public Hiring selectHiringById(int hid);
 }

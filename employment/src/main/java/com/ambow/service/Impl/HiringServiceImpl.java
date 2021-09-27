@@ -3,10 +3,11 @@ package com.ambow.service.Impl;
 import com.ambow.dao.HiringDao;
 import com.ambow.entity.Hiring;
 import com.ambow.service.HiringService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-
+@Service
 public class HiringServiceImpl implements HiringService {
 
     @Resource
@@ -33,7 +34,7 @@ public class HiringServiceImpl implements HiringService {
     }
 
     @Override
-    public Hiring selectJobById(int hid) {
-        return hiringDao.selectJobById(hid);
+    public Hiring selectHiringById(int hid) {
+        return hiringDao.selectHiringById(hid);
     }
 }
