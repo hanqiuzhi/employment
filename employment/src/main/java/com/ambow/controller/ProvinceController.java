@@ -35,9 +35,12 @@ public class ProvinceController {
         }return "false";
     }
     @RequestMapping("updateProvince")
+    @ResponseBody
     public String updateProvince(Province province){
-        provinceService.updateProvince(province);
-        return "province_list";
+        int res = provinceService.updateProvince(province);
+        if(res>0){
+            return "true";
+        }return "false";
     }
     @RequestMapping("delProvince")
     @ResponseBody
