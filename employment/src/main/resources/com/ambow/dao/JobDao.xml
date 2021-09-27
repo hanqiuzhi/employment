@@ -22,7 +22,7 @@
     </insert>
 
     <select id="selectJobById" resultMap="jobMap">
-        select * from e_job where jid = #{jid}
+       select * from e_job j,e_enterprise e where j.jeid = e.eid and jid = #{jid}
     </select>
 
     <select id="selectJobByJname" resultMap="jobMap">

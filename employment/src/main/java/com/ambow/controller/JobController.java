@@ -64,6 +64,8 @@ public class JobController {
     public String selectJobById(int jid, HttpServletRequest request){
         Job job=jobService.selectJobById(jid);
         request.setAttribute("job",job);
+        List<Enterprise> list=enterpriseService.selectEnterpriseAll();
+        request.setAttribute("enterpriseList",list);
         return "job_edit";
     }
     @RequestMapping("selectJobByJname")
