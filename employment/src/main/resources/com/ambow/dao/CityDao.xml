@@ -27,7 +27,16 @@
     </select>
 
     <update id="updateCity">
-        update e_city set cname=#{cname} where cid = #{cid}
+        update e_city
+        <set>
+            <if test="cname != null">
+                cname = #{cname},
+            </if>
+            <if test="cpid.pid != null">
+                cpid = #{cpid.pid},
+            </if>
+        </set>
+        where cid = #{cid}
     </update>
 
     <delete id="delCity">

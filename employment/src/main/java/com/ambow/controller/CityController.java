@@ -54,11 +54,12 @@ public class CityController {
     }
 
     @RequestMapping("selectCityById")
-    @ResponseBody
     public String selectCityById(int cid, HttpServletRequest request){
+        List<Province> provinces = provinceService.selectProvinceAll();
+        request.setAttribute("provinceList",provinces);
         City city = cityService.selectCityById(cid);
         request.setAttribute("city",city);
-        return " city_edit";
+        return "city_edit";
     }
     @RequestMapping("selectProvinceAll")
     public String selectProvinceAll(Model model){
