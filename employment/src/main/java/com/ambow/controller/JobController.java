@@ -1,7 +1,7 @@
 package com.ambow.controller;
 
-import com.ambow.entity.City;
-import com.ambow.service.CityService;
+import com.ambow.entity.Job;
+import com.ambow.service.JobService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +14,12 @@ import java.util.List;
 public class JobController {
 
     @Resource
-    private CityService cityService;
+    private JobService jobService;
 
     @RequestMapping("selectJobAll")
     public String selectJobAll(Model model){
-        List<City> cityList = cityService.selectCityAll();
-        model.addAttribute("cityList",cityList);
+        List<Job> jobList = jobService.selectJobAll();
+        model.addAttribute("jobList",jobList);
         return "job_list";
     }
 }

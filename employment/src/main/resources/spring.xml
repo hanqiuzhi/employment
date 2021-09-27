@@ -71,7 +71,9 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.ambow.dao"/>
     </bean>
-
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ambow.service.Impl"/>
+    </bean>
      <!--<bean id="bookService" class="com.ambow.service.BookService">
         <property name="bookDao" ref="bookDao"/>
     </bean>-->

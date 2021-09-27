@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.dao.JobDao">
+    <resultMap id="jobMap" type="Job">
+        <id property="jid" column="jid"></id>
+        <result property="jname" column="jname"></result>
+        <result property="jinfo" column="jinfo"></result>
+        <association property="jeid" column="Enterprise">
+            <id property="eid" column="eid"></id>
+            <result property="ename" column="ename"></result>
+        </association>
+    </resultMap>
+
+    <select id="selectJobAll" resultMap="jobMap">
+        select * from e_job j,e_enterprise e where j.jeid = e.eid;
+    </select>
+
+    <insert id="addJob" parameterType="Job">
+        insert into e_job values(null,#{jname},#{jinfo},#{jeid.eid})
+    </insert>
+
+    <select id="selectJobById" resultMap="jobMap">
+        select * from e_job where jid = #{jid}
+    </select>
+
+    <update id="updateJob" parameterType="Job">
+        update e_job set jname=#{jname},jinfo=#{jinfo},jeid=#{jeid.eid} where jid = #{jid}
+    </update>
+
+    <delete id="delJob">
+        delete from e_job where jid = #{jid}
+    </delete>
+</mapper>
