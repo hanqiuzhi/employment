@@ -20,7 +20,7 @@
             </form>
             <form class="login-form">
                  <h2>管理登录</h2>
-                <input type="text" placeholder="用户名" id="user_name" />
+                <input type="text" placeholder="学号/编号" id="user_name" />
                 <input type="password" placeholder="密码" id="password" />
                 <select style="width: 100%;font-size: 14px;background: #f2f2f2;border: 0;margin: 0 0 15px;
                             padding: 15px;box-sizing: border-box;outline: 0;" name="flag" required="" id="flag">
