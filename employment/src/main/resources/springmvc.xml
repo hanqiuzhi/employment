@@ -12,11 +12,17 @@
     ">
 
     <context:component-scan base-package="com.ambow.controller"></context:component-scan>
-    <!--&lt;!&ndash; 开启扫描注解 &ndash;&gt;-->
-    <!--<context:component-scan base-package="com.ambow.service,com.ambow.service.Impl"></context:component-scan>-->
-  <!--  <mvc:annotation-driven></mvc:annotation-driven>-->
-<!--    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
-    <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>-->
+
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+    <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
+    <mvc:resources mapping="/img/**" location="/img/"></mvc:resources>
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+    <mvc:resources mapping="/fonts/**" location="/fonts/"></mvc:resources>
+    <mvc:resources mapping="/font/**" location="/font/"></mvc:resources>
+    <mvc:resources mapping="/lib/**" location="/lib/"></mvc:resources>
+
 
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"></property>

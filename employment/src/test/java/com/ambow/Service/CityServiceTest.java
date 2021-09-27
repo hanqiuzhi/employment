@@ -52,7 +52,7 @@ public class CityServiceTest {
     public void selectCityById(){
         ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
         CityDao cityDao = app.getBean(CityDao.class);
-        City city = cityDao.selectCityById(2);
+        City city = cityDao.selectCityById(1);
         System.out.println(city);
     }
 }

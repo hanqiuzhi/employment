@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 24/09/2021 14:11:55
+ Date: 27/09/2021 10:01:17
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,12 @@ CREATE TABLE `e_city`  (
   PRIMARY KEY (`cid`) USING BTREE,
   INDEX `cpid`(`cpid`) USING BTREE,
   CONSTRAINT `e_city_ibfk_1` FOREIGN KEY (`cpid`) REFERENCES `e_province` (`pid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_city' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_city' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_city
+-- ----------------------------
+INSERT INTO `e_city` VALUES (1, '北京市', 1);
 
 -- ----------------------------
 -- Table structure for e_enterprise
@@ -48,7 +53,12 @@ CREATE TABLE `e_enterprise`  (
   PRIMARY KEY (`eid`) USING BTREE,
   INDEX `ecid`(`ecid`) USING BTREE,
   CONSTRAINT `e_enterprise_ibfk_1` FOREIGN KEY (`ecid`) REFERENCES `e_city` (`cid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_enterprise' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_enterprise' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_enterprise
+-- ----------------------------
+INSERT INTO `e_enterprise` VALUES (1, '北京xx有限公司', '01001', '123456', 'xx.jpg', '描述', 1, '13011112222', '123@168.com', 1);
 
 -- ----------------------------
 -- Table structure for e_faculty
@@ -58,7 +68,12 @@ CREATE TABLE `e_faculty`  (
   `fid` int(11) NOT NULL AUTO_INCREMENT COMMENT '院系',
   `fname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'fname',
   PRIMARY KEY (`fid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_faculty' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_faculty' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_faculty
+-- ----------------------------
+INSERT INTO `e_faculty` VALUES (1, '信息科学与技术学院');
 
 -- ----------------------------
 -- Table structure for e_hiring
@@ -77,7 +92,12 @@ CREATE TABLE `e_hiring`  (
   PRIMARY KEY (`hid`) USING BTREE,
   INDEX `hjid`(`hjid`) USING BTREE,
   CONSTRAINT `e_hiring_ibfk_1` FOREIGN KEY (`hjid`) REFERENCES `e_job` (`jid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_hiring' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_hiring' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_hiring
+-- ----------------------------
+INSERT INTO `e_hiring` VALUES (1, '招聘信息', 5, '计算机科学与技术', '本科', 5000.0000, '2021-9-28', 0, 1);
 
 -- ----------------------------
 -- Table structure for e_job
@@ -91,7 +111,12 @@ CREATE TABLE `e_job`  (
   PRIMARY KEY (`jid`) USING BTREE,
   INDEX `jeid`(`jeid`) USING BTREE,
   CONSTRAINT `e_job_ibfk_1` FOREIGN KEY (`jeid`) REFERENCES `e_enterprise` (`eid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_job' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_job' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_job
+-- ----------------------------
+INSERT INTO `e_job` VALUES (1, '测试岗位', '测试。。。', 1);
 
 -- ----------------------------
 -- Table structure for e_major
@@ -104,7 +129,12 @@ CREATE TABLE `e_major`  (
   PRIMARY KEY (`mid`) USING BTREE,
   INDEX `e_major_ibfk_1`(`mfid`) USING BTREE,
   CONSTRAINT `e_major_ibfk_1` FOREIGN KEY (`mfid`) REFERENCES `e_faculty` (`fid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_major' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_major' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_major
+-- ----------------------------
+INSERT INTO `e_major` VALUES (1, '计算机科学与技术', 1);
 
 -- ----------------------------
 -- Table structure for e_note
@@ -120,7 +150,12 @@ CREATE TABLE `e_note`  (
   INDEX `nhid`(`nhid`) USING BTREE,
   CONSTRAINT `e_note_ibfk_1` FOREIGN KEY (`nsid`) REFERENCES `e_student` (`sid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `e_note_ibfk_2` FOREIGN KEY (`nhid`) REFERENCES `e_hiring` (`hid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_note' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_note' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_note
+-- ----------------------------
+INSERT INTO `e_note` VALUES (1, 1, 1, 0);
 
 -- ----------------------------
 -- Table structure for e_obtain
@@ -136,7 +171,12 @@ CREATE TABLE `e_obtain`  (
   PRIMARY KEY (`oid`) USING BTREE,
   INDEX `osid`(`osid`) USING BTREE,
   CONSTRAINT `e_obtain_ibfk_1` FOREIGN KEY (`osid`) REFERENCES `e_student` (`sid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_obtain' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_obtain' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_obtain
+-- ----------------------------
+INSERT INTO `e_obtain` VALUES (1, 1, 1, 'xx公司', 'xx职位', '2020-1-1');
 
 -- ----------------------------
 -- Table structure for e_province
@@ -151,7 +191,7 @@ CREATE TABLE `e_province`  (
 -- ----------------------------
 -- Records of e_province
 -- ----------------------------
-INSERT INTO `e_province` VALUES (1, '北京');
+INSERT INTO `e_province` VALUES (1, '北京市');
 
 -- ----------------------------
 -- Table structure for e_resume
@@ -169,7 +209,12 @@ CREATE TABLE `e_resume`  (
   INDEX `rcid`(`rcid`) USING BTREE,
   CONSTRAINT `e_resume_ibfk_1` FOREIGN KEY (`rsid`) REFERENCES `e_student` (`sid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `e_resume_ibfk_2` FOREIGN KEY (`rcid`) REFERENCES `e_city` (`cid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_resume' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_resume' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_resume
+-- ----------------------------
+INSERT INTO `e_resume` VALUES (1, '职位1', 10000.0000, 1, '啥也会', 1);
 
 -- ----------------------------
 -- Table structure for e_student
@@ -192,7 +237,12 @@ CREATE TABLE `e_student`  (
   PRIMARY KEY (`sid`) USING BTREE,
   INDEX `smid`(`smid`) USING BTREE,
   CONSTRAINT `e_student_ibfk_1` FOREIGN KEY (`smid`) REFERENCES `e_major` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_student' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_student' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_student
+-- ----------------------------
+INSERT INTO `e_student` VALUES (1, '韩秋智', 1814490077, '152106199909080057', 22, '1', '17614931406', 'hanqiuzhi666@163.com', '123456', 1, '2018', '本科', 0);
 
 -- ----------------------------
 -- Table structure for e_through
@@ -207,7 +257,12 @@ CREATE TABLE `e_through`  (
   PRIMARY KEY (`tid`) USING BTREE,
   INDEX `trid`(`trid`) USING BTREE,
   CONSTRAINT `e_through_ibfk_1` FOREIGN KEY (`trid`) REFERENCES `e_resume` (`rid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_through' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_through' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_through
+-- ----------------------------
+INSERT INTO `e_through` VALUES (1, '项目一', '描述111', '2021-1-1', 1);
 
 -- ----------------------------
 -- Table structure for e_university
@@ -219,6 +274,11 @@ CREATE TABLE `e_university`  (
   `uno` int(11) NOT NULL COMMENT 'uno',
   `upwd` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'upwd',
   PRIMARY KEY (`uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_university' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_university' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of e_university
+-- ----------------------------
+INSERT INTO `e_university` VALUES (1, '包头师范学院', 15012, '123456');
 
 SET FOREIGN_KEY_CHECKS = 1;

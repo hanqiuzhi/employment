@@ -1,36 +1,17 @@
 package com.ambow.service;
 
-import com.ambow.dao.MajorDao;
 import com.ambow.entity.Major;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class MajorService {
+public interface MajorService {
+    public List<Major> selectMajorAll();
 
-    @Autowired
-    private MajorDao majorDao;
+    public Major selectMajorById(int mid);
 
-    public List<Major> selectMajorAll() {
-        return majorDao.selectMajorAll();
-    }
+    public void updateMajor(Major major);
 
-    public Major selectMajorById(int mid) {
-        return majorDao.selectMajorById(mid);
-    }
+    public void delMajor(int mid);
 
-    public void updateMajor(Major major) {
-        majorDao.updateMajor(major);
-    }
-
-    public void delMajor(int mid) {
-        majorDao.delMajor(mid);
-    }
-
-    public void addMajor(Major major) {
-        majorDao.addMajor(major);
-    }
-
+    public void addMajor(Major major);
 }

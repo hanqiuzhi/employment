@@ -37,4 +37,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterpriseDao.delEnterprise(eid);
     }
 
+    @Override
+    public Enterprise selectEnterpriseByEno(String eno, String epwd) {
+        return enterpriseDao.selectEnterpriseByEno(eno,epwd);
+    }
+
 }

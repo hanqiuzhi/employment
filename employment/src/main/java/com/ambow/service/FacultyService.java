@@ -1,33 +1,17 @@
 package com.ambow.service;
 
-import com.ambow.dao.FacultyDao;
 import com.ambow.entity.Faculty;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class FacultyService {
+public interface FacultyService {
+    public List<Faculty> selectFacultyAll();
 
-    @Autowired
-    private FacultyDao facultyDao;
+    public Faculty selectFacultyById(int fid);
 
-    public List<Faculty> selectFacultyAll() {
-        return facultyDao.selectFacultyAll();
-    }
+    public void updateFaculty(Faculty faculty);
 
-    public Faculty selectFacultyById(int fid) {
-        return facultyDao.selectFacultyById(fid);
-    }
+    public void delFaculty(int fid);
 
-    public void updateFaculty(Faculty faculty) {
-        facultyDao.updateFaculty(faculty);
-    }
-
-    public void delFaculty(int fid) {
-        facultyDao.delFaculty(fid);
-    }
-
-    public void addFaculty(Faculty faculty) {
-        facultyDao.addFaculty(faculty);
-    }
+    public void addFaculty(Faculty faculty);
 }

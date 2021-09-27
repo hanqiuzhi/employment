@@ -1,40 +1,20 @@
 package com.ambow.service;
 
-import com.ambow.dao.UniversityDao;
 import com.ambow.entity.University;
-import com.ambow.utils.sqlTools.UniversityEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Service
-public class UniversityService {
+public interface UniversityService {
+    public List<University> selectUniversityAll();
 
-    @Autowired
-    private UniversityDao universityDao;
+    public void addUniversity(University uname);
 
-    public List<University> selectUniversityAll(){
-        return universityDao.selectUniversityAll();
-    }
+    public void delUniversity(int uid);
 
-    public void addUniversity(University university){
-        universityDao.addUniversity(university);
-    }
+    public void updateUniversity(University university);
 
-    public void delUniversity(int uid){
-        universityDao.delUniversity(uid);
-    }
+    public University selectUniversityById(int uid);
 
-    public void updateUniversity(University university){
-        universityDao.updateUniversity(university);
-    }
-
-    public University selectUniversityById(int uid){
-        return universityDao.selectUniversityById(uid);
-    }
-
-    public University selectUniversityByUno(String uno,String upwd){
-        return universityDao.selectUniversityByUno(uno,upwd);
-    }
+    public University selectUniversityByUno(@Param("uno")String uno, @Param("upwd")String upwd);
 }

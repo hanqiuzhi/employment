@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ambow.dao.ResumeDao">
+
+    <resultMap id="ResumeMap" type="Resume">
+        <id column="rid" property="rid"></id>
+        <result column="rjobs" property="rjobs"></result>
+        <result column="rprice" property="rprice"></result>
+        <result column="rskill" property="rskill"></result>
+        <association property="rcid" javaType="City">
+            <id column="cid"  property="cid"></id>
+            <result column="cname" property="cname"></result>
+            <association property="cpid" javaType="Province">
+                <id column="pid" property="pid"></id>
+                <result column="pname" property="pname"></result>
+            </association>
+        </association>
+        <association property="rsid" javaType="Student">
+            <id column="sid" property="sid"></id>
+            <result property="sname" column="sname"></result>
+            <result property="sno" column="sno"></result>
+            <result property="sidcard" column="sidcard"></result>
+            <result property="sage" column="sage"></result>
+            <result property="ssex" column="ssex"></result>
+            <result property="sphone" column="sphone"></result>
+            <result property="semail" column="semail"></result>
+            <result property="spwd" column="spwd"></result>
+            <result property="sbgdate" column="sbgdate"></result>
+            <result property="seducation" column="seducation"></result>
+            <result property="sflag" column="sflag"></result>
+            <association property="smid" javaType="com.ambow.entity.Major">
+                <id property="mid" column="mid"></id>
+                <result property="mname" column="mname"></result>
+                <association property="mfid" javaType="com.ambow.entity.Faculty">
+                    <id property="fid" column="fid"></id>
+                    <result property="fname" column="fname"></result>
+                </association>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <select id="selectResumeAll" resultMap="ResumeMap">
+        select * from e_resume r
+          left join e_city c on r.rcid = c.cid
+          left join e_province p on c.cpid = p.pid
+          left join e_student s on r.rsid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid
+    </select>
+
+    <insert id="addResume"  parameterType="Resume" >
+        insert into e_resume values(null,#{rjobs},#{rprice},#{rcid.cid},#{rskill},#{rsid.sid})
+    </insert>
+
+    <select id="selectResumeById" resultMap="ResumeMap">
+        select * from e_resume r
+          left join e_city c on r.rcid = c.cid
+          left join e_province p on c.cpid = p.pid
+          left join e_student s on r.rsid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid
+        where rid = #{rid}
+    </select>
+
+    <update id="updateResume">
+        update e_resume
+        <set>
+            <if test="rjobs != null">
+                rjobs = #{rjobs},
+            </if>
+            <if test="rprice != null ">
+                rprice = #{rprice},
+            </if>
+            <if test="rcid.cid != null ">
+                rcid = #{rcid.cid},
+            </if>
+            <if test="rskill != null">
+                rskill = #{rskill},
+            </if>
+            <if test="rsid != null ">
+                rsid = #{rsid.sid},
+            </if>
+        </set>
+        where rid = #{rid}
+    </update>
+
+    <delete id="delResume">
+        delete from e_resume where rid = #{rid}
+    </delete>
+</mapper>
