@@ -27,11 +27,11 @@
     </insert>
 
     <select id="selectHiringById" resultMap="hiringMap">
-        select * from e_hiring h,e_job j where h.hjid=j.jid and hid = #{hid}
+        select * from e_hiring h,e_job j where h.hjid=j.jid and hid=#{hid}
     </select>
 
     <update id="updateHiring" parameterType="Hiring">
-        update e_hiring set hname=#{hname},hnum=#{hnum},hmajor=#{hmajor},hexperience=#{hexperience},hprice=#{hprice},hetime=#{hetime},hjid=#{hjid.jid} where hid = #{hid}
+        update e_hiring set hname=#{hname},hnum=#{hnum},hmajor=#{hmajor},hexperience=#{hexperience},hprice=#{hprice},hetime=#{hetime},hflag=#{hflag},hjid=#{hjid.jid} where hid = #{hid}
     </update>
 
     <delete id="delHiring">

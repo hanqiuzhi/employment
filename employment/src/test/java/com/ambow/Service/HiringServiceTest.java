@@ -35,14 +35,14 @@ public class HiringServiceTest {
         HiringDao hiringDao=(HiringDao)app.getBean(HiringDao.class);
         Hiring hiring=new Hiring();
         hiring.setHid(4);
-        hiring.setHname("招聘2");
+        hiring.setHname("招聘3");
         hiring.setHnum(5);
-        hiring.setHmajor("会计");
-        hiring.setHexperience("专科及以上");
-        hiring.setHprice(1800.00);
+        hiring.setHmajor("实施");
+        hiring.setHexperience("本科及以上");
+        hiring.setHprice(3800.00);
         hiring.setHetime("now");
         Job job=new Job();
-        job.setJid(4);
+        job.setJid(2);
         hiring.setHjid(job);
         hiringDao.updateHiring(hiring);
     }
