@@ -9,11 +9,11 @@ public interface UniversityDao {
 
     public List<University> selectUniversityAll();
 
-    public void addUniversity(University uname);
+    public int addUniversity(University uname);
 
-    public void delUniversity(int uid);
+    public int delUniversity(int uid);
 
-    public void updateUniversity(University university);
+    public int updateUniversity(University university);
 
     public University selectUniversityById(int uid);
 

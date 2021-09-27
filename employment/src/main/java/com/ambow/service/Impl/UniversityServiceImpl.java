@@ -19,16 +19,16 @@ public class UniversityServiceImpl implements UniversityService {
         return universityDao.selectUniversityAll();
     }
 
-    public void addUniversity(University university){
-        universityDao.addUniversity(university);
+    public int addUniversity(University university){
+        return universityDao.addUniversity(university);
     }
 
-    public void delUniversity(int uid){
-        universityDao.delUniversity(uid);
+    public int delUniversity(int uid){
+        return universityDao.delUniversity(uid);
     }
 
-    public void updateUniversity(University university){
-        universityDao.updateUniversity(university);
+    public int updateUniversity(University university){
+        return universityDao.updateUniversity(university);
     }
 
     public University selectUniversityById(int uid){
