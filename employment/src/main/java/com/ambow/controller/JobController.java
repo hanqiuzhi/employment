@@ -30,12 +30,14 @@ public class JobController {
         model.addAttribute("jobList",jobList);
         return "job_list";
     }
+
     @RequestMapping("showAllEnterprise")
     public String allEnterprise(Model model){
         List<Enterprise> list=enterpriseService.selectEnterpriseAll();
         model.addAttribute("enterpriseList",list);
         return "job_add";
     }
+
     @RequestMapping("addJob")
     @ResponseBody
     public String addJob(Job job){

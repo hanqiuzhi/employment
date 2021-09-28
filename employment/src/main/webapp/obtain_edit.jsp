@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>简历修改</title>
+    <title>就业信息修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -33,70 +33,18 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <form class="layui-form" id="update" method="post">
-            <%--<div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>编号
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="deptid" autocomplete="off" readonly="readonly"
-                    class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
-                </div>
-            </div>--%>
-            <input type="hidden" name="rid" value="${resume.rid}">
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望岗位
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rjobs" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rjobs}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望薪资
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rprice" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rprice}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                <span class='x-red'>*</span>期望城市
-                </label>
-                <div class="layui-input-block">
-                    <select name="rcid.cid" class="layui-input">
-                        <option value="">填写期望城市</option>
-                        <c:forEach items="${listCid}" var="city">
-                            <option value="${city.cid}" class="layui-input"
-                                    <c:if test="${resume.rcid.cid == city.cid}">
-                                        selected
-                                    </c:if>
-                            >${city.cname}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>掌握技能
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rskill" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rskill}">
-                </div>
-            </div>
+            <input type="hidden" name="oid" value="${obtain.oid}">
+
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>学生姓名
                 </label>
                 <div class="layui-input-block">
-                    <select name="rsid.sid" class="layui-input">
+                    <select name="osid.sid" class="layui-input">
                         <option value="">填写学生姓名</option>
-                        <c:forEach items="${listSid}" var="student">
+                        <c:forEach items="${listOsid}" var="student">
                             <option value="${student.sid}" class="layui-input"
-                                    <c:if test="${resume.rsid.sid == student.sid}">
+                                    <c:if test="${obtain.osid.sid == student.sid}">
                                         selected
                                     </c:if>
                             >${student.sname}</option>
@@ -104,6 +52,54 @@
                     </select>
                 </div>
             </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>是否自主就业
+                </label>
+                <div class="layui-input-block">
+                    <c:if test="${obtain.oself == 1}">
+                        是<input type="radio" name="oself" autocomplete="off" value="1"
+                        class="layui-input" lay-verify="required" checked>
+                        否<input type="radio" name="oself" autocomplete="off"  value="0"
+                        class="layui-input" lay-verify="required">
+                    </c:if>
+                    <c:if test="${obtain.oself == 0}">
+                        是<input type="radio" name="oself" autocomplete="off" value="1"
+                        class="layui-input" lay-verify="required">
+                        否<input type="radio" name="oself" autocomplete="off"  value="0"
+                        class="layui-input" lay-verify="required" checked>
+                    </c:if>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>就业企业
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="oename" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${obtain.oename}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>就业职位
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="ojname" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${obtain.ojname}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>就业时间
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="otime" autocomplete="off" placeholder="填写就业时间"
+                           class="layui-input" lay-verify="required" value="${obtain.otime}">
+                </div>
+            </div>
+
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
@@ -148,7 +144,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"${pageContext.request.contextPath}/resume/updateResume",
+                        url:"${pageContext.request.contextPath}/obtain/updateObtain",
                         dataType:"text",
                         data:datas,
                         success:function (data){

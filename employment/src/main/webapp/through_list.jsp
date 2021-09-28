@@ -83,6 +83,9 @@
                                 项目名称
                             </th>
                             <th>
+                                所属简历
+                            </th>
+                            <th>
                                 学生姓名
                             </th>
                              <th>
@@ -108,6 +111,9 @@
                                 </td>
                                 <td >
                                     <c:out value="${through.ttime}"/>
+                                </td>
+                                <td >
+                                    <c:out value="${through.trid.rjobs}"/>
                                 </td>
                                 <td >
                                     <c:out value="${through.trid.rsid.sname}"/>
