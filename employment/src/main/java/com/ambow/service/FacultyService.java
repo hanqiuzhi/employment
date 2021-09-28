@@ -9,9 +9,9 @@ public interface FacultyService {
 
     public Faculty selectFacultyById(int fid);
 
-    public void updateFaculty(Faculty faculty);
+    public int updateFaculty(Faculty faculty);
 
-    public void delFaculty(int fid);
+    public int delFaculty(int fid);
 
-    public void addFaculty(Faculty faculty);
+    public int addFaculty(Faculty faculty);
 }

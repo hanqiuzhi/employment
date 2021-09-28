@@ -15,7 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.List;
 
 public class JobServiceTest {
-//产品经理助理、实时 研发、测试
+
     @Test
     public void addJobTest(){
         ApplicationContext app=new ClassPathXmlApplicationContext("spring.xml");
@@ -23,8 +23,8 @@ public class JobServiceTest {
         //JobService jobService=(JobService)app.getBean("jobService");
         Job job=new Job();
         //job.setJid(2);
-        job.setJname("主持人");
-        job.setJinfo("各大电台");
+        job.setJname("测试");
+        job.setJinfo("计算机");
         Enterprise enterprise=new Enterprise();
         enterprise.setEid(1);
         job.setJeid(enterprise);
@@ -53,7 +53,7 @@ public class JobServiceTest {
         City city=new City();
         List<Job> list=jobDao.selectJobAll();
         for (Job items:list){
-            System.out.println("id:"+items.getJid()+"岗位名称："+items.getJname()+"岗位描述："+items.getJinfo()+"所在地："+items.getJeid().getEcid());
+            System.out.println("id:"+items.getJid()+"岗位名称："+items.getJname()+"岗位描述："+items.getJinfo()+"所属单位："+items.getJeid().getEid());
         }
     }
 
