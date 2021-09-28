@@ -69,7 +69,7 @@
           left join e_province p on c.cpid = p.pid
           left join e_student s on r.rsid = s.sid
           left join e_major m on s.smid = m.mid
-          left join e_faculty f on m.mfid = f.fid
+          left join e_faculty f on m.mfid = f.fid where tid=#{tid}
     </select>
 
     <update id="updateThrough">

@@ -48,7 +48,7 @@
             dataType:"text",
             data:{no:no,pwd:pwd,flag:flag},
             success: function(data){
-                //alert(data)
+                alert(data)
                 if(data =='0'){
                     //alert("成功...");
                     //window.location.href='index.jsp';
