@@ -45,6 +45,7 @@ public class HiringController {
         }return "false";
     }
     @RequestMapping("updateHiring")
+    @ResponseBody
     public String updateHiring(Hiring hiring){
         int res=hiringService.updateHiring(hiring);
         if(res>0){
@@ -63,6 +64,8 @@ public class HiringController {
     public String selectHiringById(int hid,HttpServletRequest request){
         Hiring hiring=hiringService.selectHiringById(hid);
         request.setAttribute("hiring",hiring);
+        List<Job> list=jobService.selectJobAll();
+        request.setAttribute("jobList",list);
         return "hiring_edit";
     }
 

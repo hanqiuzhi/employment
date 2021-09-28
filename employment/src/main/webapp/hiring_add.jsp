@@ -98,8 +98,8 @@
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>选择岗位
                 </label>
-                    <div class="layui-input-block">
-                        <select class="layui-input" name="hjid.jid" lay-verify="required" autocomplete="off">
+                <div class="layui-input-block">
+                    <select class="layui-input" name="hjid.jid" lay-verify="required" autocomplete="off">
                         <option value="">请选择岗位</option>
                         <c:forEach items="${jobList}" var="job">
                             <option value="${job.jid}">${job.jname}</option>
