@@ -22,16 +22,16 @@ public class MajorServiceImpl implements MajorService {
         return majorDao.selectMajorById(mid);
     }
 
-    public void updateMajor(Major major) {
-        majorDao.updateMajor(major);
+    public int updateMajor(Major major) {
+        return majorDao.updateMajor(major);
     }
 
-    public void delMajor(int mid) {
-        majorDao.delMajor(mid);
+    public int delMajor(int mid) {
+        return majorDao.delMajor(mid);
     }
 
-    public void addMajor(Major major) {
-        majorDao.addMajor(major);
+    public int addMajor(Major major) {
+        return majorDao.addMajor(major);
     }
 
 }
