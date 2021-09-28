@@ -45,6 +45,7 @@ public class HiringController {
         }return "false";
     }
     @RequestMapping("updateHiring")
+    @ResponseBody
     public String updateHiring(Hiring hiring){
         int res=hiringService.updateHiring(hiring);
         if(res>0){
