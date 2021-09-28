@@ -55,7 +55,8 @@ public class MajorController {
         Major major=majorService.selectMajorById(mid);
         request.setAttribute("major",major);
         List<Faculty> list=facultyService.selectFacultyAll();
-        request.setAttribute("facultyList",list);
+        request.setAttribute("facultyList1",list);
+        System.out.println(list);
         return "major_edit";
 
     }
