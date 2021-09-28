@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>简历修改</title>
+    <title>部门修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -42,78 +42,42 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="rid" value="${resume.rid}">
+            <input type="hidden" name="fid" value="${requestScope.faculty.fid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望岗位
+                    <span class='x-red'>*</span>院系名称
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="rjobs" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rjobs}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望薪资
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rprice" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rprice}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                <span class='x-red'>*</span>期望城市
-                </label>
-                <div class="layui-input-block">
-                    <select name="rcid.cid" class="layui-input">
-                        <option value="">填写期望城市</option>
-                        <c:forEach items="${listCid}" var="city">
-                            <option value="${city.cid}" class="layui-input"
-                                    <c:if test="${resume.rcid.cid == city.cid}">
-                                        selected
-                                    </c:if>
-                            >${city.cname}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>掌握技能
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rskill" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rskill}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>学生姓名
-                </label>
-                <div class="layui-input-block">
-                    <select name="rsid.sid" class="layui-input">
-                        <option value="">填写学生姓名</option>
-                        <c:forEach items="${listSid}" var="student">
-                            <option value="${student.sid}" class="layui-input"
-                                    <c:if test="${resume.rsid.sid == student.sid}">
-                                        selected
-                                    </c:if>
-                            >${student.sname}</option>
-                        </c:forEach>
-                    </select>
+                    <input type="text" name="fname" autocomplete="off" id="fname"
+                           class="layui-input" lay-verify="required" value="${requestScope.faculty.fname}">
                 </div>
             </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
-
         </form>
     </div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
+    $(function () {
+        $("#fname").blur(function () {
+            var fname = $(this).val();
+            $.ajax({
+                type:"Post",
+                url:"provinceServlet?method=checkByName",
+                data:{fname:fname},
+                success:function (data) {
+                    //alert(data);
+                    if(data == 'false'){
+                        alert("省名重复，请重新输入！！！")
+                        $("#fname").val("");
+                    }
+                }
+            })
+        })
+    })
 
     layui.use(['form', 'layer'], function() {
         $ = layui.jquery;
@@ -148,7 +112,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"${pageContext.request.contextPath}/resume/updateResume",
+                        url:"${pageContext.request.contextPath}/faculty/updateFaculty",
                         dataType:"text",
                         data:datas,
                         success:function (data){

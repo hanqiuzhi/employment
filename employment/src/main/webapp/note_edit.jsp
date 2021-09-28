@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>简历修改</title>
+    <title>招聘记录修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -35,85 +35,70 @@
         <form class="layui-form" id="update" method="post">
             <%--<div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>编号
+          7          <span class='x-red'>*</span>编号
                 </label>
                 <div class="layui-input-block">
                     <input type="text" name="deptid" autocomplete="off" readonly="readonly"
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="rid" value="${resume.rid}">
+            <input type="hidden" name="nid" value="${requestScope.note1.nid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望岗位
+                    <span class='x-red'>*</span>学生名称
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="rjobs" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rjobs}">
+                    <input type="text" autocomplete="off" id="nsid" readonly="readonly"
+                    class="layui-input" lay-verify="required" value="${requestScope.note1.nsid.sname}">
                 </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望薪资
+                    <span class='x-red'>*</span>招聘信息
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="rprice" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rprice}">
+                    <input type="text" autocomplete="off" id="nhid" readonly="readonly"
+                           class="layui-input" lay-verify="required" value="${requestScope.note1.nhid.hname}">
                 </div>
-            </div>
-            <div class="layui-form-item">
                 <label class="layui-form-label">
-                <span class='x-red'>*</span>期望城市
+                    <span class='x-red'>*</span>招聘记录状态
                 </label>
                 <div class="layui-input-block">
-                    <select name="rcid.cid" class="layui-input">
-                        <option value="">填写期望城市</option>
-                        <c:forEach items="${listCid}" var="city">
-                            <option value="${city.cid}" class="layui-input"
-                                    <c:if test="${resume.rcid.cid == city.cid}">
-                                        selected
-                                    </c:if>
-                            >${city.cname}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>掌握技能
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rskill" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rskill}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>学生姓名
-                </label>
-                <div class="layui-input-block">
-                    <select name="rsid.sid" class="layui-input">
-                        <option value="">填写学生姓名</option>
-                        <c:forEach items="${listSid}" var="student">
-                            <option value="${student.sid}" class="layui-input"
-                                    <c:if test="${resume.rsid.sid == student.sid}">
-                                        selected
-                                    </c:if>
-                            >${student.sname}</option>
-                        </c:forEach>
+                    <%--<input type="text" name="nflag" autocomplete="off" id="nflag"--%>
+                           <%--class="layui-input" lay-verify="required" value="${requestScope.note1.nflag}">--%>
+                    <select class="layui-input" name="nflag" lay-verify="required" autocomplete="off" id="nflag" class="layui-input" lay-verify="required" >
+                        <option value=0>未面试</option>
+                        <option value=1>未通过</option>
+                        <option value=2>已通过</option>
+                        <option value=3>未入职</option>
+                        <option value=4>已入职</option>
                     </select>
                 </div>
             </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
-
         </form>
     </div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
+    $(function () {
+        $("#nflag").blur(function () {
+            var nflag = $(this).val();
+            $.ajax({
+                type:"Post",
+                url:"provinceServlet?method=checkByName",
+                data:{pname:nflag},
+                success:function (data) {
+                    //alert(data);
+                    if(data == 'false'){
+                        alert("省名重复，请重新输入！！！")
+                        $("#pname").val("");
+                    }
+                }
+            })
+        })
+    })
 
     layui.use(['form', 'layer'], function() {
         $ = layui.jquery;
@@ -148,7 +133,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"${pageContext.request.contextPath}/resume/updateResume",
+                        url:"${pageContext.request.contextPath}/note/noteUpdate",
                         dataType:"text",
                         data:datas,
                         success:function (data){

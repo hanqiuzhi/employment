@@ -122,10 +122,10 @@
                                 </td>
                                     <td class="td-manage">
                                         <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/provinceServlet?method=byid&pid=${prov.pid}',700,500)" >
+                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/note/noteById?nid=${note.nid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${prov.pid}')" href="javascript:;" >
+                                                onclick="member_del(this,'${note.nid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
                                     </td>
                             </tr>
@@ -187,9 +187,9 @@
         layer.confirm('确认要删除吗？',{icon:3,title:'提示信息'},function(index){
             $.ajax({
                 type:"POST",
-                url:"provinceServlet?method=del",
+                url:"${pageContext.request.contextPath}/note/noteDel",
                 dataType:"text",
-                data: {id: id},
+                data: {nid: id},
                 success:function (data){
                     if(data == 'true'){
                         //发异步删除数据

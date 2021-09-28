@@ -9,9 +9,9 @@ public interface MajorService {
 
     public Major selectMajorById(int mid);
 
-    public void updateMajor(Major major);
+    public int updateMajor(Major major);
 
-    public void delMajor(int mid);
+    public int delMajor(int mid);
 
-    public void addMajor(Major major);
+    public int addMajor(Major major);
 }

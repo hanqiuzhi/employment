@@ -22,15 +22,15 @@ public class FacultyServiceImpl implements FacultyService {
         return facultyDao.selectFacultyById(fid);
     }
 
-    public void updateFaculty(Faculty faculty) {
-        facultyDao.updateFaculty(faculty);
+    public int updateFaculty(Faculty faculty) {
+       return facultyDao.updateFaculty(faculty);
     }
 
-    public void delFaculty(int fid) {
-        facultyDao.delFaculty(fid);
+    public int  delFaculty(int fid) {
+        return facultyDao.delFaculty(fid);
     }
 
-    public void addFaculty(Faculty faculty) {
-        facultyDao.addFaculty(faculty);
+    public int  addFaculty(Faculty faculty) {
+        return facultyDao.addFaculty(faculty);
     }
 }

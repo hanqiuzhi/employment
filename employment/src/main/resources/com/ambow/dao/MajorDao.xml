@@ -17,7 +17,7 @@
         select * from e_major m,e_faculty f where m.mfid = f.fid;
     </select>
 
-    <insert id="addMajor">
+    <insert id="addMajor" parameterType="Major">
         insert into e_major values(null,#{mname},#{mfid.fid})
     </insert>
 
@@ -25,7 +25,7 @@
         select * from e_major m,e_faculty f where m.mfid = f.fid and mid = #{mid}
     </select>
 
-    <update id="updateMajor">
+    <update id="updateMajor" parameterType="Major">
         update e_major set mname=#{mname},mfid=#{mfid.fid} where mid = #{mid}
     </update>
 

@@ -39,9 +39,8 @@
     </select>
 
     <update id="updateStudent" parameterType="com.ambow.entity.Student">
-        UPDATE e_student AS s SET s.sname=#{sname},s.sno=#{sno},s.sidcard=#{sidcard},s.sage=#{sage},s.ssex=#{ssex},s.sphone=#{sphone},s.semail=#{semail},s.spwd=#{spwd},s.sbgdate=#{sbgdate},s.seducation=#{seducation},s.sflag=#{sflag} WHERE s.sid=#{sid};
+        UPDATE e_student  SET sname=#{sname},sno=#{sno},sidcard=#{sidcard},sage=#{sage},ssex=#{ssex},sphone=#{sphone},semail=#{semail},spwd=#{spwd},smid=#{smid.mid},sbgdate=#{sbgdate},seducation=#{seducation},sflag=#{sflag} WHERE sid=#{sid};
     </update>
-
 
     <insert id="addStudent" parameterType="com.ambow.entity.Student">
         insert into e_student VALUES(null,#{sname},#{sno},#{sidcard},#{sage},#{ssex},#{sphone},#{semail},#{spwd},#{smid.mid},#{sbgdate},#{seducation},#{sflag});

@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>简历修改</title>
+    <title>项目经历修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -42,64 +42,49 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="rid" value="${resume.rid}">
+            <input type="hidden" name="tid" value="${through.tid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望岗位
+                    <span class='x-red'>*</span>项目名称
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="rjobs" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rjobs}">
+                    <input type="text" name="tname" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${through.tname}">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>期望薪资
+                    <span class='x-red'>*</span>项目内容
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="rprice" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rprice}">
+                    <input type="text" name="tcontent" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${through.tcontent}">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                <span class='x-red'>*</span>期望城市
+                    <span class='x-red'>*</span>项目时间
                 </label>
                 <div class="layui-input-block">
-                    <select name="rcid.cid" class="layui-input">
-                        <option value="">填写期望城市</option>
-                        <c:forEach items="${listCid}" var="city">
-                            <option value="${city.cid}" class="layui-input"
-                                    <c:if test="${resume.rcid.cid == city.cid}">
+                    <input type="text" name="ttime" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${through.ttime}">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>所属简历
+                </label>
+                <div class="layui-input-block">
+                    <select name="trid.rid" class="layui-input">
+                        <option value="">填写所属简历</option>
+                        <c:forEach items="${listTrid}" var="resume">
+                            <option value="${resume.rid}" class="layui-input"
+                                    <c:if test="${through.trid.rid == resume.rid}">
                                         selected
                                     </c:if>
-                            >${city.cname}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>掌握技能
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="rskill" autocomplete="off"
-                           class="layui-input" lay-verify="required" value="${resume.rskill}">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>学生姓名
-                </label>
-                <div class="layui-input-block">
-                    <select name="rsid.sid" class="layui-input">
-                        <option value="">填写学生姓名</option>
-                        <c:forEach items="${listSid}" var="student">
-                            <option value="${student.sid}" class="layui-input"
-                                    <c:if test="${resume.rsid.sid == student.sid}">
-                                        selected
-                                    </c:if>
-                            >${student.sname}</option>
+                            >${resume.rjobs}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -148,7 +133,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"${pageContext.request.contextPath}/resume/updateResume",
+                        url:"${pageContext.request.contextPath}/through/updateThrough",
                         dataType:"text",
                         data:datas,
                         success:function (data){
