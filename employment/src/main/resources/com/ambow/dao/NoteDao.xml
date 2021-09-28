@@ -17,6 +17,7 @@
         </association>
     </resultMap>
 
+
     <select id="selectNoteAll" resultMap="notemap">
          SELECT * FROM e_note n,e_student s,e_hiring h WHERE n.nsid=s.sid AND n.nhid=h.hid;
     </select>
@@ -30,7 +31,7 @@
     </select>
 
     <update id="updateNote" parameterType="com.ambow.entity.Note">
-        UPDATE e_note SET nsid=#{nsid.sid},nhid=#{nhid.hid},nflag=#{nflag} WHERE nid=#{nid}
+        UPDATE e_note SET nflag=#{nflag} WHERE nid=#{nid}
     </update>
 
     <delete id="delNote">
