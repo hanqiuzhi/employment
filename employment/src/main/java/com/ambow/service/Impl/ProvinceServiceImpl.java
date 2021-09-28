@@ -38,4 +38,5 @@ public class ProvinceServiceImpl implements ProvinceService {
     public int delProvince(int pid) {
         return provinceDao.delProvince(pid);
     }
+
 }

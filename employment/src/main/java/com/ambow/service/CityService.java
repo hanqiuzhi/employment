@@ -11,4 +11,5 @@ public interface CityService {
     int updateCity(City city);
     int delCity(int cid);
 
+    List<City> selectCityByPid(int pid);
 }
