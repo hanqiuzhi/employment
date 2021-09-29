@@ -91,16 +91,18 @@ public class HiringController {
     @RequestMapping("selectHiringById1")
     public String selectHiringById1(int hid, HttpSession session,Model model){
         Hiring hiring=hiringService.selectHiringById(hid);
-//        session.setAttribute("hiring1",hiring);
+        session.setAttribute("hiring1",hiring);
 
-        System.out.println("********************"+hiring);
-        Note note = new Note();
-        note.setNflag(0);
-        note.setNhid(hiring);
-        Student student=(Student) session.getAttribute("student");
-        note.setNsid(student);
-        noteService.addNote(note);
-        return "forward:/note/selectNoteAll";
+
+//        System.out.println("********************"+hiring);
+//        Note note = new Note();
+//        note.setNflag(0);
+//        note.setNhid(hiring);
+//        Student student=(Student) session.getAttribute("student");
+//        note.setNsid(student);
+//        noteService.addNote(note);
+//        return "forward:/note/selectNoteAll";
+          return "forward:/note/noteAdd";
     }
 
 }
