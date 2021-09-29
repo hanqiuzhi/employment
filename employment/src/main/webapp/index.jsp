@@ -182,7 +182,7 @@
                                     <cite>企业信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAll')">
+                                <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>企业岗位管理</cite></a>
                             </li>
@@ -198,7 +198,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll')">
+                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘信息管理</cite></a>
                             </li>

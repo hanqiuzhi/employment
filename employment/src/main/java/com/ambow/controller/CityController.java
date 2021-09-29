@@ -1,5 +1,6 @@
 package com.ambow.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ambow.entity.City;
 import com.ambow.entity.Province;
 import com.ambow.service.CityService;
@@ -66,6 +67,15 @@ public class CityController {
         List<Province> provinceList = provinceService.selectProvinceAll();
         model.addAttribute("provinceList",provinceList);
         return "city_add";
+    }
+
+    @RequestMapping("selectCityByPId")
+    @ResponseBody
+    public String selectCityByPId(int pid){
+        JSONObject jsonObject = new JSONObject();
+        List<City> cityList = cityService.selectCityByPid(pid);
+        jsonObject.put("cityList",cityList);
+        return jsonObject.toJSONString();
     }
 
 }

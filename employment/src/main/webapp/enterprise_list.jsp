@@ -97,6 +97,9 @@
                             <th>
                                 企业邮箱
                             </th>
+                            <th>
+                                企业状态
+                            </th>
                              <th>
                                 操作
                              </th>
@@ -122,7 +125,7 @@
                                     <c:out value="${enterprise.epwd}"/>
                                 </td>
                                 <td>
-                                    <c:out value="${enterprise.elicense}"/>
+                                    <img src="${pageContext.request.contextPath}/img/${enterprise.elicense}">
                                 </td>
                                 <td>
                                     <c:out value="${enterprise.einfo}"/>
@@ -135,6 +138,17 @@
                                 </td>
                                 <td >
                                     <c:out value="${enterprise.eemail}"/>
+                                </td>
+                                <td >
+                                    <c:if test="${enterprise.eflag == 0}">
+                                        未审核
+                                    </c:if>
+                                    <c:if test="${enterprise.eflag == 1}">
+                                        已通过
+                                    </c:if>
+                                    <c:if test="${enterprise.eflag == 2}">
+                                        未通过
+                                    </c:if>
                                 </td>
                                     <td class="td-manage">
                                         <button class="layui-btn layui-btn layui-btn-xs"

@@ -12,4 +12,5 @@ public interface CityDao {
      int updateCity(City city);
      int delCity(int cid);
 
+    List<City> selectCityByPid(int pid);
 }

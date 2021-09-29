@@ -23,40 +23,32 @@
 <body>
 <div class="layui-fluid">
     <div class="layui-row">
-        <form id="addsite" action="showAllEnterprise"  method="post" class="layui-form">
+        <form id="addsite" class="layui-form">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>招聘岗位
+                    <span class='x-red'>*</span>专业名称
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="jname" autocomplete="off" placeholder="填写岗位名称"
-                           class="layui-input" lay-verify="required" id="jname">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>岗位信息
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="jinfo" autocomplete="off" placeholder="填写岗位描述"
-                           class="layui-input" lay-verify="required" id="jinfo">
+                    <input type="text" name="mname" autocomplete="off" placeholder="填写专业名称"
+                           class="layui-input" lay-verify="required" id="mname">
                 </div>
             </div>
 
-            <!--<div class="layui-form-item">
+
+            <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>选择企业
+                    <span class='x-red'>*</span>选择学院
                 </label>
                 <div class="layui-input-block">
-                    <select class="layui-input" name="jeid.eid" lay-verify="required" autocomplete="off">
-                        <option value="">请选择企业</option>
-                        <c:forEach items="${enterpriseList}" var="qiye">
-                            <option value="${qiye.eid}">${qiye.ename}</option>
+                    <select class="layui-input" name="mfid.fid" lay-verify="required" autocomplete="off">
+                        <option value="">请选择学院</option>
+                        <c:forEach items="${facultyList}" var="faculty">
+                            <option value="${faculty.fid}">${faculty.fname}</option>
                         </c:forEach>
                     </select>
                 </div>
-            </div>-->
+            </div>
             <div class="layui-form-item" style="text-align: center;">
                 <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
             </div>
@@ -67,23 +59,23 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <script>
 
-   /* $(function () {
-        $("#cname").blur(function () {
-            var cname = $(this).val();
-            $.ajax({
-                type:"Post",
-                url:"cityServlet?method=checkByName",
-                data:{cname:cname},
-                success:function (data) {
-                    //alert(data);
-                    if(data == 'false'){
-                        alert("城市名重复，请重新输入！！！")
-                        $("#cname").val("");
-                    }
-                }
-            })
-        })
-    })*/
+    /* $(function () {
+         $("#cname").blur(function () {
+             var cname = $(this).val();
+             $.ajax({
+                 type:"Post",
+                 url:"cityServlet?method=checkByName",
+                 data:{cname:cname},
+                 success:function (data) {
+                     //alert(data);
+                     if(data == 'false'){
+                         alert("城市名重复，请重新输入！！！")
+                         $("#cname").val("");
+                     }
+                 }
+             })
+         })
+     })*/
 
     layui.use(['laydate','form', 'layer'], function() {
         $ = layui.jquery;
@@ -108,7 +100,7 @@
                 //alert(JSON.stringify(datas));
                 $.ajax({
                     type:"POST",
-                    url:"${pageContext.request.contextPath}/job/addJob",
+                    url:"${pageContext.request.contextPath}/major/addMajor",
                     dataType:"text",
                     data:datas,
                     success:function (data){

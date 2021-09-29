@@ -25,26 +25,6 @@
     </resultMap>
 
 
-    <resultMap id="enterpriseById" type="Enterprise">
-        <id column="eid" property="eid"></id>
-        <result property="ename" column="ename"></result>
-        <result property="eno" column="eno"></result>
-        <result property="epwd" column="epwd"></result>
-        <result property="elicense" column="elicense"></result>
-        <result property="einfo" column="einfo"></result>
-        <result property="ephone" column="ephone"></result>
-        <result property="eemail" column="eemail"></result>
-        <result property="eflag" column="eflag"></result>
-        <association property="ecid" javaType="City">
-            <id column="cid" property="cid"></id>
-            <result property="cname" column="cname"></result>
-            <association property="cpid" javaType="Province">
-                <id column="pid" property="pid"></id>
-                <result property="pname" column="pname"></result>
-            </association>
-        </association>
-    </resultMap>
-
     <select id="selectEnterpriseAll" resultMap="enterpriseMap">
         select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid;
     </select>
@@ -53,11 +33,77 @@
         select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid and eno=#{emo} and epwd=#{epwd};
     </select>
 
+    <select id="selectEnterpriseByFlag" resultMap="enterpriseMap">
+        select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid and eflag=0;
+    </select>
+
     <insert id="addEnterprise" parameterType="Enterprise">
         insert into e_enterprise values(null,#{ename},#{eno},#{epwd},#{elicense},#{einfo},#{ecid.cid},#{ephone},#{eemail},0)
     </insert>
 
-    <select id="selectEnterpriseById" resultMap="enterpriseById">
+    <insert id="addEnterpriseSql" parameterType="Enterprise">
+        insert into e_enterprise
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            eid,
+            <if test="ename != null ">
+                ename,
+            </if>
+            <if test="eno != null ">
+                eno,
+            </if>
+            <if test="epwd != null ">
+                epwd,
+            </if>
+            <if test="elicense != null ">
+                elicense,
+            </if>
+            <if test="einfo != null ">
+                einfo,
+            </if>
+            <if test="ecid != null ">
+                ecid,
+            </if>
+            <if test="ephone != null ">
+                ephone,
+            </if>
+            <if test="eemail != null ">
+                eemail,
+            </if>
+            <if test="eflag != null">
+                eflag,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            null,
+            <if test="ename != null ">
+                #{ename},
+            </if>
+            <if test="eno != null ">
+                #{eno},
+            </if>
+            <if test="epwd != null ">
+                #{epwd},
+            </if>
+            <if test="elicense != null ">
+                #{elicense},
+            </if>
+            <if test="einfo != null ">
+                #{einfo},
+            </if>
+            <if test="ecid != null ">
+                #{ecid.cid},
+            </if>
+            <if test="ephone != null ">
+                #{ephone},
+            </if>
+            <if test="eemail != null ">
+                #{eemail},
+            </if>
+            0
+        </trim>
+    </insert>
+
+    <select id="selectEnterpriseById" resultMap="enterpriseMap">
         select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid AND eid = #{eid}
     </select>
 

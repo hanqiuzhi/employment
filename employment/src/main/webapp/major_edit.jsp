@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>岗位修改</title>
+    <title>专业修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -42,45 +42,36 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="jid" value="${requestScope.job.jid}">
+            <input type="hidden" name="mid" value="${requestScope.major.mid}">
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>招聘岗位
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="jname" autocomplete="off" placeholder="填写岗位名称"
-                               class="layui-input" lay-verify="required" id="jname" value="${job.jname}">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>岗位信息
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="jinfo" autocomplete="off" placeholder="填写岗位描述"
-                               class="layui-input" lay-verify="required" id="jinfo" value="${job.jinfo}">
-                    </div>
-                </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>招聘岗位
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="mname" autocomplete="off" placeholder="填写岗位名称"
+                           class="layui-input" lay-verify="required" id="mname" value="${major.mname}">
+            </div>
+            </div>
 
-               <!-- <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>选择企业
-                    </label>
-                    <div class="layui-input-block">
-                        <select class="layui-input" name="jeid.eid" lay-verify="required" autocomplete="off">
-                            <option value="">请选择企业</option>
-                            <%--<c:forEach items="${enterpriseList}" var="qiye">--%>
-                                <%--<option value="${qiye.eid}"--%>
-                                        <%--<c:if test="${job.jeid.eid == qiye.eid}">--%>
-                                            <%--selected--%>
-                                        <%--</c:if>--%>
-                                <%-->${qiye.ename}--%>
-                                <%--</option>--%>
-                            <%--</c:forEach>--%>
-                        </select>
-                    </div>
-                </div>-->
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>选择企业
+                </label>
+                <div class="layui-input-block">
+                    <select class="layui-input" name="mfid.fid" lay-verify="required" autocomplete="off">
+                        <option value="">请选择学院</option>
+                        <c:forEach items="${facultyList1}" var="faculty">
+                            <option value="${faculty.fid}"
+                                    <c:if test="${major.mfid.fid == faculty.fid}">
+                                        selected
+                                    </c:if>
+                            >${faculty.fname}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
@@ -90,23 +81,23 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
-   /* $(function () {
-        $("#jname").blur(function () {
-            var cname = $(this).val();
-            $.ajax({
-                type:"Post",
-                url:"/job/updateJob",
-                data:{cname:cname},
-                success:function (data) {
-                    //alert(data);
-                    if(data == 'false'){
-                        alert("请重新输入！！！")
-                        $("#cname").val("");
-                    }
-                }
-            })
-        })
-    })*/
+    /* $(function () {
+         $("#jname").blur(function () {
+             var cname = $(this).val();
+             $.ajax({
+                 type:"Post",
+                 url:"/job/updateJob",
+                 data:{cname:cname},
+                 success:function (data) {
+                     //alert(data);
+                     if(data == 'false'){
+                         alert("请重新输入！！！")
+                         $("#cname").val("");
+                     }
+                 }
+             })
+         })
+     })*/
     layui.use(['form', 'layer'], function() {
         $ = layui.jquery;
         var form = layui.form,
@@ -125,7 +116,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"job/updateJob",
+                        url:"major/updateMajor",
                         dataType:"text",
                         data:datas,
                         success:function (data){

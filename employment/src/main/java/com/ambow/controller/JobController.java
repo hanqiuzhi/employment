@@ -30,15 +30,26 @@ public class JobController {
         model.addAttribute("jobList",jobList);
         return "job_list";
     }
+    @RequestMapping("selectJobAllbyeid")
+    public String selectJobAll1(Model model,HttpSession session){
+        Enterprise enterprise=(Enterprise) session.getAttribute("enterprise");
+         int jeid=enterprise.getEid();
+        List<Job> jobList = jobService.selectenJobAll(jeid);
+        model.addAttribute("jobList1",jobList);
+        return "job_list";
+    }
     @RequestMapping("showAllEnterprise")
     public String allEnterprise(Model model){
         List<Enterprise> list=enterpriseService.selectEnterpriseAll();
         model.addAttribute("enterpriseList",list);
         return "job_add";
     }
+
     @RequestMapping("addJob")
     @ResponseBody
-    public String addJob(Job job){
+    public String addJob(Job job,HttpSession session){
+        Enterprise enterprise=(Enterprise) session.getAttribute("enterprise");
+        job.setJeid(enterprise);
         int res=jobService.addJob(job);
         if(res>0){
             return "true";
@@ -46,7 +57,9 @@ public class JobController {
     }
     @RequestMapping("updateJob")
     @ResponseBody
-    public String updateJob(Job job){
+    public String updateJob(Job job,HttpSession session){
+        Enterprise enterprise=(Enterprise) session.getAttribute("enterprise");
+        job.setJeid(enterprise);
         int res=jobService.updateJob(job);
         if(res>0){
             return "true";
@@ -74,5 +87,6 @@ public class JobController {
         request.setAttribute("jname",jname);
         return "job_edit";
     }
+
 
 }

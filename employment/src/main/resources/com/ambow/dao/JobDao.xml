@@ -17,6 +17,14 @@
         select * from e_job j,e_enterprise e where j.jeid = e.eid;
     </select>
 
+    <select id="selectenJobAll" resultMap="jobMap">
+        select * from e_job j,e_enterprise e where j.jeid = e.eid and j.jeid=#{jeid}
+    </select>
+
+    <select id="selectJobOnly" resultMap="jobMap">
+        select * from e_job j,e_enterprise e where j.jeid=e.eid and eid=#{eid}
+    </select>
+
     <insert id="addJob" parameterType="Job">
         insert into e_job values(null,#{jname},#{jinfo},#{jeid.eid})
     </insert>
