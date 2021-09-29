@@ -1,9 +1,13 @@
 package com.ambow.controller;
 
+import com.ambow.entity.Enterprise;
 import com.ambow.entity.Hiring;
 import com.ambow.entity.Job;
+import com.ambow.entity.Note;
+import com.ambow.entity.Student;
 import com.ambow.service.HiringService;
 import com.ambow.service.JobService;
+import com.ambow.service.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.PortUnreachableException;
 import java.util.List;
 
@@ -23,6 +28,8 @@ public class HiringController {
 
     @Resource
     private JobService jobService;
+    @Resource
+    private NoteService noteService ;
 
     @RequestMapping("selectHiringAll")
     public String selectHiringAll(Model model){
@@ -30,15 +37,24 @@ public class HiringController {
         model.addAttribute("hiringList",hiringList);
         return "hiring_list";
     }
+    @RequestMapping("selectHiringAllbyeid")
+    public String selectHiringAll(Model model, HttpSession session){
+        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
+        List<Hiring> hiringList = hiringService.selectHiringByJob(enterprise.getEid());
+        model.addAttribute("hiringList1",hiringList);
+        return "hiring_list";
+    }
     @RequestMapping("showAllJob")
-    public String allJob(HttpServletRequest request){
-        List<Job> list=jobService.selectJobAll();
+    public String allJob(HttpServletRequest request,HttpSession session){
+        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
+        List<Job> list = jobService.selectJobOnly(enterprise.getEid());
+        //List<Job> list=jobService.selectJobAll();
         request.setAttribute("jobList",list);
         return "hiring_add";
     }
     @RequestMapping("addHiring")
     @ResponseBody
-    public String addHiring(Hiring hiring){
+    public String addHiring(Hiring hiring,HttpSession session){
         int res=hiringService.addHiring(hiring);
         if(res>0){
             return "true";
@@ -52,6 +68,7 @@ public class HiringController {
             return "true";
         }return "false";
     }
+
     @RequestMapping("delHiring")
     @ResponseBody
     public String delHiring(int hid){
@@ -60,13 +77,31 @@ public class HiringController {
             return "true";
         }return "false";
     }
+
     @RequestMapping("selectHiringById")
-    public String selectHiringById(int hid,HttpServletRequest request){
+    public String selectHiringById(int hid,HttpServletRequest request,HttpSession session){
+        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
         Hiring hiring=hiringService.selectHiringById(hid);
         request.setAttribute("hiring",hiring);
-        List<Job> list=jobService.selectJobAll();
+        List<Job> list=jobService.selectJobOnly(enterprise.getEid());
         request.setAttribute("jobList",list);
         return "hiring_edit";
     }
 
+    @RequestMapping("selectHiringById1")
+    public String selectHiringById1(int hid, HttpSession session,Model model){
+        Hiring hiring=hiringService.selectHiringById(hid);
+//        session.setAttribute("hiring1",hiring);
+
+        System.out.println("********************"+hiring);
+        Note note = new Note();
+        note.setNflag(0);
+        note.setNhid(hiring);
+        Student student=(Student) session.getAttribute("student");
+        note.setNsid(student);
+        noteService.addNote(note);
+        return "forward:/note/selectNoteAll";
+    }
+
 }
+

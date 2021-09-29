@@ -12,4 +12,6 @@ public interface CityService {
     int delCity(int cid);
     //根据省份id 查询城市
     List<City> selectCityByPid(int pid);
+
+    List<City> selectProvinceCity(int pid);
 }

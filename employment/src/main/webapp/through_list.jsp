@@ -56,13 +56,14 @@
                         <div class="layui-inline layui-show-xs-block">
                             <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
                         </div>
+                            <div class="layui-card-header">
+                            <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                            <button class="layui-btn" onclick="xadmin.open('添加项目经历','${pageContext.request.contextPath}/through/getTrid?method=add',500,300)"><i class="layui-icon"></i>添加</button>
+                        </div>
                     </form>
                 </div>
 
-                    <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加简历','${pageContext.request.contextPath}/through/getTrid?method=add',500,300)"><i class="layui-icon"></i>添加</button>
-                    </div>
+
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>

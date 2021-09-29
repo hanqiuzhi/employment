@@ -23,9 +23,12 @@ public class ThroughController {
     @Resource
     private ResumeService resumeService;
     @RequestMapping("getTrid")
-    public String getTrid(HttpServletRequest request,String method){
-        List<Resume> list = resumeService.selectResumeAll();
-        request.setAttribute("listTrid",list);
+    public String getTrid(HttpServletRequest request,String method,int trid){
+        Through through=new Through();
+        Resume resume=new Resume();
+        resume.setRid(trid);
+        through.setTrid(resume);
+        request.setAttribute("through",through);
         if (method.equals("add")){
             return "through_add";
         }
@@ -67,6 +70,7 @@ public class ThroughController {
         }
         return "false";
     }
+
     @RequestMapping("delThrough")
     @ResponseBody
     public String delThrough(int tid){

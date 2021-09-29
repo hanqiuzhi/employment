@@ -36,6 +36,7 @@ public class EnterpriseController {
         return "enterprise_list";
     }
 
+
     @RequestMapping("selectEnterpriseByFlag")
     public String selectEnterpriseByFlag(Model model){
         List<Enterprise> enterpriseList = enterpriseService.selectEnterpriseByFlag();
@@ -97,4 +98,5 @@ public class EnterpriseController {
         model.addAttribute("city1",city);
         return "city_edit";
     }
+
 }

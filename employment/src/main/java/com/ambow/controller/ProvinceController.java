@@ -57,6 +57,7 @@ public class ProvinceController {
         request.setAttribute("province",province);
         return "province_edit";
     }
+
     @RequestMapping("selectProvinceAllLayui")
     @ResponseBody
     public String selectProvinceAllLayui(){

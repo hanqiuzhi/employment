@@ -1,13 +1,7 @@
 package com.ambow.controller;
 
-import com.ambow.entity.City;
-import com.ambow.entity.Province;
-import com.ambow.entity.Resume;
-import com.ambow.entity.Student;
-import com.ambow.service.CityService;
-import com.ambow.service.ProvinceService;
-import com.ambow.service.ResumeService;
-import com.ambow.service.StudentService;
+import com.ambow.entity.*;
+import com.ambow.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +21,8 @@ public class ResumeController {
     private CityService cityService;
     @Resource
     private StudentService studentService;
+    @Resource
+    private ThroughService throughService;
     @RequestMapping("selectResumeAll")
     public String selectResumeAll(Model model){
         List<Resume> resumeList = resumeService.selectResumeAll();
@@ -77,10 +73,19 @@ public class ResumeController {
     }
     @RequestMapping("selectResumeById")
 
-    public String selectResumeById(int rid,Model model){
+    public String selectResumeById(int rid,Model model,String method){
         Resume resume=resumeService.selectResumeById(rid);
         model.addAttribute("resume",resume);
+        if (method.equals("detail")){
+            List<Through> throughList = throughService.selectThroughByIdandSid(rid,resume.getRsid().getSid());
+            model.addAttribute("throughList",throughList);
+            return "resume_detail";
+        }
+        if (method.equals("edit")){
+
         return "resume_edit";
+        }
+        return null;
     }
 
 }

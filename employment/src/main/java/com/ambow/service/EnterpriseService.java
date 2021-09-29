@@ -17,4 +17,8 @@ public interface EnterpriseService {
     List<Enterprise> selectEnterpriseByFlag();
 
 
+
+
+    List<Enterprise> selectEnterpriseByCid(int ecid);
+
 }

@@ -4,6 +4,8 @@ import com.ambow.dao.EnterpriseDao;
 import com.ambow.dao.ProvinceDao;
 import com.ambow.entity.City;
 import com.ambow.entity.Enterprise;
+import com.ambow.utils.MailUtils;
+import com.ambow.utils.Tools;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -57,5 +59,35 @@ public class EnterpriseTest {
         enterprise.setEemail("1234");
         int p =enterpriseDao.updateEnterprise(enterprise);
         System.out.println(p);
+    }
+
+    @Test
+    public void activeEnterprise(){
+        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+        EnterpriseDao enterpriseDao = app.getBean(EnterpriseDao.class);
+        List<Enterprise> enterpriseList = enterpriseDao.selectEnterpriseByCid(2);
+        String to = "hanqiuzhi666@163.com";
+        System.out.println(to);
+        String eno = null;
+        String time = new Tools().getTime();
+        if(enterpriseList.size()<1){
+            eno = time.substring(0,4);
+        }else {
+            int size = 1;
+            for (int i=0;i<size;i++){
+                eno = enterpriseList.get(enterpriseList.size()-size).getEno();
+                if(eno == null && enterpriseList.size()>0){
+                    size++;
+                }
+            }
+            System.out.println(size);
+            System.out.println(Integer.parseInt(eno)+1);
+            System.out.println(enterpriseList.size()-1);
+        }
+        System.out.println(eno);
+        /*String content="您的企业编号为："+eno+",请根据此编号和密码登录系统！！！";
+        MailUtils mailUtils = new MailUtils();
+        mailUtils.sendMail(to,content,"企业审核通过邮件");
+        System.out.println("发送成功");*/
     }
 }

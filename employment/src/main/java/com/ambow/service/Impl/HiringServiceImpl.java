@@ -2,6 +2,7 @@ package com.ambow.service.Impl;
 
 import com.ambow.dao.HiringDao;
 import com.ambow.entity.Hiring;
+import com.ambow.entity.Job;
 import com.ambow.service.HiringService;
 import org.springframework.stereotype.Service;
 
@@ -37,4 +38,11 @@ public class HiringServiceImpl implements HiringService {
     public Hiring selectHiringById(int hid) {
         return hiringDao.selectHiringById(hid);
     }
+
+    @Override
+    public List<Hiring> selectHiringByJob(int eid) {
+        return hiringDao.selectHiringByJob(eid);
+    }
+
+
 }

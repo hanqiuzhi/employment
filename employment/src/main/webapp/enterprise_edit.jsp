@@ -69,21 +69,21 @@
                     <input type="text" name="einfo" autocomplete="off"
                            class="layui-input" lay-verify="required" value="${enterprise.einfo}">
                 </div>
+
             </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span class='x-red'>*</span>企业所属省
                     </label>
                     <div class="layui-input-block">
-                        <select class="layui-input" name="epid.pid" lay-verify="required" autocomplete="off">
+                        <select class="layui-input"  lay-filter="prov" id="province" name="epid.pid" lay-verify="required" autocomplete="off">
                             <option value="">请选择省</option>
                             <c:forEach items="${provinceList}" var="province">
                                 <option value="${province.pid}"
-                                <c:if test="${enterprise.ecid.cpid.pid == province.pid}">
-                                    selected
-                                </c:if>
-                                >
-                                ${province.pname}
+                                        <c:if test="${enterprise.ecid.cpid.pid == province.pid}">
+                                            selected
+                                        </c:if>
+                                >${province.pname}
                                 </option>
                             </c:forEach>
                         </select>
@@ -94,8 +94,8 @@
                         <span class='x-red'>*</span>企业所属城市
                     </label>
                     <div class="layui-input-block">
-                        <select class="layui-input" name="ecid.cid" id="ecid" lay-verify="required" autocomplete="off">
-                            <option value="">请选择城市</option>
+                        <select class="layui-input" lay-filter="city" name="ecid.cid" id="ecid" lay-verify="required" autocomplete="off">
+                            <option value="" selected>请选择城市</option>
                         </select>
                     </div>
                 </div>
@@ -148,6 +148,25 @@
                 }
             }
         });*/
+
+
+
+        form.on('select(prov)',function (data){
+            var pid = data.value;
+            //alert(prov);
+            //alert($("#province").val());
+            $.post('city/selectCityByPId',{'pid':pid},function (msg) {
+                $('#ecid').empty();
+                $('#ecid').append("<option>请选择城市</option>");
+
+                for(var i in msg){
+                    var $content = $('<option value="' + msg.cityList[i].cid + '">' + msg.cityList[i].cname + '</option>');
+                    $('#ecid').append($content);
+                }
+                form.render('select');
+            })
+        })
+
 
 
         //监听提交

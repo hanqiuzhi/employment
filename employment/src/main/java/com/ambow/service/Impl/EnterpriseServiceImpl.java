@@ -52,4 +52,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterpriseDao.selectEnterpriseByFlag();
     }
 
+    @Override
+    public List<Enterprise> selectEnterpriseByCid(int ecid) {
+        return enterpriseDao.selectEnterpriseByCid(ecid);
+    }
+
 }

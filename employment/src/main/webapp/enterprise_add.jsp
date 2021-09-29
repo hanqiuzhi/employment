@@ -26,15 +26,19 @@
         <form id="addsite" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>选择公司
+                    <span class='x-red'>*</span>添加公司
                 </label>
                 <div class="layui-input-block">
-                    <select class="layui-input" name="ecid.cid" lay-verify="required" autocomplete="off">
+                    <%--<select class="layui-input" name="ecid.cid" lay-verify="required" autocomplete="off">
                         <option value="">请选择公司</option>
                         <c:forEach items="${enterpriseList}" var="enterprise">
                             <option value="${enterprise.eid}">${enterprise.ename}</option>
                         </c:forEach>
-                    </select>
+                    </select>--%>
+                        <div class="layui-input-block">
+                            <input type="text" name="ename" autocomplete="off" placeholder="填写公司名称"
+                                   class="layui-input" lay-verify="required" id="ename">
+                        </div>
                 </div>
             </div>
             <div class="layui-form-item">

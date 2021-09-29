@@ -71,23 +71,6 @@
                 </div>
             </div>
 
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>所属简历
-                </label>
-                <div class="layui-input-block">
-                    <select name="trid.rid" class="layui-input">
-                        <option value="">填写所属简历</option>
-                        <c:forEach items="${listTrid}" var="resume">
-                            <option value="${resume.rid}" class="layui-input"
-                                    <c:if test="${through.trid.rid == resume.rid}">
-                                        selected
-                                    </c:if>
-                            >${resume.rjobs}</option>
-                        </c:forEach>
-                    </select>
-                </div>
             </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>

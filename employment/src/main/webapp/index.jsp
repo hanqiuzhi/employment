@@ -30,7 +30,7 @@
             <ul class="layui-nav left fast-add" lay-filter="">
                 <c:if test="${sessionScope.university != null || sessionScope.student != null}">
                     <li class="layui-nav-item daohang" ids="#table1">
-                        <a href="javascript:;">学生管路</a>
+                        <a href="javascript:;">学生管理</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
@@ -111,21 +111,27 @@
                             <cite>学生信息管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
+                            <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
                             <li>
                                 <a onclick="xadmin.add_tab('个人信息管理','student/selectStudentAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生信息管理</cite></a>
                             </li>
+                            </c:if>
+                            <c:if test="${sessionScope.student != null}">
+                            <li>
+
+                            </li></c:if>
                             <li>
                                 <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>简历信息管理</cite></a>
                             </li>
-                            <li>
+                            <%--<li>
                                 <a onclick="xadmin.add_tab('项目经历管理','through/selectThroughAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>项目经历管理</cite></a>
-                            </li>
+                            </li>--%>
                             <li>
                                 <a onclick="xadmin.add_tab('就业信息管理','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>
@@ -140,15 +146,17 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
+                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘信息管理</cite></a>
+                            </li>
+
+                            <li>
                                 <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息列表</cite></a>
+                                    <cite>招聘列表管理</cite></a>
                             </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('申请岗位列表','stationServlet?method=all&flag=1')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>申请岗位列表</cite></a>
-                            </li>
+
                         </ul>
                     </li>
 
@@ -182,7 +190,7 @@
                                     <cite>企业信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAll')">
+                                <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>企业岗位管理</cite></a>
                             </li>
@@ -198,14 +206,14 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll')">
+                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息记录','note/selectNoteAll')">
+                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAll')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息记录</cite></a>
+                                    <cite>招聘记录管理</cite></a>
                             </li>
                         </ul>
                     </li>

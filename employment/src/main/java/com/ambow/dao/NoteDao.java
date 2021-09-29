@@ -14,4 +14,5 @@ public interface NoteDao {
     Note selectNoteById(int nid);
     int updateNote(Note note);
     int delNote(int nid);
+
 }
