@@ -117,6 +117,22 @@
                                class="layui-input" lay-verify="required" value="${enterprise.eemail}">
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>企业状态
+                    </label>
+                    <div class="layui-input-block">
+
+                            <%--<input type="text" name="nflag" autocomplete="off" id="nflag"--%>
+                            <%--class="layui-input" lay-verify="required" value="${requestScope.note1.nflag}">--%>
+                            <select class="layui-input" name="eflag" lay-verify="required" autocomplete="off" id="eflag" class="layui-input" lay-verify="required" >
+                                <option value=0>未审核</option>
+                                <option value=1>已通过</option>
+                                <option value=2>未通过</option>
+                            </select>
+
+                    </div>
+                </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
@@ -158,10 +174,12 @@
             $.post('city/selectCityByPId',{'pid':pid},function (msg) {
                 $('#ecid').empty();
                 $('#ecid').append("<option>请选择城市</option>");
-
+                alert("aaaa");
                 for(var i in msg){
+                    alert(msg.cid);
                     var $content = $('<option value="' + msg.cityList[i].cid + '">' + msg.cityList[i].cname + '</option>');
                     $('#ecid').append($content);
+
                 }
                 form.render('select');
             })
