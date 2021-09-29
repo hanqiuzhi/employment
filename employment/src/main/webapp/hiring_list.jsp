@@ -129,6 +129,7 @@
                                 <td>
                                     <c:out value="${hiring.hetime}"/>
                                 </td>
+
                                 <td>
                                     <c:if test="${hiring.hflag == 0}">
                                         未审核
