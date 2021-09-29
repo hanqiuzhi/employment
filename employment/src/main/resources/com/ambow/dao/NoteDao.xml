@@ -30,6 +30,10 @@
          SELECT * FROM e_note n,e_student s,e_hiring h WHERE n.nsid=s.sid AND n.nhid=h.hid AND nid=#{nid};
     </select>
 
+    <select id="selectNoteBySid" resultMap="notemap" parameterType="com.ambow.entity.Note">
+         SELECT * FROM e_note n,e_student s,e_hiring h WHERE n.nsid=s.sid AND n.nhid=h.hid AND n.nsid=#{nsid.sid};
+    </select>
+
     <update id="updateNote" parameterType="com.ambow.entity.Note">
         UPDATE e_note SET nflag=#{nflag} WHERE nid=#{nid}
     </update>

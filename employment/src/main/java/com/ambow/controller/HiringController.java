@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.net.PortUnreachableException;
 import java.util.List;
 
 @Controller
@@ -68,6 +67,14 @@ public class HiringController {
             return "true";
         }return "false";
     }
+    @RequestMapping("updateHiringtoSchool")
+    @ResponseBody
+    public String updateHiringtoSchool(Hiring hiring){
+        int res=hiringService.updateHiring(hiring);
+        if(res>0){
+            return "true";
+        }return "false";
+    }
 
     @RequestMapping("delHiring")
     @ResponseBody
@@ -85,7 +92,16 @@ public class HiringController {
         request.setAttribute("hiring",hiring);
         List<Job> list=jobService.selectJobOnly(enterprise.getEid());
         request.setAttribute("jobList",list);
-        return "hiring_edit";
+        return "hiring_edit_enterprise";
+    }
+    @RequestMapping("selectHiringByIdtoSchool")
+    public String selectHiringByIdtoSchool(int hid,HttpServletRequest request,HttpSession session){
+        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
+        Hiring hiring=hiringService.selectHiringById(hid);
+        request.setAttribute("hiring",hiring);
+        List<Job> list=jobService.selectJobOnly(enterprise.getEid());
+        request.setAttribute("jobList",list);
+        return "hiring_edit_School";
     }
 
     @RequestMapping("selectHiringById1")

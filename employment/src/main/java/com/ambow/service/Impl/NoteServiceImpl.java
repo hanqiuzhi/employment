@@ -2,6 +2,7 @@ package com.ambow.service.Impl;
 
 import com.ambow.dao.NoteDao;
 import com.ambow.entity.Note;
+import com.ambow.entity.Student;
 import com.ambow.service.NoteService;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,11 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public int delNote(int nid) {
         return noteDao.delNote(nid);
+    }
+
+    @Override
+    public List<Note> selectNoteBySid(Note note) {
+        return noteDao.selectNoteBySid(note);
     }
 
 }
