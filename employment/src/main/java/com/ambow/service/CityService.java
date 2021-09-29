@@ -11,5 +11,5 @@ public interface CityService {
     int updateCity(City city);
     int delCity(int cid);
     //根据省份id 查询城市
-    List<City> selectProvinceCity(int pid);
+    List<City> selectCityByPid(int pid);
 }

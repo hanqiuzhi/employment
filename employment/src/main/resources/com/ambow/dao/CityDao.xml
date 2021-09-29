@@ -18,6 +18,10 @@
         select * from e_city c,e_province p where c.cpid=p.pid;
     </select>
 
+    <select id="selectCityByPid" resultMap="cityMap">
+        select * from e_city c,e_province p where c.cpid=p.pid and pid = #{pid}
+    </select>
+
     <insert id="addCity"  parameterType="City" >
         insert into e_city values(null,#{cname},#{cpid.pid})
     </insert>

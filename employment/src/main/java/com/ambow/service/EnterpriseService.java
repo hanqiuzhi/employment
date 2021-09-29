@@ -13,5 +13,8 @@ public interface EnterpriseService {
 
     Enterprise selectEnterpriseByEno(String eno, String epwd);
 
+    int addEnterpriseSql(Enterprise enterprise);
+    List<Enterprise> selectEnterpriseByFlag();
+
 
 }

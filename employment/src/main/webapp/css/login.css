@@ -1,6 +1,6 @@
 .login-page {
 	width: 420px;
-	padding: 8% 0 0;
+	padding: 5% 0 0;
 	margin: auto;
 }
 .form {
@@ -8,8 +8,8 @@
 	z-index: 1;
 	background: #fff;
 	max-width: 400px;
-	margin: 0 auto 100px;
-	padding: 40px 40px 50px;
+	/*margin: 0 auto 100px;*/
+	padding: 40px 40px 40px;
 	text-align: center;
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

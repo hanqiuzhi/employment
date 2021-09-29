@@ -1,5 +1,6 @@
 package com.ambow.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ambow.entity.Province;
 import com.ambow.service.ProvinceService;
 import org.springframework.stereotype.Controller;
@@ -55,6 +56,14 @@ public class ProvinceController {
         Province province = provinceService.selectProvinceById(pid);
         request.setAttribute("province",province);
         return "province_edit";
+    }
+    @RequestMapping("selectProvinceAllLayui")
+    @ResponseBody
+    public String selectProvinceAllLayui(){
+        JSONObject jsonObject = new JSONObject();
+        List<Province> provinceList = provinceService.selectProvinceAll();
+        jsonObject.put("provinceList",provinceList);
+        return jsonObject.toJSONString();
     }
 
 }

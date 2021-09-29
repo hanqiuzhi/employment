@@ -42,4 +42,14 @@ public class EnterpriseServiceImpl implements EnterpriseService {
         return enterpriseDao.selectEnterpriseByEno(eno,epwd);
     }
 
+    @Override
+    public int addEnterpriseSql(Enterprise enterprise) {
+        return enterpriseDao.addEnterpriseSql(enterprise);
+    }
+
+    @Override
+    public List<Enterprise> selectEnterpriseByFlag() {
+        return enterpriseDao.selectEnterpriseByFlag();
+    }
+
 }

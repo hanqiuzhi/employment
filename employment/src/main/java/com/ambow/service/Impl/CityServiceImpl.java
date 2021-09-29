@@ -40,8 +40,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public List<City> selectProvinceCity(int pid) {
-        return cityDao.selectProvinceCity(pid);
+    public List<City> selectCityByPid(int pid) {
+        return cityDao.selectCityByPid(pid);
     }
 
 
