@@ -15,4 +15,5 @@ public interface EnterpriseService {
 
     int addEnterpriseSql(Enterprise enterprise);
     List<Enterprise> selectEnterpriseByFlag();
+    List<Enterprise> selectEnterpriseByCid(int ecid);
 }
