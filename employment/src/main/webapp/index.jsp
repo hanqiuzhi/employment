@@ -111,21 +111,27 @@
                             <cite>学生信息管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
+                            <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
                             <li>
                                 <a onclick="xadmin.add_tab('个人信息管理','student/selectStudentAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生信息管理</cite></a>
                             </li>
+                            </c:if>
+                            <c:if test="${sessionScope.student != null}">
+                            <li>
+
+                            </li></c:if>
                             <li>
                                 <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>简历信息管理</cite></a>
                             </li>
-                            <li>
+                            <%--<li>
                                 <a onclick="xadmin.add_tab('项目经历管理','through/selectThroughAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>项目经历管理</cite></a>
-                            </li>
+                            </li>--%>
                             <li>
                                 <a onclick="xadmin.add_tab('就业信息管理','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>
