@@ -122,15 +122,13 @@
                         <span class='x-red'>*</span>企业状态
                     </label>
                     <div class="layui-input-block">
-
-                            <%--<input type="text" name="nflag" autocomplete="off" id="nflag"--%>
-                            <%--class="layui-input" lay-verify="required" value="${requestScope.note1.nflag}">--%>
-                            <select class="layui-input" name="eflag" lay-verify="required" autocomplete="off" id="eflag" class="layui-input" lay-verify="required" >
-                                <option value=0>未审核</option>
-                                <option value=1>已通过</option>
-                                <option value=2>未通过</option>
-                            </select>
-
+                        <input type="hidden" name="eflag" value="${enterprise.eflag}"/>
+                        <c:if test="${enterprise.eflag == 0}">
+                            未审核
+                        </c:if>
+                        <c:if test="${enterprise.eflag == 1}">
+                            已通过
+                        </c:if>
                     </div>
                 </div>
             <div class="layui-form-item" style="text-align: center">

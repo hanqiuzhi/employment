@@ -6,6 +6,8 @@ import com.ambow.entity.Province;
 import com.ambow.service.CityService;
 import com.ambow.service.EnterpriseService;
 import com.ambow.service.ProvinceService;
+import com.ambow.utils.MailUtils;
+import com.ambow.utils.Tools;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,6 +99,60 @@ public class EnterpriseController {
         List<City> city = cityService.selectProvinceCity(pid);
         model.addAttribute("city1",city);
         return "city_edit";
+    }
+
+    @RequestMapping("activeEnterprise")
+    @ResponseBody
+    public String activeEnterprise(int eid){
+        Enterprise enterprise = enterpriseService.selectEnterpriseById(eid);
+        String cid = enterprise.getEcid().getCid()+"";
+        List<Enterprise> enterpriseList = enterpriseService.selectEnterpriseByCid(Integer.parseInt(cid));
+        //String to = "hanqiuzhi666@163.com";
+        String to = enterprise.getEemail();
+        System.out.println(to);
+        String eno = null;
+        String time = new Tools().getTime().substring(0,4);
+        if (Integer.parseInt(cid)<10){
+            cid = '0'+cid;
+        }
+        if(enterpriseList.size()==1){
+            eno = time+cid+0+0+1;
+        }else {
+            int size = 1;
+            for (int i=0;i<size;i++){
+                eno = enterpriseList.get(enterpriseList.size()-size).getEno();
+                if(eno == null && enterpriseList.size()>0){
+                    size++;
+                }
+            }
+            System.out.println(eno.substring(eno.length()-3));
+            int enoInt = Integer.parseInt(eno.substring(eno.length()-3))+1;
+            System.out.println(enoInt);
+            if(enoInt<10){
+                eno = time+cid+0+0+enoInt;
+                System.out.println(eno);
+            }else if (enoInt<100){
+                eno = time+cid+0+enoInt;
+                System.out.println(eno);
+            }else {
+                eno = time+cid+enoInt;
+                System.out.println(eno);
+            }
+        }
+        System.out.println(eno);
+        System.out.println(enterprise);
+        enterprise.setEno(eno);
+        enterprise.setEflag(1);
+        System.out.println(enterprise);
+        int res = enterpriseService.updateEnterprise(enterprise);
+        if(res>0){
+            String content="您的企业编号为："+eno+",请根据此编号和密码登录系统！！！";
+            MailUtils mailUtils = new MailUtils();
+            mailUtils.sendMail(to,content,"企业审核通过邮件");
+            System.out.println("发送成功");
+            return "true";
+        }
+        return "false";
     }
 
 }

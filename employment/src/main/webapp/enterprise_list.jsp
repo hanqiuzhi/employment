@@ -151,12 +151,21 @@
                                     </c:if>
                                 </td>
                                     <td class="td-manage">
-                                        <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${enterprise.eid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>修改</button>
+                                        <c:if test="${sessionScope.enterprise != null}">
+                                            <button class="layui-btn layui-btn layui-btn-xs"
+                                                    onclick="xadmin.open('修改','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${enterprise.eid}',700,500)" >
+                                                <i class="layui-icon">&#xe642;</i>修改</button>
+                                        </c:if>
+                                        <c:if test="${sessionScope.university != null}">
+                                            <button class="layui-btn-warm layui-btn layui-btn-xs"
+                                                    onclick="member_agree(this,'${enterprise.eid}')" href="javascript:;" >
+                                                <i class="layui-icon">&#xe672;</i>审核</button>
+                                        </c:if>
+                                        <c:if test="${sessionScope.university != null}">
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${enterprise.eid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
+                                        </c:if>
                                     </td>
                             </tr>
                         </c:forEach>
@@ -237,6 +246,27 @@
         });
     }
 
+    function member_agree(obj,id){
+        layer.confirm('确认要通过审核吗吗？',{icon:3,title:'提示信息'},function(index){
+            $.ajax({
+                type:"POST",
+                url:"${pageContext.request.contextPath}/enterprise/activeEnterprise",
+                dataType:"text",
+                data: {eid: id},
+                success:function (data){
+                    if(data == 'true'){
+                        $(obj).parents("tr").remove();
+                        layer.msg('已通过!',{icon:1,time:1000});
+                    }else {
+                        layer.msg('审核失败!',{icon:1,time:1000});
+                    }
+                },
+                error:function (data){
+                    layer.msg('错误!',{icon:1,time:1000});
+                }
+            });
+        });
+    }
 
 
     function delAll (argument) {

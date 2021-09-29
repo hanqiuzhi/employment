@@ -65,26 +65,47 @@ public class EnterpriseTest {
     public void activeEnterprise(){
         ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
         EnterpriseDao enterpriseDao = app.getBean(EnterpriseDao.class);
-        List<Enterprise> enterpriseList = enterpriseDao.selectEnterpriseByCid(2);
-        String to = "hanqiuzhi666@163.com";
+        Enterprise enterprise = enterpriseDao.selectEnterpriseById(6);
+        String cid = enterprise.getEcid().getCid()+"";
+        List<Enterprise> enterpriseList = enterpriseDao.selectEnterpriseByCid(Integer.parseInt(cid));
+        //String to = "hanqiuzhi666@163.com";
+        String to = enterprise.getEemail();
         System.out.println(to);
         String eno = null;
-        String time = new Tools().getTime();
-        if(enterpriseList.size()<1){
-            eno = time.substring(0,4)+2+001;
+        String time = new Tools().getTime().substring(0,4);
+        if (Integer.parseInt(cid)<10){
+            cid = '0'+cid;
+        }
+        if(enterpriseList.size()==1){
+            eno = time+cid+0+0+1;
         }else {
-            int size = 1;
+            System.out.println(enterpriseList.size());
+            int size = 2;
             for (int i=0;i<size;i++){
                 eno = enterpriseList.get(enterpriseList.size()-size).getEno();
                 if(eno == null && enterpriseList.size()>0){
                     size++;
                 }
             }
-            System.out.println(size);
-            System.out.println(Integer.parseInt(eno)+1);
-            System.out.println(enterpriseList.size()-1);
+            System.out.println(eno.substring(eno.length()-3));
+            int enoInt = Integer.parseInt(eno.substring(eno.length()-3))+1;
+            System.out.println(enoInt);
+            if(enoInt<10){
+                eno = time+cid+0+0+enoInt;
+                System.out.println(eno);
+            }else if (enoInt<100){
+                eno = time+cid+0+enoInt;
+                System.out.println(eno);
+            }else {
+                eno = time+cid+enoInt;
+                System.out.println(eno);
+            }
         }
         System.out.println(eno);
+        System.out.println(enterprise);
+        enterprise.setEno(eno);
+        enterprise.setEflag(1);
+        System.out.println(enterprise);
         /*String content="您的企业编号为："+eno+",请根据此编号和密码登录系统！！！";
         MailUtils mailUtils = new MailUtils();
         mailUtils.sendMail(to,content,"企业审核通过邮件");

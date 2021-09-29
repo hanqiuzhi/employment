@@ -120,7 +120,8 @@
             isok= reg.test(email);
             if(!isok) {
                 alert("邮箱格式不正确，请重新输入！");
-                document.getElementById("emailname").focus();
+                $("#r_email").val('');
+                document.getElementById("r_email").focus();
                 return false;
             }
         };
