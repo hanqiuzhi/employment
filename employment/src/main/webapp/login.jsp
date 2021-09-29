@@ -16,7 +16,7 @@
                 <h2>企业注册</h2>
                 <input type="text" placeholder="企业名称" id="r_user_name" name="ename" required/>
                 <input type="password" placeholder="密码" id="r_password" name="epwd" required/>
-                <input type="text" placeholder="电子邮件" id="r_email" name="eemail" />
+                <input type="text" placeholder="电子邮件" id="r_email" name="eemail" onblur="ischeckemail()" />
                 <select style="width: 100%;font-size: 14px;background: #f2f2f2;border: 0;margin: 0 0 15px;
                             padding: 15px;box-sizing: border-box;outline: 0;" name="" lay-filter="province" required="" id="province">
                     <option value="">请选择所在省份</option>
@@ -81,6 +81,7 @@
         })
     })
 
+
 	function check_login()
 	{
 	 var no=$("#user_name").val();
@@ -107,10 +108,23 @@
                 }
             },
             error:function (data){
-                alert("错误...")
+                alert("check_login错误...")
             }
         });
 	}
+    function ischeckemail(){
+        var email = document.getElementById("r_email").value;
+        if(email != "") {
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            //调用正则验证test()函数
+            isok= reg.test(email);
+            if(!isok) {
+                alert("邮箱格式不正确，请重新输入！");
+                document.getElementById("emailname").focus();
+                return false;
+            }
+        };
+    }
 	function check_register(){
 		var name = $("#r_user_name").val();
 		var pwd = $("#r_password").val();
@@ -123,6 +137,7 @@
         formDate.append('eemail',email);
         formDate.append('ecid.cid',cid);
         formDate.append('file',img);
+
         $.ajax({
             type:"POST",
             url: "login/register",
@@ -146,7 +161,7 @@
                 }
             },
             error:function (data){
-                alert("错误...")
+                alert("check_register错误...")
             }
         });
 	}
