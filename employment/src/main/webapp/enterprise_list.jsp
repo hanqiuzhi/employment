@@ -2,19 +2,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-  <head>
-  	<meta charset="UTF-8" http-equiv="content-type" content="text/html">
-    
+<head>
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html">
+
     <title>My JSP 'placelist.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
@@ -59,10 +59,10 @@
                     </form>
                 </div>
 
-                    <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加企业','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
-                    </div>
+                <div class="layui-card-header">
+                    <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                    <button class="layui-btn" onclick="xadmin.open('添加企业','${pageContext.request.contextPath}/enterprise_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
+                </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -130,7 +130,7 @@
                                 <td>
                                     <c:out value="${enterprise.einfo}"/>
                                 </td>
-                                <td >
+                                <td>
                                     <c:out value="${enterprise.ecid.cname}"/>
                                 </td>
                                 <td >
@@ -152,10 +152,10 @@
                                 </td>
                                     <td class="td-manage">
                                         <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/provinceServlet?method=byid&pid=${prov.pid}',700,500)" >
+                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${enterprise.eid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${prov.pid}')" href="javascript:;" >
+                                                onclick="member_del(this,'${enterprise.eid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
                                     </td>
                             </tr>
@@ -217,9 +217,9 @@
         layer.confirm('确认要删除吗？',{icon:3,title:'提示信息'},function(index){
             $.ajax({
                 type:"POST",
-                url:"provinceServlet?method=del",
+                url:"${pageContext.request.contextPath}/enterprise/delEnterprise",
                 dataType:"text",
-                data: {id: id},
+                data: {eid: id},
                 success:function (data){
                     if(data == 'true'){
                         //发异步删除数据

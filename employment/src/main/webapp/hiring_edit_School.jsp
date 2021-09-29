@@ -42,35 +42,100 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="cid" value="${requestScope.city.cid}">
+            <input type="hidden" name="hid" value="${requestScope.hiring.hid}">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>选择省
+                    <span class='x-red'>*</span>招聘信息表
                 </label>
                 <div class="layui-input-block">
-                    <select class="layui-input" name="cpid.pid" lay-verify="required" autocomplete="off">
-                        <option value="">请选择省</option>
-                        <c:forEach items="${provinceList}" var="province">
-                            <option value="${province.pid}"
-                                    <c:if test="${city.cpid.pid == province.pid}">
+                    <input type="text" name="hname" autocomplete="off" placeholder="填写招聘名称"
+                           class="layui-input" lay-verify="required" id="hname" value="${hiring.hname}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>招聘人数
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="hnum" autocomplete="off" placeholder="填写招聘人数"
+                           class="layui-input" lay-verify="required" id="hnum" value="${hiring.hnum}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>专业
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="hmajor" autocomplete="off" placeholder="填写需要专业"
+                           class="layui-input" lay-verify="required" id="hmajor" value="${hiring.hmajor}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>学历
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="hexperience" autocomplete="off" placeholder="填写需要学历"
+                           class="layui-input" lay-verify="required" id="hexperience" value="${hiring.hexperience}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>薪资
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="hprice" autocomplete="off" placeholder="薪资"
+                           class="layui-input" lay-verify="required" id="hprice" value="${hiring.hprice}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>截止时间
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="hetime" autocomplete="off" placeholder="截止时间"
+                           class="layui-input" lay-verify="required" id="hetime" value="${hiring.hetime}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>状态
+                </label>
+                <div class="layui-input-block">
+                    <select class="layui-input" name="hflag" lay-verify="required" autocomplete="off">
+                        <option value=0>未审核</option>
+                        <option value=1>未通过</option>
+                          <option value=2>进行中</option>
+                      <!--   <option value=3>已结束</option>-->
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>选择岗位
+                </label>
+                <div class="layui-input-block">
+                    <select class="layui-input" name="hjid.jid" lay-verify="required" autocomplete="off">
+                        <option value="">请选择岗位</option>
+                        <c:forEach items="${jobList}" var="job">
+                            <option value="${job.jid}"
+                                    <c:if test="${hiring.hjid.jid == job.jid}">
                                         selected
                                     </c:if>
-                            ${province.pname}</option>
+                            >${job.jname}
+                            </option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>城市名称
-                </label>
-                <div class="layui-input-block">
-                    <input type="text" name="cname" autocomplete="off" id="cname"
-                           class="layui-input" lay-verify="required" value="${requestScope.city.cname}">
-                </div>
-            </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
@@ -130,7 +195,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"city/updateCity",
+                        url:"hiring/updateHiring",
                         dataType:"text",
                         data:datas,
                         success:function (data){

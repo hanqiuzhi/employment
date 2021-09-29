@@ -71,7 +71,7 @@ public class EnterpriseTest {
         String eno = null;
         String time = new Tools().getTime();
         if(enterpriseList.size()<1){
-            eno = time.substring(0,4);
+            eno = time.substring(0,4)+2+001;
         }else {
             int size = 1;
             for (int i=0;i<size;i++){

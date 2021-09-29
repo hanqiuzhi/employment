@@ -46,4 +46,7 @@
     <delete id="delCity">
         delete from e_city where cid = #{cid}
     </delete>
+    <select id="selectProvinceCity"  resultMap="cityMap">
+        select c.cid,c.cname from e_city c,e_province p where c.cpid=p.pid and pid = #{pid};
+    </select>
 </mapper>

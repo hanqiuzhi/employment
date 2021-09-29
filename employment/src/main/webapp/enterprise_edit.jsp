@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>部门修改</title>
+    <title>企业修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -42,125 +42,92 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-                <input type="hidden" name="hid" value="${requestScope.hiring.hid}">
-
+            <input type="hidden" name="eid" value="${enterprise.eid}">
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>企业名称
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="ename" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.ename}">
+                </div>
+            </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        <span class='x-red'>*</span>招聘信息表
+                        <span class='x-red'>*</span>企业密码
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="hname" autocomplete="off" placeholder="填写招聘名称"
-                               class="layui-input" lay-verify="required" id="hname" value="${hiring.hname}">
+                        <input type="text" name="epwd" autocomplete="off"
+                               class="layui-input" lay-verify="required" value="${enterprise.epwd}">
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>招聘人数
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="hnum" autocomplete="off" placeholder="填写招聘人数"
-                               class="layui-input" lay-verify="required" id="hnum" value="${hiring.hnum}">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>专业
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="hmajor" autocomplete="off" placeholder="填写需要专业"
-                               class="layui-input" lay-verify="required" id="hmajor" value="${hiring.hmajor}">
-                    </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>企业信息
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="einfo" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.einfo}">
                 </div>
 
+            </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">
-                        <span class='x-red'>*</span>学历
+                        <span class='x-red'>*</span>企业所属省
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="hexperience" autocomplete="off" placeholder="填写需要学历"
-                               class="layui-input" lay-verify="required" id="hexperience" value="${hiring.hexperience}">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>薪资
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="hprice" autocomplete="off" placeholder="薪资"
-                               class="layui-input" lay-verify="required" id="hprice" value="${hiring.hprice}">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>截止时间
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" name="hetime" autocomplete="off" placeholder="截止时间"
-                               class="layui-input" lay-verify="required" id="hetime" value="${hiring.hetime}">
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>状态
-                    </label>
-                    <div class="layui-input-block">
-                        <select class="layui-input" name="hflag" lay-verify="required" autocomplete="off">
-                            <option value=0>未审核</option>
-                            <option value=1>未通过</option>
-                            <option value=2>进行中</option>
-                            <option value=3>已结束</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>选择岗位
-                    </label>
-                    <div class="layui-input-block">
-                        <select class="layui-input" name="hjid.jid" lay-verify="required" autocomplete="off">
-                            <option value="">请选择岗位</option>
-                            <c:forEach items="${jobList}" var="job">
-                                <option value="${job.jid}"
-                                        <c:if test="${hiring.hjid.jid == job.jid}">
+                        <select class="layui-input"  lay-filter="prov" id="province" name="epid.pid" lay-verify="required" autocomplete="off">
+                            <option value="">请选择省</option>
+                            <c:forEach items="${provinceList}" var="province">
+                                <option value="${province.pid}"
+                                        <c:if test="${enterprise.ecid.cpid.pid == province.pid}">
                                             selected
                                         </c:if>
-                                >${job.jname}
+                                >${province.pname}
                                 </option>
                             </c:forEach>
                         </select>
                     </div>
                 </div>
-
-                <div class="layui-form-item" style="text-align: center">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>企业所属城市
+                    </label>
+                    <div class="layui-input-block">
+                        <select class="layui-input" lay-filter="city" name="ecid.cid" id="ecid" lay-verify="required" autocomplete="off">
+                            <option value="" selected>请选择城市</option>
+                        </select>
+                    </div>
+                </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>电话号码
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="ephone" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.ephone}">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>邮箱
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="eemail" autocomplete="off"
+                               class="layui-input" lay-verify="required" value="${enterprise.eemail}">
+                    </div>
+                </div>
+            <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
+
         </form>
     </div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
-    $(function () {
-        $("#cname").blur(function () {
-            var cname = $(this).val();
-            $.ajax({
-                type:"Post",
-                url:"cityServlet?method=checkByName",
-                data:{cname:cname},
-                success:function (data) {
-                    //alert(data);
-                    if(data == 'false'){
-                        alert("城市名重复，请重新输入！！！")
-                        $("#cname").val("");
-                    }
-                }
-            })
-        })
-    })
+
     layui.use(['form', 'layer'], function() {
         $ = layui.jquery;
         var form = layui.form,
@@ -182,6 +149,26 @@
             }
         });*/
 
+
+
+        form.on('select(prov)',function (data){
+            var pid = data.value;
+            //alert(prov);
+            //alert($("#province").val());
+            $.post('city/selectCityByPId',{'pid':pid},function (msg) {
+                $('#ecid').empty();
+                $('#ecid').append("<option>请选择城市</option>");
+
+                for(var i in msg){
+                    var $content = $('<option value="' + msg.cityList[i].cid + '">' + msg.cityList[i].cname + '</option>');
+                    $('#ecid').append($content);
+                }
+                form.render('select');
+            })
+        })
+
+
+
         //监听提交
         form.on('submit(update)', function(data) {
             var datas = $("#update").serialize();
@@ -194,7 +181,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"hiring/updateHiring",
+                        url:"${pageContext.request.contextPath}/enterprise/updateEnterprise",
                         dataType:"text",
                         data:datas,
                         success:function (data){

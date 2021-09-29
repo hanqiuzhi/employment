@@ -1,5 +1,6 @@
 package com.ambow.dao;
 
+import com.ambow.entity.City;
 import com.ambow.entity.Province;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface ProvinceDao {
     Province selectProvinceById(int pid);
     int updateProvince(Province province);
     int delProvince(int pid);
+
 }
