@@ -22,6 +22,10 @@
         select * from e_hiring h,e_job j where h.hjid=j.jid;
     </select>
 
+    <select id="selectHiringByJob" resultMap="hiringMap">
+        select * from e_hiring h,e_job j,e_enterprise e where h.hjid=j.jid and j.jeid=e.eid and eid = #{eid}
+    </select>
+
     <insert id="addHiring" parameterType="Hiring">
         insert into e_hiring values(null,#{hname},#{hnum},#{hmajor},#{hexperience},#{hprice},#{hetime},0,#{hjid.jid})
     </insert>
@@ -29,6 +33,9 @@
     <select id="selectHiringById" resultMap="hiringMap">
         select * from e_hiring h,e_job j where h.hjid=j.jid and hid=#{hid}
     </select>
+
+
+
 
     <update id="updateHiring" parameterType="Hiring">
         update e_hiring set hname=#{hname},hnum=#{hnum},hmajor=#{hmajor},hexperience=#{hexperience},hprice=#{hprice},hetime=#{hetime},hflag=#{hflag},hjid=#{hjid.jid} where hid = #{hid}

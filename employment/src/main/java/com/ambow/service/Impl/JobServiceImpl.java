@@ -44,4 +44,14 @@ public class JobServiceImpl implements JobService {
     public Job selectJobByJname(String jname) {
         return jobDao.selectJobByJname(jname);
     }
+
+    @Override
+    public List<Job> selectenJobAll(int jeid) {
+        return jobDao.selectenJobAll(jeid);
+    }
+
+    @Override
+    public List<Job> selectJobOnly(int eid) {
+        return jobDao.selectJobOnly(eid);
+    }
 }

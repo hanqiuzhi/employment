@@ -1,6 +1,8 @@
 package com.ambow.dao;
 
 import com.ambow.entity.Hiring;
+import com.ambow.entity.Job;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,4 +19,10 @@ public interface HiringDao {
     public List<Hiring> selectHiringAll();
     //根据id查职位信息
     public Hiring selectHiringById(int hid);
+
+    //查询职位信息 根据企业id 查全部招聘信息
+    public List<Hiring> selectHiringByJob(int eid);
+
+
+
 }

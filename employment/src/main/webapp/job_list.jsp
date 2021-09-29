@@ -89,7 +89,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${jobList}" var="job">
+                        <c:forEach items="${jobList1}" var="job">
                             <tr>
                                 <%--<td>
                                     <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">

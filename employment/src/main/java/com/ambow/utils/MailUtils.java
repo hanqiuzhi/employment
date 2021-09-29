@@ -1,6 +1,6 @@
 package com.ambow.utils;
 
-import javax.mail.*;
+/*import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -8,7 +8,7 @@ import java.util.Properties;
 /**
  * 发邮件工具类
  */
-public final class MailUtils {
+/*public final class MailUtils {
     private static final String USER = "86598342@qq.com"; // 发件人称号，同邮箱地址
     private static final String PASSWORD = "bomnrxbwmftobjde"; // 如果是qq邮箱可以使户端授权码，或者登录密码
     //private static final String PASSWORD = "57Sbz3Yzmr3qmaV8"; // 如果是qq邮箱可以使户端授权码，或者登录密码
@@ -20,7 +20,7 @@ public final class MailUtils {
      * @param title 标题
      */
     /* 发送验证信息的邮件 */
-    public static boolean sendMail(String to, String text, String title){
+    /*public static boolean sendMail(String to, String text, String title){
         try {
             System.setProperty("java.net.preferIPv4Stack", "true");
             final Properties props = new Properties();
@@ -33,7 +33,7 @@ public final class MailUtils {
             props.setProperty("mail.smtp.port","456");*/
 
             // 发件人的账号
-            props.put("mail.user", USER);
+            /*props.put("mail.user", USER);
             //发件人的密码
             props.put("mail.password", PASSWORD);
 
@@ -80,8 +80,8 @@ public final class MailUtils {
         MailUtils.sendMail("1814490077@bttc.edu.cn",content,"激活邮件");
         //MailUtils.sendMail("ting.zhang@ambow.com","你好，这是一封测试邮件，无需回复。","测试邮件");
         System.out.println("发送成功");
-    }*/
+    }
 
 
 
-}
+}*/

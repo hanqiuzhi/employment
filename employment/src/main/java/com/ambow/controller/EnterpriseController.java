@@ -24,11 +24,4 @@ public class EnterpriseController {
         model.addAttribute("enterpriseList",enterpriseList);
         return "enterprise_list";
     }
-
-    @RequestMapping("selectEnterpriseByFlag")
-    public String selectEnterpriseByFlag(Model model){
-        List<Enterprise> enterpriseList = enterpriseService.selectEnterpriseByFlag();
-        model.addAttribute("enterpriseList",enterpriseList);
-        return "enterprise_list";
-    }
 }

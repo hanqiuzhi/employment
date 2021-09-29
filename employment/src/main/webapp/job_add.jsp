@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="layui-form-item">
+            <!--<div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>选择企业
                 </label>
@@ -56,7 +56,7 @@
                         </c:forEach>
                     </select>
                 </div>
-            </div>
+            </div>-->
             <div class="layui-form-item" style="text-align: center;">
                 <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
             </div>

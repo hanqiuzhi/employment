@@ -63,24 +63,24 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item">
+               <!-- <div class="layui-form-item">
                     <label class="layui-form-label">
                         <span class='x-red'>*</span>选择企业
                     </label>
                     <div class="layui-input-block">
                         <select class="layui-input" name="jeid.eid" lay-verify="required" autocomplete="off">
                             <option value="">请选择企业</option>
-                            <c:forEach items="${enterpriseList}" var="qiye">
-                                <option value="${qiye.eid}"
-                                        <c:if test="${job.jeid.eid == qiye.eid}">
-                                            selected
-                                        </c:if>
-                                >${qiye.ename}
-                                </option>
-                            </c:forEach>
+                            <%--<c:forEach items="${enterpriseList}" var="qiye">--%>
+                                <%--<option value="${qiye.eid}"--%>
+                                        <%--<c:if test="${job.jeid.eid == qiye.eid}">--%>
+                                            <%--selected--%>
+                                        <%--</c:if>--%>
+                                <%-->${qiye.ename}--%>
+                                <%--</option>--%>
+                            <%--</c:forEach>--%>
                         </select>
                     </div>
-                </div>
+                </div>-->
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
