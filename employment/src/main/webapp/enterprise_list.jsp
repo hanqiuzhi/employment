@@ -2,27 +2,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-  <head>
-  	<meta charset="UTF-8" http-equiv="content-type" content="text/html">
-    
+<head>
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html">
+
     <title>My JSP 'placelist.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
 
-  </head>
-  
- <body>
+</head>
+
+<body>
 <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
@@ -46,7 +46,7 @@
                         <div class="layui-inline layui-show-xs-block">
                             <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
                         </div>--%>
-                       <div class="layui-input-inline layui-show-xs-block">
+                        <div class="layui-input-inline layui-show-xs-block">
                             <select name="contrller">
                                 <option value=""></option>
                                 <option value="0"></option>
@@ -59,10 +59,10 @@
                     </form>
                 </div>
 
-                    <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加企业','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
-                    </div>
+                <div class="layui-card-header">
+                    <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                    <button class="layui-btn" onclick="xadmin.open('添加企业','${pageContext.request.contextPath}/enterprise_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
+                </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -71,64 +71,37 @@
                                 <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                             </th>--%>
                             <th>
-                                编号
-                            </th>
-                            <th>
                                 企业名称
-                            </th>
-                            <th>
-                                企业编号
-                            </th>
-                            <th>
-                                企业密码
-                            </th>
-                            <th>
-                                营业执照
                             </th>
                             <th>
                                 企业信息
                             </th>
                             <th>
-                                所在城市
+                                企业所属城市
                             </th>
                             <th>
-                                企业电话
+                                电话号码
                             </th>
                             <th>
-                                企业邮箱
+                                邮箱
                             </th>
-                             <th>
+                            <th>
                                 操作
-                             </th>
-                
+                            </th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${enterpriseList}" var="enterprise">
                             <tr>
-                                <%--<td>
-                                    <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
-                                </td>--%>
-                                <td>
-                                    <c:out value="${enterprise.eid}"/>
-                                </td>
+                                    <%--<td>
+                                        <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
+                                    </td>--%>
                                 <td>
                                     <c:out value="${enterprise.ename}"/>
                                 </td>
-                                <td>
-                                    <c:out value="${enterprise.eno}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${enterprise.epwd}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${enterprise.elicense}"/>
-                                </td>
-                                <td>
-                                    <c:out value="${enterprise.einfo}"/>
-                                </td>
                                 <td >
-                                    <c:out value="${enterprise.ecid.cname}"/>
+                                    <c:out value="${enterprise.einfo}"/>
                                 </td>
                                 <td >
                                     <c:out value="${enterprise.ephone}"/>
@@ -136,14 +109,17 @@
                                 <td >
                                     <c:out value="${enterprise.eemail}"/>
                                 </td>
-                                    <td class="td-manage">
-                                        <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/provinceServlet?method=byid&pid=${prov.pid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>修改</button>
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${prov.pid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>删除</button>
-                                    </td>
+                                <td>
+                                    <c:out value="${enterprise.ecid.cname}"/>
+                                </td>
+                                <td class="td-manage">
+                                    <button class="layui-btn layui-btn layui-btn-xs"
+                                            onclick="xadmin.open('修改','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${enterprise.eid}',700,500)" >
+                                        <i class="layui-icon">&#xe642;</i>修改</button>
+                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                            onclick="member_del(this,'${enterprise.eid}')" href="javascript:;" >
+                                        <i class="layui-icon">&#xe640;</i>删除</button>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -203,9 +179,9 @@
         layer.confirm('确认要删除吗？',{icon:3,title:'提示信息'},function(index){
             $.ajax({
                 type:"POST",
-                url:"provinceServlet?method=del",
+                url:"${pageContext.request.contextPath}/enterprise/delEnterprise",
                 dataType:"text",
-                data: {id: id},
+                data: {eid: id},
                 success:function (data){
                     if(data == 'true'){
                         //发异步删除数据

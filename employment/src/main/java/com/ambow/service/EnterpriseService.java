@@ -12,4 +12,6 @@ public interface EnterpriseService {
     int delEnterprise(int eid);
 
     Enterprise selectEnterpriseByEno(String eno, String epwd);
+
+
 }

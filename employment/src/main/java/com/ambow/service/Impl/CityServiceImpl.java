@@ -39,5 +39,10 @@ public class CityServiceImpl implements CityService {
         return cityDao.delCity(cid);
     }
 
+    @Override
+    public List<City> selectProvinceCity(int pid) {
+        return cityDao.selectProvinceCity(pid);
+    }
+
 
 }

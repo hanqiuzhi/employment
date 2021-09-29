@@ -10,7 +10,7 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>部门修改</title>
+    <title>企业修改</title>
 
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
@@ -42,61 +42,92 @@
                     class="layui-input" lay-verify="required" value="${requestScope.tDept.deptid}">
                 </div>
             </div>--%>
-            <input type="hidden" name="cid" value="${requestScope.city.cid}">
-
+            <input type="hidden" name="eid" value="${enterprise.eid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>选择省
+                    <span class='x-red'>*</span>企业名称
                 </label>
                 <div class="layui-input-block">
-                    <select class="layui-input" name="cpid.pid" lay-verify="required" autocomplete="off">
-                        <option value="">请选择省</option>
-                        <c:forEach items="${provinceList}" var="province">
-                            <option value="${province.pid}"
-                                    <c:if test="${city.cpid.pid == province.pid}">
-                                        selected
-                                    </c:if>
-                            ${province.pname}</option>
-                        </c:forEach>
-                    </select>
+                    <input type="text" name="ename" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.ename}">
                 </div>
             </div>
-
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>企业密码
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="epwd" autocomplete="off"
+                               class="layui-input" lay-verify="required" value="${enterprise.epwd}">
+                    </div>
+                </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    <span class='x-red'>*</span>城市名称
+                    <span class='x-red'>*</span>企业信息
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="cname" autocomplete="off" id="cname"
-                           class="layui-input" lay-verify="required" value="${requestScope.city.cname}">
+                    <input type="text" name="einfo" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.einfo}">
                 </div>
             </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>企业所属省
+                    </label>
+                    <div class="layui-input-block">
+                        <select class="layui-input" name="epid.pid" lay-verify="required" autocomplete="off">
+                            <option value="">请选择省</option>
+                            <c:forEach items="${provinceList}" var="province">
+                                <option value="${province.pid}"
+                                <c:if test="${enterprise.ecid.cpid.pid == province.pid}">
+                                    selected
+                                </c:if>
+                                >
+                                ${province.pname}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>企业所属城市
+                    </label>
+                    <div class="layui-input-block">
+                        <select class="layui-input" name="ecid.cid" id="ecid" lay-verify="required" autocomplete="off">
+                            <option value="">请选择城市</option>
+                        </select>
+                    </div>
+                </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>电话号码
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" name="ephone" autocomplete="off"
+                           class="layui-input" lay-verify="required" value="${enterprise.ephone}">
+                </div>
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class='x-red'>*</span>邮箱
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="eemail" autocomplete="off"
+                               class="layui-input" lay-verify="required" value="${enterprise.eemail}">
+                    </div>
+                </div>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
+
         </form>
     </div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
-    $(function () {
-        $("#cname").blur(function () {
-            var cname = $(this).val();
-            $.ajax({
-                type:"Post",
-                url:"cityServlet?method=checkByName",
-                data:{cname:cname},
-                success:function (data) {
-                    //alert(data);
-                    if(data == 'false'){
-                        alert("城市名重复，请重新输入！！！")
-                        $("#cname").val("");
-                    }
-                }
-            })
-        })
-    })
+
     layui.use(['form', 'layer'], function() {
         $ = layui.jquery;
         var form = layui.form,
@@ -118,6 +149,7 @@
             }
         });*/
 
+
         //监听提交
         form.on('submit(update)', function(data) {
             var datas = $("#update").serialize();
@@ -130,7 +162,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"city/updateCity",
+                        url:"${pageContext.request.contextPath}/enterprise/updateEnterprise",
                         dataType:"text",
                         data:datas,
                         success:function (data){
