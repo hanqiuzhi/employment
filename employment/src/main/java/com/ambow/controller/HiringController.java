@@ -61,7 +61,15 @@ public class HiringController {
     }
     @RequestMapping("updateHiring")
     @ResponseBody
-    public String updateHiring(Hiring hiring,int flag,HttpSession session){
+    public String updateHiring(Hiring hiring){
+        int res=hiringService.updateHiring(hiring);
+        if(res>0){
+            return "true";
+        }return "false";
+    }
+    @RequestMapping("updateHiringtoSchool")
+    @ResponseBody
+    public String updateHiringtoSchool(Hiring hiring){
         int res=hiringService.updateHiring(hiring);
         if(res>0){
             return "true";

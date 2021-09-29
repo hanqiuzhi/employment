@@ -195,7 +195,7 @@
                 function() {
                     $.ajax({
                         type:"POST",
-                        url:"hiring/updateHiring",
+                        url:"hiring/updateHiringtoSchool",
                         dataType:"text",
                         data:datas,
                         success:function (data){
