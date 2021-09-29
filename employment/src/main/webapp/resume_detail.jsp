@@ -102,7 +102,12 @@
                 <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
                 <button class="layui-btn" onclick="top.xadmin.open('添加项目经历','${pageContext.request.contextPath}/through/getTrid?trid=${resume.rid}&method=add',500,300)"><i class="layui-icon"></i>添加项目经历</button>
             </div>
+
+
+
                 <table class="layui-table layui-form">
+
+                    <c:if test="${throughList.size()>0}">
                     <thead>
                     <tr>
                         <%--<th>
@@ -132,6 +137,7 @@
 
                     </tr>
                     </thead>
+                        </c:if>
                     <tbody>
                     <c:forEach items="${throughList}" var="through">
                         <tr>
@@ -168,9 +174,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-            <div class="layui-form-item" style="text-align: center">
-                <%--<label for="L_repass" class="layui-form-label"></label>--%>
-                <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>
+
 
         </form>
     </div>
