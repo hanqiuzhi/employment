@@ -48,6 +48,7 @@ public class NoteController {
         }return "false";
     }
 
+
     @RequestMapping("noteById")
     public String noteById(int nid,Model model){
         Note note=noteService.selectNoteById(nid);
@@ -71,6 +72,16 @@ public class NoteController {
         if(res>0){
             return "true";
         }return "false";
+    }
+
+    @RequestMapping("selectNoteBySid")
+    public String selectNoteBySid(Note note,Model model,HttpSession session){
+        Student student=(Student)session.getAttribute("student");
+        student.getSid();
+        note.setNsid(student);
+        List<Note> noteSid=noteService.selectNoteBySid(note);
+        model.addAttribute("noteSid",noteSid);
+        return "note_list_student";
     }
 
 }
