@@ -122,6 +122,9 @@
                                         <button class="layui-btn layui-btn layui-btn-xs"
                                                 onclick="xadmin.open('修改','${pageContext.request.contextPath}/resume/getrcidandrsid?method=edit&rid=${resume.rid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
+                                        <button class="layui-btn layui-btn layui-btn-xs"
+                                                onclick="xadmin.open('查看详细信息','${pageContext.request.contextPath}/resume/selectResumeById?method=detail&rid=${resume.rid}',700,500)" >
+                                            <i class="layui-icon">&#xe642;</i>查看详细信息</button>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${resume.rid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
@@ -150,6 +153,7 @@
 </div>
 </body>
 <script>
+
     layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;

@@ -94,4 +94,14 @@
     <delete id="delThrough">
         delete from e_through where tid = #{tid}
     </delete>
+
+    <select id="selectThroughByIdandSid" resultMap="ThroughMap">
+        select * from e_through t
+              left join e_resume r on t.trid = r.rid
+              left join e_city c on r.rcid = c.cid
+              left join e_province p on c.cpid = p.pid
+              left join e_student s on r.rsid = s.sid
+              left join e_major m on s.smid = m.mid
+              left join e_faculty f on m.mfid = f.fid where rid=#{trid} and sid = #{sid}
+    </select>
 </mapper>

@@ -24,7 +24,7 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <form id="addsite" class="layui-form">
-
+            <input type="text" name="trid.rid" value="${through.trid.rid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>项目名称
@@ -52,7 +52,8 @@
                            class="layui-input" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item">
+
+            <%--<div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>所属简历
                 </label>
@@ -66,7 +67,7 @@
 
                 </div>
 
-            </div>
+            </div>--%>
             <div class="layui-form-item" style="text-align: center;">
                 <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
             </div>

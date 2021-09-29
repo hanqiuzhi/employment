@@ -39,4 +39,6 @@ public class ThroughServiceImpl implements ThroughService {
     public int delThrough(int tid) {
         return throughDao.delThrough(tid);
     }
+    @Override
+    public List<Through> selectThroughByIdandSid(int trid,int sid){return throughDao.selectThroughByIdandSid(trid,sid);}
 }
