@@ -103,7 +103,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${hiringList1}" var="hiring">
+                        <c:forEach items="${hiringList}" var="hiring">
                             <tr>
                                 <%--<td>
                                     <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
@@ -158,14 +158,14 @@
                                     </td>
 
                                     <td>
-                                        <a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>
-                                    <%--<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">--%>
+                                        <%------------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>--%>
+                                                <%--<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">--%>
                                         <%--<i class="layui-icon">&#xe642;</i>申请面试</button>--%>
                                     <%--</td>--%>
 
-                                        <%--<button class="layui-btn-danger layui-btn layui-btn-xs"--%>
-                                                <%--onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >--%>
-                                            <%--<i class="layui-icon">&#xe640;</i>申请面试</button>--%>
+                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                                onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
+                                            <i class="layui-icon">&#xe640;</i>申请面试</button>
 
                             </tr>
                         </c:forEach>
@@ -256,7 +256,9 @@
                 success:function (data){
                     if(data == 'true'){
                         //发异步删除数据
-                        $(obj).parents("tr").remove();
+
+                        // $(obj).parents("tr").remove();
+
                         layer.msg('已申请!',{icon:1,time:1000});
 
                     }else {

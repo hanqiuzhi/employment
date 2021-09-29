@@ -42,9 +42,10 @@ public class NoteController {
         hiring.getHid();
         note.setNhid(hiring);
         note.setNflag(0);
-        noteService.addNote(note);
-        selectNoteAll(model);
-        return "note_list";
+        int res=noteService.addNote(note);
+        if(res>0){
+            return "true";
+        }return "false";
     }
 
     @RequestMapping("noteById")
