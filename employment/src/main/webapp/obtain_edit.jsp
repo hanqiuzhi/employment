@@ -34,13 +34,15 @@
     <div class="layui-row">
         <form class="layui-form" id="update" method="post">
             <input type="hidden" name="oid" value="${obtain.oid}">
-
+            <c:if test="${sessionScope.student != null}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>学生姓名
                 </label>
                 <div class="layui-input-block">
-                    <select name="osid.sid" class="layui-input">
+                    <input type="hidden" name="osid.sid" value="${obtain.osid.sid}">
+                    <input type="text" name="osid.sname" value="${obtain.osid.sname}" class="layui-input" readonly="readonly">
+                    <%--<select name="osid.sid" class="layui-input">
                         <option value="">填写学生姓名</option>
                         <c:forEach items="${listOsid}" var="student">
                             <option value="${student.sid}" class="layui-input"
@@ -49,7 +51,7 @@
                                     </c:if>
                             >${student.sname}</option>
                         </c:forEach>
-                    </select>
+                    </select>--%>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -95,11 +97,45 @@
                     <span class='x-red'>*</span>就业时间
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="otime" autocomplete="off" placeholder="填写就业时间"
+                    <input type="date" name="otime" autocomplete="off" placeholder="填写就业时间"
                            class="layui-input" lay-verify="required" value="${obtain.otime}">
                 </div>
             </div>
+        </c:if>
+<c:if test="${sessionScope.university != null}">
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>状态
+                </label>
+                <div class="layui-input-block">
 
+                    <c:if test="${obtain.oflag == 0}">
+                        未审核<input type="radio" name="oflag" autocomplete="off" value="0"
+                        class="layui-input" lay-verify="required" checked>
+                        已通过<input type="radio" name="oflag" autocomplete="off" value="1"
+                        class="layui-input" lay-verify="required" >
+                        未通过<input type="radio" name="oflag" autocomplete="off"  value="2"
+                        class="layui-input" lay-verify="required">
+                    </c:if>
+                    <c:if test="${obtain.oflag == 1}">
+                        未审核<input type="radio" name="oflag" autocomplete="off" value="0"
+                        class="layui-input" lay-verify="required" >
+                        已通过<input type="radio" name="oflag" autocomplete="off" value="1"
+                        class="layui-input" lay-verify="required" checked>
+                        未通过<input type="radio" name="oflag" autocomplete="off"  value="2"
+                        class="layui-input" lay-verify="required">
+                    </c:if>
+                    <c:if test="${obtain.oflag == 2}">
+                        未审核<input type="radio" name="oflag" autocomplete="off" value="0"
+                        class="layui-input" lay-verify="required" >
+                        已通过<input type="radio" name="oflag" autocomplete="off" value="1"
+                        class="layui-input" lay-verify="required" >
+                        未通过<input type="radio" name="oflag" autocomplete="off"  value="2"
+                        class="layui-input" lay-verify="required" checked>
+                    </c:if>
+                </div>
+            </div>
+</c:if>
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>

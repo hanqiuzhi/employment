@@ -50,6 +50,14 @@
           left join e_major m on s.smid = m.mid
           left join e_faculty f on m.mfid = f.fid
     </select>
+    <select id="selectResumeBySid" resultMap="ResumeMap">
+        select * from e_resume r
+          left join e_city c on r.rcid = c.cid
+          left join e_province p on c.cpid = p.pid
+          left join e_student s on r.rsid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid where sid=#{rsid.sid}
+    </select>
 
     <insert id="addResume"  parameterType="Resume" >
         insert into e_resume values(null,#{rjobs},#{rprice},#{rcid.cid},#{rskill},#{rsid.sid})

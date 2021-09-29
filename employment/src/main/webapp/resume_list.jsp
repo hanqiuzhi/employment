@@ -58,11 +58,16 @@
                         </div>
                     </form>
                 </div>
+                <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
 
+                </c:if>
+                <c:if test="${sessionScope.student != null}">
                     <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                            <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
                         <button class="layui-btn" onclick="xadmin.open('添加简历','${pageContext.request.contextPath}/resume/getrcidandrsid?method=add',500,300)"><i class="layui-icon"></i>添加</button>
                     </div>
+                </c:if>
+
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -119,15 +124,20 @@
                                     <c:out value="${resume.rsid.sname}"/>
                                 </td>
                                     <td class="td-manage">
-                                        <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/resume/getrcidandrsid?method=edit&rid=${resume.rid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>修改</button>
+
                                         <button class="layui-btn layui-btn layui-btn-xs"
                                                 onclick="xadmin.open('查看详细信息','${pageContext.request.contextPath}/resume/selectResumeById?method=detail&rid=${resume.rid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>查看详细信息</button>
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${resume.rid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>删除</button>
+                                            <i class="layui-icon">&#xe642;</i>查看详细信息
+                                        </button>
+                                            <c:if test="${sessionScope.student != null}">
+                                                <button class="layui-btn layui-btn layui-btn-xs"
+                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/resume/getrcidandrsid?method=edit&rid=${resume.rid}',700,500)" >
+                                                    <i class="layui-icon">&#xe642;</i>修改</button>
+                                                <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                                        onclick="member_del(this,'${resume.rid}')" href="javascript:;" >
+                                                    <i class="layui-icon">&#xe640;</i>删除</button>
+                                            </c:if>
+
                                     </td>
                             </tr>
                         </c:forEach>

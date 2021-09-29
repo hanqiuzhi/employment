@@ -24,7 +24,7 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <form id="addsite" class="layui-form">
-            <input type="text" name="trid.rid" value="${through.trid.rid}">
+            <input type="hidden" name="trid.rid" value="${through.trid.rid}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>项目名称
@@ -107,10 +107,11 @@
                     data:datas,
                     success:function (data){
                         if(data == 'true'){
+
                             window.parent.location.reload();
                             var index = parent.layer.getFrameIndex(window.name);
                             //关闭当前frame
-                            parent.layer.close(index);
+                            top.parent.layer.close(index);
                         }else {
                             alert("添加失败！！！");
                         }

@@ -70,8 +70,11 @@
             <if test="osid != null ">
                 osid = #{osid.sid},
             </if>
+            <if test="otime != null ">
+                otime = #{otime},
+            </if>
             <if test="oflag != null ">
-                osid = #{oflag},
+                oflag = #{oflag},
             </if>
         </set>
         where oid = #{oid}

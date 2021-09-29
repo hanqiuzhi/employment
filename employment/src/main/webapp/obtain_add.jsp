@@ -29,12 +29,17 @@
                     <span class='x-red'>*</span>学生姓名
                 </label>
                 <div class="layui-input-block">
-                    <select name="osid.sid" class="layui-input">
+
+                    <input type="hidden" name="osid.sid" value="${student.sid}" >
+
+                    <input type="text" class="layui-input" lay-verify="required" value="${sessionScope.student.sname}">
+
+                    <%--<select name="osid.sid" class="layui-input">
                         <option value="">填写学生姓名</option>
                         <c:forEach items="${listOsid}" var="student">
                             <option value="${student.sid}" class="layui-input" >${student.sname}</option>
                         </c:forEach>
-                    </select>
+                    </select>--%>
 
                 </div>
 
@@ -43,11 +48,11 @@
                 <label class="layui-form-label">
                     <span class='x-red'>*</span>是否自主就业
                 </label>
-                <div class="layui-input-block">
+                <div class="layui-form-label">
                     是<input type="radio" name="oself" autocomplete="off" value="1"
-                           class="layui-input" lay-verify="required">
+                            class="layui-btn-group" lay-verify="required" checked>
                     否<input type="radio" name="oself" autocomplete="off"  value="0"
-                           class="layui-input" lay-verify="required">
+                            class="layui-btn-group" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item">

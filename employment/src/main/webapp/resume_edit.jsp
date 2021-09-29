@@ -87,23 +87,10 @@
                            class="layui-input" lay-verify="required" value="${resume.rskill}">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class='x-red'>*</span>学生姓名
-                </label>
-                <div class="layui-input-block">
-                    <select name="rsid.sid" class="layui-input">
-                        <option value="">填写学生姓名</option>
-                        <c:forEach items="${listSid}" var="student">
-                            <option value="${student.sid}" class="layui-input"
-                                    <c:if test="${resume.rsid.sid == student.sid}">
-                                        selected
-                                    </c:if>
-                            >${student.sname}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
+
+                        <input type="hidden" name="rsid.sid" value="${student.sid}" >
+
+
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改</button></div>

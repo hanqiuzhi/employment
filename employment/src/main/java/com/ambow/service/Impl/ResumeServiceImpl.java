@@ -19,6 +19,10 @@ public class ResumeServiceImpl implements ResumeService {
     public List<Resume> selectResumeAll() {
         return resumeDao.selectResumeAll();
     }
+    @Override
+    public List<Resume> selectResumeBySid(int sid) {
+        return resumeDao.selectResumeBySid(sid);
+    }
 
     @Override
     public int addResume(Resume resume) {

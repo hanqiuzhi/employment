@@ -97,13 +97,12 @@
                 </div>
             </div>--%>
 
-
+            <c:if test="${sessionScope.student!= null}">
             <div class="layui-card-header">
                 <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
                 <button class="layui-btn" onclick="top.xadmin.open('添加项目经历','${pageContext.request.contextPath}/through/getTrid?trid=${resume.rid}&method=add',500,300)"><i class="layui-icon"></i>添加项目经历</button>
             </div>
-
-
+            </c:if>
 
                 <table class="layui-table layui-form">
 
@@ -113,9 +112,7 @@
                         <%--<th>
                             <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">
                         </th>--%>
-                        <th>
-                            编号
-                        </th>
+
                         <th>
                             项目名称
                         </th>
@@ -131,9 +128,11 @@
                         <th>
                             学生姓名
                         </th>
+                        <c:if test="${sessionScope.student!= null}">
                         <th>
                             操作
                         </th>
+                        </c:if>
 
                     </tr>
                     </thead>
@@ -144,9 +143,6 @@
                                 <%--<td>
                                     <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
                                 </td>--%>
-                            <td>
-                                <c:out value="${through.tid}"/>
-                            </td>
                             <td>
                                 <c:out value="${through.tname}"/>
                             </td>
@@ -162,14 +158,16 @@
                             <td >
                                 <c:out value="${through.trid.rsid.sname}"/>
                             </td>
+                                    <c:if test="${sessionScope.student!= null}">
                             <td class="td-manage">
+
                                 <button class="layui-btn layui-btn layui-btn-xs"
                                         onclick="top.xadmin.open('修改','${pageContext.request.contextPath}/through/selectThroughById?tid=${through.tid}',700,500)" >
                                     <i class="layui-icon">&#xe642;</i>修改</button>
                                 <button class="layui-btn-danger layui-btn layui-btn-xs"
                                         onclick="member_del(this,'${through.tid}')" href="javascript:;" >
                                     <i class="layui-icon">&#xe640;</i>删除</button>
-                            </td>
+                            </td></c:if>
                         </tr>
                     </c:forEach>
                     </tbody>

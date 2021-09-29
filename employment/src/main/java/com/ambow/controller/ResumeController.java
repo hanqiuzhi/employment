@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -26,6 +27,14 @@ public class ResumeController {
     @RequestMapping("selectResumeAll")
     public String selectResumeAll(Model model){
         List<Resume> resumeList = resumeService.selectResumeAll();
+        model.addAttribute("resumeList",resumeList);
+        return "resume_list";
+    }
+    @RequestMapping("selectResumeBySid")
+    public String selectResumeBySid(Model model, HttpSession session){
+        Student student= (Student) session.getAttribute("student");
+
+        List<Resume> resumeList = resumeService.selectResumeBySid(student.getSid());
         model.addAttribute("resumeList",resumeList);
         return "resume_list";
     }

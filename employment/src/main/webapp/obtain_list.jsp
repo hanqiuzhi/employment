@@ -58,11 +58,12 @@
                         </div>
                     </form>
                 </div>
-
+                <c:if test="${sessionScope.student != null }">
                     <div class="layui-card-header">
                         <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
                         <button class="layui-btn" onclick="xadmin.open('添加就业信息','${pageContext.request.contextPath}/obtain/getOsid?method=add',500,300)"><i class="layui-icon"></i>添加</button>
                     </div>
+                </c:if>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -87,6 +88,9 @@
                             </th>
                             <th>
                                 就业时间
+                            </th>
+                              <th>
+                                状态
                             </th>
                              <th>
                                 操作
@@ -120,13 +124,25 @@
                                 <td >
                                     <c:out value="${obtain.ojname}"/>
                                 </td>
-                                    <td >
+                                <td >
                                     <c:out value="${obtain.otime}"/>
                                 </td>
+                                <td>
+                                    <c:if test="${obtain.oflag ==0}">未审核</c:if>
+                                    <c:if test="${obtain.oflag ==1}">已通过</c:if>
+                                    <c:if test="${obtain.oflag ==2}">未通过</c:if>
+                                </td>
                                     <td class="td-manage">
+                                        <c:if test="${sessionScope.student != null}">
                                         <button class="layui-btn layui-btn layui-btn-xs"
                                                 onclick="xadmin.open('修改','${pageContext.request.contextPath}/obtain/getOsid?method=edit&oid=${obtain.oid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
+                                        </c:if>
+                                        <c:if test="${sessionScope.university != null}">
+                                            <button class="layui-btn layui-btn layui-btn-xs"
+                                                onclick="xadmin.open('审核','${pageContext.request.contextPath}/obtain/getOsid?method=edit&oid=${obtain.oid}',450,200)" >
+                                            <i class="layui-icon">&#xe642;</i>审核</button>
+                                        </c:if>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${obtain.oid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>

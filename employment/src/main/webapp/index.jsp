@@ -122,21 +122,39 @@
                             <li>
 
                             </li></c:if>
-                            <li>
-                                <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeAll')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>简历信息管理</cite></a>
-                            </li>
+                            <c:if test="${sessionScope.student != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeBySid')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>简历信息管理</cite></a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.university != null || sessionScope.university != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('简历信息查看','resume/selectResumeAll')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>简历信息查看</cite></a>
+                                </li>
+                            </c:if>
+
                             <%--<li>
                                 <a onclick="xadmin.add_tab('项目经历管理','through/selectThroughAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>项目经历管理</cite></a>
                             </li>--%>
+                            <c:if test="${sessionScope.student != null}">
                             <li>
                                 <a onclick="xadmin.add_tab('就业信息管理','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>就业信息管理</cite></a>
-                            </li>
+                            </li></c:if>
+                            <c:if test="${sessionScope.university != null || sessionScope.university != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('就业信息管理','obtain/selectObtainAll')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>就业信息管理</cite></a>
+                                </li>
+                            </c:if>
                         </ul>
                     </li>
                     <li class="layui-nav-item">
@@ -161,6 +179,7 @@
                     </li>
 
                 </ul>
+
             </div>
         </div>
         <!-- <div class="x-slide_left"></div> -->

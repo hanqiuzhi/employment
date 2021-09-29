@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -50,6 +51,7 @@ public class ObtainController {
     @RequestMapping("addObtain")
     @ResponseBody
     public String addObtain(Obtain obtain){
+
         int res= obtainService.addObtain(obtain);
         if (res>0){
             return "true";
@@ -58,7 +60,8 @@ public class ObtainController {
     }
 
     @RequestMapping("selectObtainById")
-    public String selectObtainById(int oid,Model model){
+    public String selectObtainById(int oid, Model model){
+
         Obtain obtain=obtainService.selectObtainById(oid);
         model.addAttribute("obtain",obtain);
         return "obtain_edit";
