@@ -11,11 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
-<<<<<<< HEAD
- Date: 29/09/2021 16:13:03
-=======
- Date: 27/09/2021 10:01:17
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
+ Date: 29/09/2021 18:54:33
 */
 
 SET NAMES utf8mb4;
@@ -32,17 +28,12 @@ CREATE TABLE `e_city`  (
   PRIMARY KEY (`cid`) USING BTREE,
   INDEX `cpid`(`cpid`) USING BTREE,
   CONSTRAINT `e_city_ibfk_1` FOREIGN KEY (`cpid`) REFERENCES `e_province` (`pid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 353 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_city' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_city' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_city
 -- ----------------------------
 INSERT INTO `e_city` VALUES (1, '北京市', 1);
-<<<<<<< HEAD
 INSERT INTO `e_city` VALUES (2, '天津市', 2);
 INSERT INTO `e_city` VALUES (3, '上海市', 3);
 INSERT INTO `e_city` VALUES (4, '重庆市', 4);
@@ -379,8 +370,6 @@ INSERT INTO `e_city` VALUES (348, '果洛市', 33);
 INSERT INTO `e_city` VALUES (349, '玉树市', 33);
 INSERT INTO `e_city` VALUES (350, '海西市', 33);
 INSERT INTO `e_city` VALUES (352, '台湾市', 34);
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_enterprise
@@ -400,22 +389,14 @@ CREATE TABLE `e_enterprise`  (
   PRIMARY KEY (`eid`) USING BTREE,
   INDEX `ecid`(`ecid`) USING BTREE,
   CONSTRAINT `e_enterprise_ibfk_1` FOREIGN KEY (`ecid`) REFERENCES `e_city` (`cid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_enterprise' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_enterprise' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_enterprise
 -- ----------------------------
-<<<<<<< HEAD
 INSERT INTO `e_enterprise` VALUES (1, '北京xx有限公司', '01001', '123456', '7ad680c6-4e62-4177-a6c5-4277f2d3ea74.jpg', '描述', 1, '13011112222', '123@168.com', 1);
 INSERT INTO `e_enterprise` VALUES (2, '腾讯公司', '01002', '123456', '81c04695-b76f-49d0-865d-eab0c65ecea7.jpg', '有钱', 1, '1069070069', '666@qq.com', 1);
 INSERT INTO `e_enterprise` VALUES (3, '阿里巴巴', '01003', '123456', '95d9ddd9-2ef4-4a08-b5e0-9db664552b49.jpg', '超级有钱', 1, '12345678910', 'alibaba.com', 1);
-=======
-INSERT INTO `e_enterprise` VALUES (1, '北京xx有限公司', '01001', '123456', 'xx.jpg', '描述', 1, '13011112222', '123@168.com', 1);
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_faculty
@@ -425,25 +406,18 @@ CREATE TABLE `e_faculty`  (
   `fid` int(11) NOT NULL AUTO_INCREMENT COMMENT '院系',
   `fname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'fname',
   PRIMARY KEY (`fid`) USING BTREE
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_faculty' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_faculty' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_faculty
 -- ----------------------------
 INSERT INTO `e_faculty` VALUES (1, '信息科学与技术学院');
-<<<<<<< HEAD
 INSERT INTO `e_faculty` VALUES (2, '哲学学院');
 INSERT INTO `e_faculty` VALUES (3, '理论经济学院');
 INSERT INTO `e_faculty` VALUES (4, '教育学院');
 INSERT INTO `e_faculty` VALUES (5, '心理学学院');
 INSERT INTO `e_faculty` VALUES (6, '核科学与技术学院');
 INSERT INTO `e_faculty` VALUES (7, '环境科学与工程');
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_hiring
@@ -462,23 +436,16 @@ CREATE TABLE `e_hiring`  (
   PRIMARY KEY (`hid`) USING BTREE,
   INDEX `hjid`(`hjid`) USING BTREE,
   CONSTRAINT `e_hiring_ibfk_1` FOREIGN KEY (`hjid`) REFERENCES `e_job` (`jid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_hiring' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_hiring' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_hiring
 -- ----------------------------
 INSERT INTO `e_hiring` VALUES (1, '招聘信息', 5, '计算机科学与技术', '本科', 5000.0000, '2021-9-28', 0, 1);
-<<<<<<< HEAD
 INSERT INTO `e_hiring` VALUES (2, '腾讯招聘', 3, '计算机科学与技术', '本科', 7000.0000, '2021-9-28', 0, 2);
 INSERT INTO `e_hiring` VALUES (3, '腾讯招聘', 1, '车辆专业', '本科', 10000.0000, '2021-9-28', 0, 5);
 INSERT INTO `e_hiring` VALUES (4, '阿里招聘', 1, '车辆专业', '研究生', 15000.0000, '2021-9-28', 0, 4);
 INSERT INTO `e_hiring` VALUES (5, '阿里招聘', 12, '计算机科学与技术', '本科', 7000.0000, '2021-10-1', 0, 3);
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_job
@@ -492,23 +459,16 @@ CREATE TABLE `e_job`  (
   PRIMARY KEY (`jid`) USING BTREE,
   INDEX `jeid`(`jeid`) USING BTREE,
   CONSTRAINT `e_job_ibfk_1` FOREIGN KEY (`jeid`) REFERENCES `e_enterprise` (`eid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_job' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_job' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_job
 -- ----------------------------
 INSERT INTO `e_job` VALUES (1, '测试岗位', '测试。。。', 1);
-<<<<<<< HEAD
 INSERT INTO `e_job` VALUES (2, 'java开发', '开发程序', 2);
 INSERT INTO `e_job` VALUES (3, '运维', '运维', 3);
 INSERT INTO `e_job` VALUES (4, '司机', '马云的私人司机', 3);
 INSERT INTO `e_job` VALUES (5, '司机', '马化腾的私人司机', 2);
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_major
@@ -521,17 +481,12 @@ CREATE TABLE `e_major`  (
   PRIMARY KEY (`mid`) USING BTREE,
   INDEX `e_major_ibfk_1`(`mfid`) USING BTREE,
   CONSTRAINT `e_major_ibfk_1` FOREIGN KEY (`mfid`) REFERENCES `e_faculty` (`fid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_major' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_major' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_major
 -- ----------------------------
 INSERT INTO `e_major` VALUES (1, '计算机科学与技术', 1);
-<<<<<<< HEAD
 INSERT INTO `e_major` VALUES (2, '计算机软件与理论', 1);
 INSERT INTO `e_major` VALUES (3, '计算机应用技术', 1);
 INSERT INTO `e_major` VALUES (4, '马克思主义哲学', 2);
@@ -548,8 +503,6 @@ INSERT INTO `e_major` VALUES (14, '核能科学与工程', 6);
 INSERT INTO `e_major` VALUES (15, '核技术及应用', 6);
 INSERT INTO `e_major` VALUES (16, '环境科学', 7);
 INSERT INTO `e_major` VALUES (17, '环境工程', 7);
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_note
@@ -582,12 +535,8 @@ CREATE TABLE `e_obtain`  (
   `oself` int(11) NOT NULL COMMENT '是否自主就业',
   `oename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '就业企业',
   `ojname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '就业职位',
-<<<<<<< HEAD
   `otime` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '就业时间',
   `oflag` int(11) NOT NULL COMMENT '就业信息状态\r\n0未审核、1已通过、2未通过',
-=======
-  `otime` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '结业时间',
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
   PRIMARY KEY (`oid`) USING BTREE,
   INDEX `osid`(`osid`) USING BTREE,
   CONSTRAINT `e_obtain_ibfk_1` FOREIGN KEY (`osid`) REFERENCES `e_student` (`sid`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -596,11 +545,7 @@ CREATE TABLE `e_obtain`  (
 -- ----------------------------
 -- Records of e_obtain
 -- ----------------------------
-<<<<<<< HEAD
 INSERT INTO `e_obtain` VALUES (1, 1, 1, 'xx公司', 'xx职位', '2020-1-1', 0);
-=======
-INSERT INTO `e_obtain` VALUES (1, 1, 1, 'xx公司', 'xx职位', '2020-1-1');
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_province
@@ -610,17 +555,12 @@ CREATE TABLE `e_province`  (
   `pid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'pid',
   `pname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'pname',
   PRIMARY KEY (`pid`) USING BTREE
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_province' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_province' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_province
 -- ----------------------------
 INSERT INTO `e_province` VALUES (1, '北京市');
-<<<<<<< HEAD
 INSERT INTO `e_province` VALUES (2, '天津市');
 INSERT INTO `e_province` VALUES (3, '上海市');
 INSERT INTO `e_province` VALUES (4, '重庆市');
@@ -654,8 +594,6 @@ INSERT INTO `e_province` VALUES (31, '陕西省');
 INSERT INTO `e_province` VALUES (32, '甘肃省');
 INSERT INTO `e_province` VALUES (33, '青海省');
 INSERT INTO `e_province` VALUES (34, '台湾省');
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_resume
@@ -701,22 +639,15 @@ CREATE TABLE `e_student`  (
   PRIMARY KEY (`sid`) USING BTREE,
   INDEX `smid`(`smid`) USING BTREE,
   CONSTRAINT `e_student_ibfk_1` FOREIGN KEY (`smid`) REFERENCES `e_major` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-<<<<<<< HEAD
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_student' ROW_FORMAT = Dynamic;
-=======
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'e_student' ROW_FORMAT = Dynamic;
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Records of e_student
 -- ----------------------------
 INSERT INTO `e_student` VALUES (1, '韩秋智', 1814490077, '152106199909080057', 22, '1', '17614931406', 'hanqiuzhi666@163.com', '123456', 1, '2018', '本科', 0);
-<<<<<<< HEAD
 INSERT INTO `e_student` VALUES (2, '梁佐旭', 1814110012, '152701200002160936', 22, '1', '18547757113', '1586318059@qq.com', '153356', 1, '2018', '本科', 0);
 INSERT INTO `e_student` VALUES (3, '彭于晏', 1814411011, '152415123154776748', 30, '1', '13310318382', '15315813@qq.com', '123456', 1, '2001', '本科', 1);
 INSERT INTO `e_student` VALUES (10, '陈冠希', 1815432215, '156168561321561465', 33, '1', '18475751363', '1516cgx@163.om', '123789', 1, '2003', '本科', 2);
-=======
->>>>>>> 777555282b2e523a1c703aceb504400d0fd4abd0
 
 -- ----------------------------
 -- Table structure for e_through

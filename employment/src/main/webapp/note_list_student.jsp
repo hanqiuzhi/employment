@@ -2,33 +2,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-  <head>
-  	<meta charset="UTF-8" http-equiv="content-type" content="text/html">
-    
+<head>
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html">
+
     <title>My JSP 'placelist.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
 
-  </head>
-  
- <body>
+</head>
+
+<body>
 <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
             <a href="">招聘信息管理</a>
             <a>
-              <cite>招聘信息管理</cite></a>
+              <cite>招聘信息记录</cite></a>
           </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
         <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
@@ -46,7 +46,7 @@
                         <div class="layui-inline layui-show-xs-block">
                             <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
                         </div>--%>
-                       <div class="layui-input-inline layui-show-xs-block">
+                        <div class="layui-input-inline layui-show-xs-block">
                             <select name="contrller">
                                 <option value=""></option>
                                 <option value="0"></option>
@@ -59,10 +59,10 @@
                     </form>
                 </div>
 
-                    <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加招聘信息','${pageContext.request.contextPath}/hiring/showAllJob',500,300)"><i class="layui-icon"></i>添加</button>
-                    </div>
+                <div class="layui-card-header">
+                    <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                    <button class="layui-btn" onclick="xadmin.open('添加招聘信息记录','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
+                </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -74,100 +74,60 @@
                                 编号
                             </th>
                             <th>
-                                招聘名称
+                                学生名称
                             </th>
                             <th>
-                                招聘人数
+                                招聘信息
                             </th>
                             <th>
-                                专业
+                                记录状态
                             </th>
                             <th>
-                                学历
-                            </th>
-                            <th>
-                                招聘薪资
-                            </th>
-                            <th>
-                                招聘结束时间
-                            </th>
-                            <th>
-                                招聘信息状态
-                            </th>
-                            <th>
-                                招聘岗位
-                            </th>
-                             <th colspan="3">
                                 操作
-                             </th>
+                            </th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${hiringList}" var="hiring">
+                        <c:forEach items="${noteSid}" var="note">
                             <tr>
-                                <%--<td>
-                                    <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
-                                </td>--%>
+                                    <%--<td>
+                                        <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
+                                    </td>--%>
                                 <td>
-                                    <c:out value="${hiring.hid}"/>
-                                </td>
-                                <td >
-                                    <c:out value="${hiring.hname}"/>
-                                </td>
-                                <td >
-                                    <c:out value="${hiring.hnum}"/>
-                                </td>
-                                <td >
-                                    <c:out value="${hiring.hmajor}"/>
-                                </td>
-                                <td >
-                                    <c:out value="${hiring.hexperience}"/>
+                                    <c:out value="${note.nid}"/>
                                 </td>
                                 <td>
-                                    <c:out value="${hiring.hprice}"/>
+                                    <c:out value="${note.nsid.sname}"/>
                                 </td>
                                 <td>
-                                    <c:out value="${hiring.hetime}"/>
+                                    <c:out value="${note.nhid.hname}"/>
                                 </td>
-
-                                <td>
-                                    <c:if test="${hiring.hflag == 0}">
-                                        未审核
+                                <td >
+                                    <c:if test="${note.nflag  == 0}">
+                                        未面试
                                     </c:if>
-                                    <c:if test="${hiring.hflag == 1}">
+                                    <c:if test="${note.nflag  == 1}">
                                         未通过
                                     </c:if>
-                                    <c:if test="${hiring.hflag == 2}">
-                                        进行中
+                                    <c:if test="${note.nflag  == 2}">
+                                        已通过
                                     </c:if>
-                                    <c:if test="${hiring.hflag == 3}">
-                                        已过期
+                                    <c:if test="${note.nflag  == 3}">
+                                        未入职
+                                    </c:if>
+                                    <c:if test="${note.nflag  == 4}">
+                                        已入职
                                     </c:if>
                                 </td>
-                                <td>
-                                    <c:out value="${hiring.hjid.jname}"/>
+                                <td class="td-manage">
+                                    <button class="layui-btn layui-btn layui-btn-xs"
+                                            onclick="xadmin.open('修改','${pageContext.request.contextPath}/note/noteById?nid=${note.nid}',700,500)" >
+                                        <i class="layui-icon">&#xe642;</i>修改</button>
+                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                            onclick="member_del(this,'${note.nid}')" href="javascript:;" >
+                                        <i class="layui-icon">&#xe640;</i>删除</button>
                                 </td>
-                                    <td class="td-manage">
-                                        <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringById?hid=${hiring.hid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>修改</button>
-                                    </td>
-                                    <td>
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>删除</button>
-                                    </td>
-
-                                    <td>
-                                        <%------------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>--%>
-                                                <%--<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">--%>
-                                        <%--<i class="layui-icon">&#xe642;</i>申请面试</button>--%>
-                                    <%--</td>--%>
-
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>申请面试</button>
-
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -227,9 +187,9 @@
         layer.confirm('确认要删除吗？',{icon:3,title:'提示信息'},function(index){
             $.ajax({
                 type:"POST",
-                url:"${pageContext.request.contextPath}/hiring/delHiring",
+                url:"${pageContext.request.contextPath}/note/noteDel",
                 dataType:"text",
-                data: {hid: id},
+                data: {nid: id},
                 success:function (data){
                     if(data == 'true'){
                         //发异步删除数据
@@ -247,31 +207,7 @@
         });
     }
 
-    function member_shenqing(obj,id){
-        layer.confirm('确认要申请吗？',{icon:3,title:'提示信息'},function(index){
-            $.ajax({
-                type:"POST",
-                url:"${pageContext.request.contextPath}/hiring/selectHiringById1",
-                dataType:"text",
-                data: {hid: id},
-                success:function (data){
-                    if(data == 'true'){
-                        //发异步删除数据
 
-                        // $(obj).parents("tr").remove();
-
-                        layer.msg('已申请!',{icon:1,time:1000});
-
-                    }else {
-                        layer.msg('申请失败!',{icon:1,time:1000});
-                    }
-                },
-                error:function (data){
-                    layer.msg('错误!',{icon:1,time:1000});
-                }
-            });
-        });
-    }
 
     function delAll (argument) {
         var ids = [];

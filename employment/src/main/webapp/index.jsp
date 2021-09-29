@@ -152,7 +152,7 @@
                             </li>
 
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
+                                <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteBySid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘列表管理</cite></a>
                             </li>

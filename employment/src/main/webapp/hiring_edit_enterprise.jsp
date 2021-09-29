@@ -108,11 +108,12 @@
                     </label>
                     <div class="layui-input-block">
                         <select class="layui-input" name="hflag" lay-verify="required" autocomplete="off">
-                            <option value=0>未审核</option>
-                            <option value=1>未通过</option>
-                            <option value=2>进行中</option>
+                           <option value=0>未审核</option>
+                          <!-- <option value=1>未通过</option>
+                            <option value=2>进行中</option>-->
                             <option value=3>已结束</option>
                         </select>
+
                     </div>
                 </div>
 
