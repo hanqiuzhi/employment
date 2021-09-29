@@ -97,7 +97,7 @@
                             <th>
                                 招聘岗位
                             </th>
-                             <th>
+                             <th colspan="3">
                                 操作
                              </th>
                         </tr>
@@ -150,10 +150,23 @@
                                         <button class="layui-btn layui-btn layui-btn-xs"
                                                 onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringById?hid=${hiring.hid}',700,500)" >
                                             <i class="layui-icon">&#xe642;</i>修改</button>
+                                    </td>
+                                    <td>
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
                                     </td>
+
+                                    <td>
+                                        <a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>
+                                    <%--<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">--%>
+                                        <%--<i class="layui-icon">&#xe642;</i>申请面试</button>--%>
+                                    <%--</td>--%>
+
+                                        <%--<button class="layui-btn-danger layui-btn layui-btn-xs"--%>
+                                                <%--onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >--%>
+                                            <%--<i class="layui-icon">&#xe640;</i>申请面试</button>--%>
+
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -233,7 +246,29 @@
         });
     }
 
+    function member_shenqing(obj,id){
+        layer.confirm('确认要申请吗？',{icon:3,title:'提示信息'},function(index){
+            $.ajax({
+                type:"POST",
+                url:"${pageContext.request.contextPath}/hiring/selectHiringById1",
+                dataType:"text",
+                data: {hid: id},
+                success:function (data){
+                    if(data == 'true'){
+                        //发异步删除数据
+                        $(obj).parents("tr").remove();
+                        layer.msg('已申请!',{icon:1,time:1000});
 
+                    }else {
+                        layer.msg('申请失败!',{icon:1,time:1000});
+                    }
+                },
+                error:function (data){
+                    layer.msg('错误!',{icon:1,time:1000});
+                }
+            });
+        });
+    }
 
     function delAll (argument) {
         var ids = [];

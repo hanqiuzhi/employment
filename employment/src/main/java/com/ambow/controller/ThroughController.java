@@ -70,6 +70,7 @@ public class ThroughController {
         }
         return "false";
     }
+
     @RequestMapping("delThrough")
     @ResponseBody
     public String delThrough(int tid){

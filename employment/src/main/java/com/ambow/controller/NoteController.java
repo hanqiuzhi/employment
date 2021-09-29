@@ -38,7 +38,7 @@ public class NoteController {
         Student student=(Student) session.getAttribute("student");
         student.getSid();
         note.setNsid(student);
-        Hiring hiring=(Hiring)session.getAttribute("hiring");
+        Hiring hiring=(Hiring)session.getAttribute("hiring1");
         hiring.getHid();
         note.setNhid(hiring);
         note.setNflag(0);

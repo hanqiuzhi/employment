@@ -30,7 +30,7 @@
             <ul class="layui-nav left fast-add" lay-filter="">
                 <c:if test="${sessionScope.university != null || sessionScope.student != null}">
                     <li class="layui-nav-item daohang" ids="#table1">
-                        <a href="javascript:;">学生管路</a>
+                        <a href="javascript:;">学生管理</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
@@ -146,15 +146,17 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
+                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘信息管理</cite></a>
+                            </li>
+
+                            <li>
                                 <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息列表</cite></a>
+                                    <cite>招聘列表管理</cite></a>
                             </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('申请岗位列表','stationServlet?method=all&flag=1')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>申请岗位列表</cite></a>
-                            </li>
+
                         </ul>
                     </li>
 
@@ -209,9 +211,9 @@
                                     <cite>招聘信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息记录','note/selectNoteAll')">
+                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAll')">
                                     <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息记录</cite></a>
+                                    <cite>招聘记录管理</cite></a>
                             </li>
                         </ul>
                     </li>

@@ -3,8 +3,11 @@ package com.ambow.controller;
 import com.ambow.entity.Enterprise;
 import com.ambow.entity.Hiring;
 import com.ambow.entity.Job;
+import com.ambow.entity.Note;
+import com.ambow.entity.Student;
 import com.ambow.service.HiringService;
 import com.ambow.service.JobService;
+import com.ambow.service.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,8 @@ public class HiringController {
 
     @Resource
     private JobService jobService;
+    @Resource
+    private NoteService noteService ;
 
     @RequestMapping("selectHiringAll")
     public String selectHiringAll(Model model){
@@ -63,6 +68,7 @@ public class HiringController {
             return "true";
         }return "false";
     }
+
     @RequestMapping("delHiring")
     @ResponseBody
     public String delHiring(int hid){
@@ -71,6 +77,7 @@ public class HiringController {
             return "true";
         }return "false";
     }
+
     @RequestMapping("selectHiringById")
     public String selectHiringById(int hid,HttpServletRequest request,HttpSession session){
         Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
@@ -81,4 +88,20 @@ public class HiringController {
         return "hiring_edit";
     }
 
+    @RequestMapping("selectHiringById1")
+    public String selectHiringById1(int hid, HttpSession session,Model model){
+        Hiring hiring=hiringService.selectHiringById(hid);
+//        session.setAttribute("hiring1",hiring);
+
+        System.out.println("********************"+hiring);
+        Note note = new Note();
+        note.setNflag(0);
+        note.setNhid(hiring);
+        Student student=(Student) session.getAttribute("student");
+        note.setNsid(student);
+        noteService.addNote(note);
+        return "forward:/note/selectNoteAll";
+    }
+
 }
+
