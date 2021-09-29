@@ -10,6 +10,7 @@
         <result column="oename" property="oename"></result>
         <result column="ojname" property="ojname"></result>
         <result column="otime" property="otime"></result>
+        <result column="oflag" property="oflag"></result>
         <association property="osid" javaType="Student">
             <id column="sid" property="sid"></id>
             <result property="sname" column="sname"></result>
@@ -43,7 +44,7 @@
     </select>
 
     <insert id="addObtain"  parameterType="Obtain" >
-        insert into e_obtain values(null,#{osid.sid},#{oself},#{oename},#{ojname},#{otime})
+        insert into e_obtain values(null,#{osid.sid},#{oself},#{oename},#{ojname},#{otime},0)
     </insert>
 
     <select id="selectObtainById" resultMap="ObtainMap">
@@ -68,6 +69,9 @@
             </if>
             <if test="osid != null ">
                 osid = #{osid.sid},
+            </if>
+            <if test="oflag != null ">
+                osid = #{oflag},
             </if>
         </set>
         where oid = #{oid}

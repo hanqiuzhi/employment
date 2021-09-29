@@ -24,6 +24,12 @@ public class Obtain {
      */
     private String otime;
 
+    /**
+     * 就业信息状态
+     * 0未审核、2已通过、2未通过
+     */
+    private int oflag;
+
     public int getOid() {
         return oid;
     }
@@ -72,6 +78,14 @@ public class Obtain {
         this.otime = otime;
     }
 
+    public int getOflag() {
+        return oflag;
+    }
+
+    public void setOflag(int oflag) {
+        this.oflag = oflag;
+    }
+
     @Override
     public String toString() {
         return "Obtain{" +
@@ -81,6 +95,7 @@ public class Obtain {
                 ", oename='" + oename + '\'' +
                 ", ojname='" + ojname + '\'' +
                 ", otime='" + otime + '\'' +
+                ", oflag=" + oflag +
                 '}';
     }
 }
