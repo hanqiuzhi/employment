@@ -13,7 +13,7 @@ public interface EnterpriseDao {
     int updateEnterprise(Enterprise enterprise);
     int delEnterprise(int eid);
 
-    Enterprise selectEnterpriseByEno(@Param("emo") String eno,@Param("epwd") String epwd);
+    Enterprise selectEnterpriseByEno(@Param("eno") String eno,@Param("epwd") String epwd);
 
     int addEnterpriseSql(Enterprise enterprise);
 

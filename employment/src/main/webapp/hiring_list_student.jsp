@@ -2,27 +2,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-  <head>
-  	<meta charset="UTF-8" http-equiv="content-type" content="text/html">
-    
+<head>
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html">
+
     <title>My JSP 'placelist.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <script src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
 
-  </head>
-  
- <body>
+</head>
+
+<body>
 <div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">首页</a>
@@ -46,7 +46,7 @@
                         <div class="layui-inline layui-show-xs-block">
                             <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
                         </div>--%>
-                       <div class="layui-input-inline layui-show-xs-block">
+                        <div class="layui-input-inline layui-show-xs-block">
                             <select name="contrller">
                                 <option value=""></option>
                                 <option value="0"></option>
@@ -59,10 +59,10 @@
                     </form>
                 </div>
 
-                    <div class="layui-card-header">
-                        <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加招聘信息','${pageContext.request.contextPath}/hiring/showAllJob',500,300)"><i class="layui-icon"></i>添加</button>
-                    </div>
+                <div class="layui-card-header">
+                    <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+                    <button class="layui-btn" onclick="xadmin.open('添加招聘信息','${pageContext.request.contextPath}/hiring/showAllJob',500,300)"><i class="layui-icon"></i>添加</button>
+                </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>
@@ -97,17 +97,17 @@
                             <th>
                                 招聘岗位
                             </th>
-                             <th colspan="3">
+                            <th colspan="3">
                                 操作
-                             </th>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${hiringList1}" var="hiring">
+                        <c:forEach items="${hiringList}" var="hiring">
                             <tr>
-                                <%--<td>
-                                    <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
-                                </td>--%>
+                                    <%--<td>
+                                        <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
+                                    </td>--%>
                                 <td>
                                     <c:out value="${hiring.hid}"/>
                                 </td>
@@ -147,27 +147,27 @@
                                 <td>
                                     <c:out value="${hiring.hjid.jname}"/>
                                 </td>
-                                    <td class="td-manage">
-                                        <button class="layui-btn layui-btn layui-btn-xs"
-                                                onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringById?hid=${hiring.hid}',700,500)" >
-                                            <i class="layui-icon">&#xe642;</i>修改</button>
-                                    </td>
-                                    <td>
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>删除</button>
-                                    </td>
+                                <td class="td-manage">
+                                    <button class="layui-btn layui-btn layui-btn-xs"
+                                            onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringById?hid=${hiring.hid}',700,500)" >
+                                        <i class="layui-icon">&#xe642;</i>修改</button>
+                                </td>
+                                <td>
+                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                            onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
+                                        <i class="layui-icon">&#xe640;</i>删除</button>
+                                </td>
 
                                     <%--<td>--%>
-                                        <%--&lt;%&ndash;----------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>&ndash;%&gt;--%>
-                                                <%--&lt;%&ndash;<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;<i class="layui-icon">&#xe642;</i>申请面试</button>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;----------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<i class="layui-icon">&#xe642;</i>申请面试</button>&ndash;%&gt;--%>
                                     <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
-
-                                        <%--<button class="layui-btn-danger layui-btn layui-btn-xs"--%>
-                                                <%--onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >--%>
-                                            <%--<i class="layui-icon">&#xe640;</i>申请面试</button>--%>
-
+                                        <td>
+                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                    onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
+                                    <i class="layui-icon">&#xe640;</i>申请面试</button>
+                                        </td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -30,7 +30,7 @@
     </select>
 
     <select id="selectEnterpriseByEno" resultMap="enterpriseMap">
-        select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid and eno=#{emo} and epwd=#{epwd};
+        select * from e_enterprise e,e_city c,e_province p where e.ecid=c.cid AND c.cpid=p.pid and eno=#{eno} and epwd=#{epwd};
     </select>
 
     <select id="selectEnterpriseByFlag" resultMap="enterpriseMap">
