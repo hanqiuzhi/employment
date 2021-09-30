@@ -292,7 +292,7 @@
                                     <cite>招聘信息审核</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('学生就业信息审核','orderServlet?method=all&flag=2')">
+                                <a onclick="xadmin.add_tab('学生就业信息审核','')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生就业信息审核</cite></a>
                             </li>
