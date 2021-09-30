@@ -12,4 +12,5 @@ public interface NoteService {
     int updateNote(Note note);
     int delNote(int nid);
     List<Note> selectNoteBySid(int sid);
+    List<Note> selectNoteByEid(int eid);
 }

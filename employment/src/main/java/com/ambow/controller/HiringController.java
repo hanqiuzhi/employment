@@ -28,7 +28,7 @@ public class HiringController {
 
 
 
-    @RequestMapping("selectHiringAll1")
+    @RequestMapping("selectHiringAll")
     public String selectHiringtoMianshi(Model model){
         // University university=(University)session.getAttribute("university");
         List<Hiring> hiringList = hiringService.selectHiringAll();

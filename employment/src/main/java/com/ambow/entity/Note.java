@@ -47,4 +47,14 @@ public class Note {
     public void setNflag(int nflag) {
         this.nflag = nflag;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "nid=" + nid +
+                ", nsid=" + nsid +
+                ", nhid=" + nhid +
+                ", nflag=" + nflag +
+                '}';
+    }
 }
