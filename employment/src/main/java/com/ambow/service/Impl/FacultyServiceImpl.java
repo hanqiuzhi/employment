@@ -33,4 +33,9 @@ public class FacultyServiceImpl implements FacultyService {
     public int  addFaculty(Faculty faculty) {
         return facultyDao.addFaculty(faculty);
     }
+
+    @Override
+    public int checkFacultyName(String fname) {
+        return facultyDao.checkFacultyName(fname);
+    }
 }

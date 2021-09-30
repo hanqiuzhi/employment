@@ -4,9 +4,12 @@ import com.ambow.entity.Faculty;
 import com.ambow.entity.Major;
 import com.ambow.service.FacultyService;
 import com.ambow.service.MajorService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -22,10 +25,20 @@ public class MajorController {
     @Resource
     private FacultyService facultyService;
 
-    @RequestMapping("selectMajorAll")
+    /*@RequestMapping("selectMajorAll")
     public String selectMajorAll(Model model){
         List<Major> majorList = majorService.selectMajorAll();
         model.addAttribute("majorList",majorList);
+        return "major_list";
+    }*/
+    @RequestMapping(value = "/selectMajorAll")
+    public String allCompanyController(Model model,@RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo,
+                                       @RequestParam(required = false,defaultValue = "5")Integer pageSize){
+
+        PageHelper.startPage(pageNo, pageSize);
+        List<Major> majorList = majorService.selectMajorAll();
+        PageInfo<Major> pageInfo=new PageInfo<Major>(majorList);
+        model.addAttribute("pageInfo",pageInfo);
         return "major_list";
     }
     @RequestMapping("showAllFaculty")

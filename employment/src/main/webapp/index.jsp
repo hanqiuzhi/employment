@@ -275,6 +275,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                             <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="订单管理"></i>
@@ -295,6 +296,30 @@
                                 <a onclick="xadmin.add_tab('学生就业信息审核','')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生就业信息审核</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="订单管理"></i>
+                            <cite>企业信息查看</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <%--<li>--%>
+                                <%--<a onclick="xadmin.add_tab('企业岗位查看','job/selectJobAll')">--%>
+                                    <%--<i class="iconfont">&#xe6a7;</i>--%>
+                                    <%--<cite>企业岗位查看</cite></a>--%>
+                            <%--</li>--%>
+                            <li>
+                                <a onclick="xadmin.add_tab('招聘信息查看','hiring/selectHiringAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘信息查看</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘记录管理</cite></a>
                             </li>
                         </ul>
                     </li>

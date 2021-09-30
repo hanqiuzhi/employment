@@ -158,15 +158,15 @@
                                             <i class="layui-icon">&#xe640;</i>删除</button>
                                     </td>
 
-                                    <td>
-                                        <%------------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>--%>
-                                                <%--<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">--%>
-                                        <%--<i class="layui-icon">&#xe642;</i>申请面试</button>--%>
-                                    <%--</td>--%>
+                                    <%--<td>--%>
+                                        <%--&lt;%&ndash;----------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>&ndash;%&gt;--%>
+                                                <%--&lt;%&ndash;<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">&ndash;%&gt;--%>
+                                        <%--&lt;%&ndash;<i class="layui-icon">&#xe642;</i>申请面试</button>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
 
-                                        <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
-                                            <i class="layui-icon">&#xe640;</i>申请面试</button>
+                                        <%--<button class="layui-btn-danger layui-btn layui-btn-xs"--%>
+                                                <%--onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >--%>
+                                            <%--<i class="layui-icon">&#xe640;</i>申请面试</button>--%>
 
                             </tr>
                         </c:forEach>

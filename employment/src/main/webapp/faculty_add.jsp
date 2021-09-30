@@ -43,13 +43,16 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 
-    $(function () {
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
         $("#fname").blur(function () {
-            var fname = $(this).val();
+            var val = $(this).val();
             $.ajax({
                 type:"Post",
-                url:"provinceServlet?method=checkByName",
-                data:{fname:fname},
+                url:"${pageContext.request.contextPath}/faculty/checkFacultyName",
+                data:{fname:val},
                 success:function (data) {
                     //alert(data);
                     if(data == 'false'){
