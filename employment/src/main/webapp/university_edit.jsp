@@ -52,24 +52,25 @@
                            class="layui-input" lay-verify="required" value="${requestScope.university.upwd}">
                 </div>
             </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">
-                        <span class='x-red'>*</span>学校名称
-                    </label>
-                    <div class="layui-input-block">
-                        <input type="text" readonly name="uname" autocomplete="off" id="uname"
-                               class="layui-input" lay-verify="required" value="${requestScope.university.uname}">
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            <span class='x-red'>*</span>学校编号
-                        </label>
-                        <div class="layui-input-block">
-                            <input type="text" readonly name="uno" autocomplete="off" id="uno"
-                                   class="layui-input" lay-verify="required" value="${requestScope.university.uno}">
-                        </div>
-                    </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>学校名称
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="uname" autocomplete="off" id="uname"
+                           class="layui-input" lay-verify="required" value="${requestScope.university.uname}">
                 </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class='x-red'>*</span>学校编号
+                </label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="uno" autocomplete="off" id="uno"
+                           class="layui-input" lay-verify="required" value="${requestScope.university.uno}">
+                </div>
+            </div>
+
             <div class="layui-form-item" style="text-align: center">
                 <%--<label for="L_repass" class="layui-form-label"></label>--%>
                 <button class="layui-btn" lay-filter="update" lay-submit="">修改密码</button></div>

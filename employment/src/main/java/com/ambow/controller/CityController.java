@@ -1,10 +1,10 @@
 package com.ambow.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.ambow.entity.City;
 import com.ambow.entity.Province;
 import com.ambow.service.CityService;
 import com.ambow.service.ProvinceService;
+import com.ambow.utils.Json;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,11 +71,14 @@ public class CityController {
 
     @RequestMapping("selectCityByPId")
     @ResponseBody
-    public String selectCityByPId(int pid){
-        JSONObject jsonObject = new JSONObject();
+    public Json selectCityByPId(int pid){
+        Json j = new Json();
+
         List<City> cityList = cityService.selectCityByPid(pid);
-        jsonObject.put("cityList",cityList);
-        return jsonObject.toJSONString();
+
+        j.setCode(0);
+        j.setData(cityList);
+        return j;
     }
 
 

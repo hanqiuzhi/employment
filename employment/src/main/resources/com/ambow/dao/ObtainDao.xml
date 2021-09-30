@@ -42,6 +42,12 @@
           left join e_major m on s.smid = m.mid
           left join e_faculty f on m.mfid = f.fid
     </select>
+ <select id="selectObtainByFlag" resultMap="ObtainMap">
+        select * from e_obtain o
+          left join e_student s on o.osid = s.sid
+          left join e_major m on s.smid = m.mid
+          left join e_faculty f on m.mfid = f.fid where o.oflag!=1
+    </select>
 
     <insert id="addObtain"  parameterType="Obtain" >
         insert into e_obtain values(null,#{osid.sid},#{oself},#{oename},#{ojname},#{otime},0)

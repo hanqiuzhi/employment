@@ -112,7 +112,7 @@
     </select>
 
     <update id="updateEnterprise" parameterType="Enterprise">
-        update e_enterprise set ename=#{ename},eno=#{eno},epwd=#{epwd},einfo=#{einfo},ecid=#{ecid.cid},ephone=#{ephone},eemail=#{eemail},eflag=#{eflag} where eid = #{eid}
+        update e_enterprise set ename=#{ename},epwd=#{epwd},einfo=#{einfo},ecid=#{ecid.cid},ephone=#{ephone},eemail=#{eemail},eflag=#{eflag} where eid = #{eid}
     </update>
 
     <delete id="delEnterprise">

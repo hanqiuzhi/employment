@@ -1,5 +1,5 @@
 package com.ambow.controller;
-
+/*
 import com.ambow.entity.Student;
 import com.ambow.utils.ExcelUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +15,7 @@ public class ImportController {
      *
      * @return
      */
+/*
     @RequestMapping(value = "/importExcel")
     public String importExcel(MultipartFile file) throws Exception {
         try {
@@ -33,7 +34,9 @@ public class ImportController {
                 userInfo.setUbirthday(new Date());
                 userService.addUserServcie(userInfo);*/
                 //inventoryList.add(userInfo);
-            }
+           /* }
+
+
             //批量插入
             // userService.addUserServcieBatch(inventoryList);
         } catch (Exception e) {
@@ -43,3 +46,4 @@ public class ImportController {
         return "index";
     }
 }
+*/

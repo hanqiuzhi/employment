@@ -84,8 +84,20 @@
                         <span class='x-red'>*</span>性别
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="ssex" autocomplete="off" id="ssex"
-                               class="layui-input" lay-verify="required" value="${requestScope.student.ssex}">
+
+                        <c:if test="${requestScope.student.ssex == '男'}">
+                            男<input type="radio" name="ssex" autocomplete="off" value="男"
+                            class="layui-input" lay-verify="required" checked>
+                            女<input type="radio" name="ssex" autocomplete="off"  value="女"
+                            class="layui-input" lay-verify="required">
+                        </c:if>
+                        <c:if test="${requestScope.student.ssex == '女'}">
+                            男<input type="radio" name="ssex" autocomplete="off" value="男"
+                            class="layui-input" lay-verify="required">
+                            女<input type="radio" name="ssex" autocomplete="off"  value="女"
+                            class="layui-input" lay-verify="required" checked>
+                        </c:if>
+
                     </div>
                 </div>
                 <div class="layui-form-item">

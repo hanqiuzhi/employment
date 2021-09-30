@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface ObtainService {
     List<Obtain> selectObtainAll();
+    List<Obtain> selectObtainByFlag();
     int addObtain(Obtain obtain);
     Obtain selectObtainById(int oid);
     int updateObtain(Obtain obtain);

@@ -35,6 +35,14 @@ public class ObtainController {
         
         return "obtain_list";
     }
+    @RequestMapping("selectObtainByFlag")
+    public String selectObtainByFlag(Model model){
+        List<Obtain> obtainList = obtainService.selectObtainByFlag();
+        model.addAttribute("obtainList",obtainList);
+
+
+        return "obtain_list";
+    }
 
     @RequestMapping("getOsid")
     public String getOsid(HttpServletRequest request, String method){
