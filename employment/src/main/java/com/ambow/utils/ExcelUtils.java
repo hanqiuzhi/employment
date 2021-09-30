@@ -24,17 +24,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-/*
 
 public class ExcelUtils {
 
     private final static String excel2003L =".xls";    //2003- 版本的excel
     private final static String excel2007U =".xlsx";   //2007+ 版本的excel
-    */
-/**
+    /**
      * Excel导入
-     *//*
-
+     */
     public static  List<List<Object>> getBankListByExcel(InputStream in, String fileName) throws Exception{
         List<List<Object>> list = null;
         //创建Excel工作薄
@@ -68,11 +65,9 @@ public class ExcelUtils {
         }
         return list;
     }
-    */
-/**
+    /**
      * 描述：根据文件后缀，自适应上传文件的版本
-     *//*
-
+     */
     public static  Workbook getWorkbook(InputStream inStr,String fileName) throws Exception{
         Workbook wb = null;
         String fileType = fileName.substring(fileName.lastIndexOf("."));
@@ -85,12 +80,9 @@ public class ExcelUtils {
         }
         return wb;
     }
-    */
-/**
+    /**
      * 描述：对表格中数值进行格式化
-     *//*
-
-
+     */
     public static  Object getCellValue(Cell cell){
         Object value = null;
         DecimalFormat df = new DecimalFormat("0");  //格式化字符类型的数字
@@ -120,16 +112,14 @@ public class ExcelUtils {
         }
         return value;
     }
-    */
-/**
+    /**
      * 导入Excel表结束
      * 导出Excel表开始
      * @param sheetName 工作簿名称
      * @param clazz  数据源model类型
      * @param objs   excel标题列以及对应model字段名
      * @param map  标题列行数以及cell字体样式
-     *//*
-
+     */
     public static XSSFWorkbook createExcelFile(Class clazz, List objs, Map<Integer, List<ExcelBean>> map, String sheetName) throws
             IllegalArgumentException,IllegalAccessException, InvocationTargetException,
             ClassNotFoundException, IntrospectionException, ParseException {
@@ -170,14 +160,12 @@ public class ExcelUtils {
         fontStyle2.setBorderRight(XSSFCellStyle.BORDER_THIN);// 右边框
         fontStyle2.setAlignment(XSSFCellStyle.ALIGN_RIGHT); // 居中
     }
-    */
-/**
+    /**
      * 根据ExcelMapping 生成列头（多行列头）
      *
      * @param sheet 工作簿
      * @param map 每行每个单元格对应的列头信息
-     *//*
-
+     */
     public static final void createTableHeader(XSSFSheet sheet, Map<Integer, List<ExcelBean>> map) {
         int startIndex=0;//cell起始位置
         int endIndex=0;//cell终止位置
@@ -277,7 +265,6 @@ public class ExcelUtils {
         }
     }
 }
-*/
 
 
 

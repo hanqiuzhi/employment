@@ -150,12 +150,20 @@
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘信息管理</cite></a>
                             </li>
-
+                        <c:if test="${sessionScope.student != null}">
                             <li>
                                 <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteBySid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘列表管理</cite></a>
                             </li>
+                        </c:if>
+                            <c:if test="${sessionScope.university != null || sessionScope.enterprise != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>招聘列表管理</cite></a>
+                                </li>
+                            </c:if>
 
                         </ul>
                     </li>

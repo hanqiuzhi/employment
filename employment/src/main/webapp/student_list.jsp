@@ -61,7 +61,11 @@
 
                     <div class="layui-card-header">
                         <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <button class="layui-btn" onclick="xadmin.open('添加学生','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>
+                        <%--<button class="layui-btn" onclick="xadmin.open('添加学生','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>--%>
+                            <form  action="${pageContext.request.contextPath}/import/importExcel" method="post" enctype="multipart/form-data" >
+                                <input type="file" name="file" >
+                                <input type="submit" value="批量上传">
+                            </form>
                     </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
