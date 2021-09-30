@@ -5,7 +5,7 @@
 <mapper namespace="com.ambow.dao.FacultyDao">
 
     <select id="selectFacultyAll" resultType="Faculty">
-        select * from e_faculty;
+        select * from e_faculty
     </select>
 
     <insert id="addFaculty">
@@ -14,6 +14,10 @@
 
     <select id="selectFacultyById" resultType="Faculty">
         select * from e_faculty where fid = #{fid}
+    </select>
+
+    <select id="checkFacultyName" resultType="Faculty">
+        SELECT COUNT(*) FROM `e_faculty` WHERE fname=#{fname}
     </select>
 
     <update id="updateFaculty">

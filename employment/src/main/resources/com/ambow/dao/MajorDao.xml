@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="selectMajorAll" resultMap="majorMap">
-        select * from e_major m,e_faculty f where m.mfid = f.fid;
+        select * from e_major m,e_faculty f where m.mfid = f.fid
     </select>
 
     <insert id="addMajor" parameterType="Major">

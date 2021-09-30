@@ -5,9 +5,12 @@ import com.ambow.entity.City;
 import com.ambow.entity.Province;
 import com.ambow.service.CityService;
 import com.ambow.service.ProvinceService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -29,6 +32,19 @@ public class CityController {
         model.addAttribute("cityList",cityList);
         return "city_list";
     }
+
+   /* @RequestMapping(value = "/selectCityAll")
+    public String allCompanyController(Model model,@RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo,
+                                       @RequestParam(required = false,defaultValue = "5")Integer pageSize){
+        //defaultValue  一页显示几条
+        //分页查询
+        PageHelper.startPage(pageNo, pageSize);
+        //改掉啥 复制
+        List<City> cityList = cityService.selectCityAll();
+        PageInfo<City> pageInfo=new PageInfo<City>(cityList);
+        model.addAttribute("pageInfo",pageInfo);
+        return "city_list";
+    }*/
     @RequestMapping("addCity")
     @ResponseBody
     public String addCity(City city){

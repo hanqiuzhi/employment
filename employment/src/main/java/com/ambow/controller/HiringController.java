@@ -1,10 +1,6 @@
 package com.ambow.controller;
 
-import com.ambow.entity.Enterprise;
-import com.ambow.entity.Hiring;
-import com.ambow.entity.Job;
-import com.ambow.entity.Note;
-import com.ambow.entity.Student;
+import com.ambow.entity.*;
 import com.ambow.service.HiringService;
 import com.ambow.service.JobService;
 import com.ambow.service.NoteService;
@@ -30,11 +26,22 @@ public class HiringController {
     @Resource
     private NoteService noteService ;
 
-    @RequestMapping("selectHiringAll")
-    public String selectHiringAll(Model model){
+    @RequestMapping("selectHiringAll1")
+    public String selectHiringtoMianshi(Model model){
+        // University university=(University)session.getAttribute("university");
         List<Hiring> hiringList = hiringService.selectHiringAll();
         model.addAttribute("hiringList",hiringList);
-        return "hiring_list";
+        return "hiring_list_student";
+    }
+
+
+
+    @RequestMapping("selectHiringAll")
+    public String selectHiringAlltoSchool(Model model){
+       // University university=(University)session.getAttribute("university");
+        List<Hiring> hiringList = hiringService.selectHiringAll();
+        model.addAttribute("hiringList",hiringList);
+        return "hiring_list_school";
     }
     @RequestMapping("selectHiringAllbyeid")
     public String selectHiringAll(Model model, HttpSession session){
@@ -94,12 +101,13 @@ public class HiringController {
         request.setAttribute("jobList",list);
         return "hiring_edit_enterprise";
     }
-    @RequestMapping("selectHiringByIdtoSchool")
+   @RequestMapping("selectHiringByIdtoSchool")
     public String selectHiringByIdtoSchool(int hid,HttpServletRequest request,HttpSession session){
-        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
+        University university=(University)session.getAttribute("university");
+        //Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
         Hiring hiring=hiringService.selectHiringById(hid);
         request.setAttribute("hiring",hiring);
-        List<Job> list=jobService.selectJobOnly(enterprise.getEid());
+        List<Job> list=jobService.selectJobAll();
         request.setAttribute("jobList",list);
         return "hiring_edit_School";
     }

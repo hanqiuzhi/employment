@@ -15,7 +15,7 @@
 
 
     <select id="selectCityAll" resultMap="cityMap">
-        select * from e_city c,e_province p where c.cpid=p.pid;
+        select * from e_city c,e_province p where c.cpid=p.pid
     </select>
 
     <select id="selectCityByPid" resultMap="cityMap">
@@ -47,6 +47,6 @@
         delete from e_city where cid = #{cid}
     </delete>
     <select id="selectProvinceCity"  resultMap="cityMap">
-        select c.cid,c.cname from e_city c,e_province p where c.cpid=p.pid and pid = #{pid};
+        select c.cid,c.cname from e_city c,e_province p where c.cpid=p.pid and pid = #{pid}
     </select>
 </mapper>

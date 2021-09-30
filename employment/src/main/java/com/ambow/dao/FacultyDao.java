@@ -14,4 +14,6 @@ public interface FacultyDao {
     public int delFaculty(int fid);
 
     public int addFaculty(Faculty faculty);
+
+    public int checkFacultyName(String fname);
 }
