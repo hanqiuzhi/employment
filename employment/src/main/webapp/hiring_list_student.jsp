@@ -147,7 +147,7 @@
                                 <td>
                                     <c:out value="${hiring.hjid.jname}"/>
                                 </td>
-                                <td class="td-manage">
+                               <%-- <td class="td-manage">
                                     <button class="layui-btn layui-btn layui-btn-xs"
                                             onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringById?hid=${hiring.hid}',700,500)" >
                                         <i class="layui-icon">&#xe642;</i>修改</button>
@@ -156,18 +156,18 @@
                                     <button class="layui-btn-danger layui-btn layui-btn-xs"
                                             onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
                                         <i class="layui-icon">&#xe640;</i>删除</button>
-                                </td>
+                                </td>--%>
 
                                     <%--<td>--%>
                                     <%--&lt;%&ndash;----------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>&ndash;%&gt;--%>
                                     <%--&lt;%&ndash;<button class="layui-btn layui-btn layui-btn-xs" href="hiring/selectHiringById1?hid=${hiring.hid}">&ndash;%&gt;--%>
                                     <%--&lt;%&ndash;<i class="layui-icon">&#xe642;</i>申请面试</button>&ndash;%&gt;--%>
                                     <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
-                                        <td>
+                                <td>
                                     <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                    onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
-                                    <i class="layui-icon">&#xe640;</i>申请面试</button>
-                                        </td>
+                                            onclick="member_shenqing(this,'${hiring.hid}')" href="javascript:;" >
+                                        <i class="layui-icon">&#xe640;</i>申请面试</button>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

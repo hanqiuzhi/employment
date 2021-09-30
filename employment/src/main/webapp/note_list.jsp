@@ -82,9 +82,12 @@
                             <th>
                                 记录状态
                             </th>
-                             <th>
-                                操作
-                             </th>
+                                <c:if test="${sessionScope.enterprise != null}">
+
+                                    <th>
+                                        操作
+                                    </th>
+                                </c:if>
                 
                         </tr>
                         </thead>
@@ -120,6 +123,7 @@
                                         已入职
                                     </c:if>
                                 </td>
+                                    <c:if test="${sessionScope.enterprise != null}">
                                     <td class="td-manage">
                                         <button class="layui-btn layui-btn layui-btn-xs"
                                                 onclick="xadmin.open('修改','${pageContext.request.contextPath}/note/noteById?nid=${note.nid}',700,500)" >
@@ -127,7 +131,7 @@
                                         <button class="layui-btn-danger layui-btn layui-btn-xs"
                                                 onclick="member_del(this,'${note.nid}')" href="javascript:;" >
                                             <i class="layui-icon">&#xe640;</i>删除</button>
-                                    </td>
+                                    </td></c:if>
                             </tr>
                         </c:forEach>
                         </tbody>

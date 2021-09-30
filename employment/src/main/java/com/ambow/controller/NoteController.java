@@ -1,9 +1,6 @@
 package com.ambow.controller;
 
-import com.ambow.entity.City;
-import com.ambow.entity.Hiring;
-import com.ambow.entity.Note;
-import com.ambow.entity.Student;
+import com.ambow.entity.*;
 import com.ambow.service.CityService;
 import com.ambow.service.NoteService;
 import org.springframework.stereotype.Controller;
@@ -75,13 +72,20 @@ public class NoteController {
     }
 
     @RequestMapping("selectNoteBySid")
-    public String selectNoteBySid(Note note,Model model,HttpSession session){
+    public String selectNoteBySid(Model model,HttpSession session){
         Student student=(Student)session.getAttribute("student");
-        student.getSid();
-        note.setNsid(student);
-        List<Note> noteSid=noteService.selectNoteBySid(note);
+        model.addAttribute("student",student);
+        List<Note> noteSid=noteService.selectNoteBySid(student.getSid());
         model.addAttribute("noteSid",noteSid);
         return "note_list_student";
+    }
+    @RequestMapping("selectNoteAllbyeid")
+    public String selectNoteAll(Model model, HttpSession session){
+        Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
+        List<Note> noteList = noteService.selectNoteByEid(enterprise.getEid());
+        System.out.println(noteList);
+        model.addAttribute("noteList",noteList);
+        return "note_list";
     }
 
 }

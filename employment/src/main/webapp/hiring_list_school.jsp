@@ -59,10 +59,10 @@
                     </form>
                 </div>
 
-                <div class="layui-card-header">
-                    <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
+               <%-- <div class="layui-card-header">
+                    &lt;%&ndash;<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&ndash;%&gt;
                     <button class="layui-btn" onclick="xadmin.open('添加招聘信息','${pageContext.request.contextPath}/hiring/showAllJob',500,300)"><i class="layui-icon"></i>添加</button>
-                </div>
+                </div>--%>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
                         <thead>

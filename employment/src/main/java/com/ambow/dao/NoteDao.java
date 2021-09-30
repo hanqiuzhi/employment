@@ -14,6 +14,7 @@ public interface NoteDao {
     Note selectNoteById(int nid);
     int updateNote(Note note);
     int delNote(int nid);
-    List<Note> selectNoteBySid(Note note);
+    List<Note> selectNoteBySid(int sid);
 
+    List<Note> selectNoteByEid(int eid);
 }
