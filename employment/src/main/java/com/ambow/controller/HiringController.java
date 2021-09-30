@@ -26,6 +26,16 @@ public class HiringController {
     @Resource
     private NoteService noteService ;
 
+    @RequestMapping("selectHiringAll1")
+    public String selectHiringtoMianshi(Model model){
+        // University university=(University)session.getAttribute("university");
+        List<Hiring> hiringList = hiringService.selectHiringAll();
+        model.addAttribute("hiringList",hiringList);
+        return "hiring_list_student";
+    }
+
+
+
     @RequestMapping("selectHiringAll")
     public String selectHiringAlltoSchool(Model model){
        // University university=(University)session.getAttribute("university");
