@@ -89,7 +89,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${jobList1}" var="job">
+                        <c:forEach items="${pageInfo.list}" var="job">
                             <tr>
                                 <%--<td>
                                     <input type="checkbox" name="id" value="${prov.pid}"   lay-skin="primary">
@@ -119,6 +119,39 @@
                         </tbody>
                     </table>
                 </div>
+
+
+                <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
+                    页,总 ${pageInfo.total } 条记录</div></p >
+            <%--分页--%>
+            <div style="text-align: center;font-size: 15px;  " id="p">
+                <a href="selectJobAllbyeid?=1"><span class="btn-page btn-active ">首页</span></a>
+                <c:if test="${pageInfo.hasPreviousPage }">
+                    <a href="selectJobAllbyeid?pageNo=${pageInfo.pageNum-1}"><span class="btn-page btn-default">上一页</span></a>
+                </c:if>
+
+
+                <%--遍历导航页--%>
+                <c:forEach items="${pageInfo.navigatepageNums}" var="page_num">
+                    <c:if test="${page_num == pageInfo.pageNum}">
+                        <a href="#"><span class="btn-page btn-active" th:text="${page}">${page_num}</span></a>
+                    </c:if>
+                    <c:if test="${page_num != pageInfo.pageNum}">
+                        <a href="${pageContext.request.contextPath}/selectJobAllbyeid?pageNo=${page_num}"><span class="btn-page btn-default" th:text="${page}">${page_num}</span></a>
+                    </c:if>
+                </c:forEach>
+
+
+                <c:if test="${pageInfo.hasNextPage }">
+                    <a href="selectJobAllbyeid?pageNo=${pageInfo.pageNum+1}"><span class="btn-page btn-default">下一页</span></a>
+                </c:if>
+
+
+                <a href="selectJobAllbyeid?pageNo=${pageInfo.pages}"><span class="btn-page btn-active">尾页</span></a>
+
+            </div>
+            <!--分页结束-->
+
 
                 <%--<div class="layui-card-body ">
                     <div class="page">

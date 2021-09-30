@@ -4,10 +4,13 @@ import com.ambow.entity.Enterprise;
 import com.ambow.entity.Job;
 import com.ambow.service.EnterpriseService;
 import com.ambow.service.JobService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -30,12 +33,25 @@ public class JobController {
         model.addAttribute("jobList",jobList);
         return "job_list";
     }
-    @RequestMapping("selectJobAllbyeid")
-    public String selectJobAll1(Model model,HttpSession session){
+//    @RequestMapping("selectJobAllbyeid")
+//    public String selectJobAll1(Model model,HttpSession session){
+//        Enterprise enterprise=(Enterprise) session.getAttribute("enterprise");
+//         int jeid=enterprise.getEid();
+//        List<Job> jobList = jobService.selectenJobAll(jeid);
+//        model.addAttribute("jobList1",jobList);
+//        return "job_list";
+//    }
+
+    @RequestMapping(value = "/selectJobAllbyeid")
+    public String allCompanyController(Model model,HttpSession session,@RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo,
+                                       @RequestParam(required = false,defaultValue = "5")Integer pageSize){
+
+        PageHelper.startPage(pageNo, pageSize);
         Enterprise enterprise=(Enterprise) session.getAttribute("enterprise");
-         int jeid=enterprise.getEid();
+        int jeid=enterprise.getEid();
         List<Job> jobList = jobService.selectenJobAll(jeid);
-        model.addAttribute("jobList1",jobList);
+        PageInfo<Job> pageInfo=new PageInfo<Job>(jobList);
+        model.addAttribute("pageInfo",pageInfo);
         return "job_list";
     }
     @RequestMapping("showAllEnterprise")
