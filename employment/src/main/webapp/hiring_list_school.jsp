@@ -97,9 +97,7 @@
                             <th>
                                 招聘岗位
                             </th>
-                            <th colspan="2">
-                                操作
-                            </th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -152,11 +150,11 @@
                                             onclick="xadmin.open('修改','${pageContext.request.contextPath}/hiring/selectHiringByIdtoSchool?hid=${hiring.hid}',700,500)" >
                                         <i class="layui-icon">&#xe642;</i>修改</button>
                                 </td>
-                                <td>
-                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                            onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >
-                                        <i class="layui-icon">&#xe640;</i>删除</button>
-                                </td>
+                                <%--<td>--%>
+                                    <%--<button class="layui-btn-danger layui-btn layui-btn-xs"--%>
+                                            <%--onclick="member_del(this,'${hiring.hid}')" href="javascript:;" >--%>
+                                        <%--<i class="layui-icon">&#xe640;</i>删除</button>--%>
+                                <%--</td>--%>
 
                                 <%--<td>--%>
                                         <%--&lt;%&ndash;----------<a href="../hiring/selectHiringById1?hid=${hiring.hid}">申请面试</a>&ndash;%&gt;--%>
@@ -173,6 +171,8 @@
                         </tbody>
                     </table>
                 </div>
+
+
 
                 <%--<div class="layui-card-body ">
                     <div class="page">
