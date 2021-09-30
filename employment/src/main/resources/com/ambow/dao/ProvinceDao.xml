@@ -5,7 +5,7 @@
 <mapper namespace="com.ambow.dao.ProvinceDao">
 
     <select id="selectProvinceAll" resultType="Province">
-        select * from e_province;
+        select * from e_province
     </select>
 
     <insert id="addProvince">
