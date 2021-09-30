@@ -98,7 +98,7 @@ public class HiringController {
     public String selectHiringByIdtoSchool(int hid,HttpServletRequest request,HttpSession session){
         University university=(University)session.getAttribute("university");
         //Enterprise enterprise=(Enterprise)session.getAttribute("enterprise");
-        Hiring hiring=hiringService.selectHiringById(hid);
+        Hiring hiring=hiringService.selectHiringById(university.getUid());
         request.setAttribute("hiring",hiring);
         List<Job> list=jobService.selectJobAll();
         request.setAttribute("jobList",list);

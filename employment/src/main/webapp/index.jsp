@@ -143,7 +143,7 @@
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll1')">
+                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘信息管理</cite></a>
                             </li>
@@ -202,11 +202,13 @@
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>企业信息管理</cite></a>
                             </li>
-                            <li>
-                                <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAllbyeid')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>企业岗位管理</cite></a>
-                            </li>
+                            <c:if test="${sessionScope.enterprise != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('企业岗位管理','job/selectJobAllbyeid')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>企业岗位管理</cite></a>
+                                </li>
+                            </c:if>
 
                         </ul>
 
@@ -218,16 +220,28 @@
                             <cite>招聘信息管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
-                            <li>
-                                <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAllbyeid')">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>招聘信息管理</cite></a>
-                            </li>
+                            <c:if test="${sessionScope.enterprise != null}">
+                                <li>
+                                    <a onclick="xadmin.add_tab('招聘信息管理','hiring/selectHiringAllbyeid')">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>招聘信息管理</cite></a>
+                                </li>
+                            </c:if>
+
+                            <c:if test="${sessionScope.enterprise != null}">
                             <li>
                                 <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘记录管理</cite></a>
                             </li>
+                            </c:if>
+                            <c:if test="${sessionScope.university != null}">
+                            <li>
+                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAll')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘记录管理</cite></a>
+                            </li>
+                            </c:if>
                         </ul>
                     </li>
                 </ul>
@@ -300,11 +314,11 @@
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>企业认证审核</cite></a>
                             </li>
-                            <li>
+                            <%--<li>
                                 <a onclick="xadmin.add_tab('招聘信息审核','orderServlet?method=all&flag=1')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘信息审核</cite></a>
-                            </li>
+                            </li>--%>
                             <li>
                                 <a onclick="xadmin.add_tab('学生就业信息审核','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>

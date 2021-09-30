@@ -64,10 +64,10 @@
                 }
             });
         $("#province").change(function (){
-            var  val = $(this).val();
+            var val = $(this).val();
             $.ajax({
                 type:"post",
-                url:"city/selectCityByPId",
+                url:"city/selectCityByPIdOfLogin",
                 data:{pid:val},
                 dataType:"JSON",
                 success:function (res) {
