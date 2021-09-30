@@ -3,9 +3,12 @@ package com.ambow.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.ambow.entity.Province;
 import com.ambow.service.ProvinceService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -19,12 +22,24 @@ public class ProvinceController {
     @Resource
     private ProvinceService provinceService;
 
-    @RequestMapping("selectProvinceAll")
-    public String selectProvinceAll(Model model){
+//    @RequestMapping("selectProvinceAll")
+//    public String selectProvinceAll(Model model){
+//        List<Province> provinceList = provinceService.selectProvinceAll();
+//        model.addAttribute("provinceList",provinceList);
+//        return "province_list";
+//    }
+
+    @RequestMapping(value = "/selectProvinceAll")
+    public String allCompanyController(Model model,@RequestParam(defaultValue = "1",required = true,value = "pageNo")Integer pageNo,
+                                       @RequestParam(required = false,defaultValue = "10")Integer pageSize){
+
+        PageHelper.startPage(pageNo, pageSize);
         List<Province> provinceList = provinceService.selectProvinceAll();
-        model.addAttribute("provinceList",provinceList);
+        PageInfo<Province> pageInfo=new PageInfo<Province>(provinceList);
+        model.addAttribute("pageInfo",pageInfo);
         return "province_list";
     }
+
     @RequestMapping("addProvince")
     @ResponseBody
     public String addProvince(String pname ){
