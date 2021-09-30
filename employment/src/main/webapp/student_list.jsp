@@ -61,11 +61,7 @@
 
                     <div class="layui-card-header">
                         <%--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--%>
-                        <%--<button class="layui-btn" onclick="xadmin.open('添加学生','${pageContext.request.contextPath}/province_add.jsp',500,300)"><i class="layui-icon"></i>添加</button>--%>
-                            <form  action="${pageContext.request.contextPath}/import/importExcel" method="post" enctype="multipart/form-data" >
-                                <input type="file" name="file" >
-                                <input type="submit" value="批量上传">
-                            </form>
+                        <button class="layui-btn" id="importExcel" onclick="importExcel();"><i class="layui-icon"></i>添加</button>
                     </div>
                 <div class="layui-card-body layui-table-body layui-table-main">
                     <table class="layui-table layui-form">
@@ -210,6 +206,38 @@
 </div>
 </body>
 <script>
+
+    // 导入
+    function importExcel() {
+        $('#importExcel').after('<input type="file" id="load_xls" name="file" style="display:none" onchange ="uploadFile()">');
+        $("#load_xls").click();
+    }
+
+    // 上传文件
+    function uploadFile() {
+        var myform = new FormData();
+        myform.append('file',$('#load_xls')[0].files[0]);
+        $.ajax({
+            url: "${pageContext.request.contextPath}/import/importExcel",
+            type: "POST",
+            data: myform,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data) {
+                    alert("导入成功！");
+                    //window.this.location.reload();
+                    window.location.reload();
+                } else {
+                    alert("导入失败！");
+                }
+            },
+            error:function(data){
+                console.log(data)
+            }
+        });
+
+    }
     layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var  form = layui.form;

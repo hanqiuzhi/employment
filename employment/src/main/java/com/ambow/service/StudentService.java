@@ -1,6 +1,7 @@
 package com.ambow.service;
 
 import com.ambow.entity.Student;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public interface StudentService {
 
     //删除学生信息
     public int delStudent(int sid);
+
+    String readExcelFile(MultipartFile file);
 
 
 }
