@@ -75,7 +75,7 @@ public class EnterpriseController {
     public String selectEnterpriseById(int eid,/*int pid,*/ HttpServletRequest request,Model model){
         List<Province> provinceList = provinceService.selectProvinceAll();
         request.setAttribute("provinceList",provinceList);
-        System.out.println(provinceList);
+
         Enterprise enterprise = enterpriseService.selectEnterpriseById(eid);
         request.setAttribute("enterprise",enterprise);
         return "enterprise_edit";

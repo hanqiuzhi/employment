@@ -32,7 +32,7 @@
 
                     <input type="hidden" name="osid.sid" value="${student.sid}" >
 
-                    <input type="text" class="layui-input" lay-verify="required" value="${sessionScope.student.sname}">
+                    <input type="text" class="layui-input" lay-verify="required" value="${sessionScope.student.sname}" readonly>
 
                     <%--<select name="osid.sid" class="layui-input">
                         <option value="">填写学生姓名</option>
@@ -78,7 +78,7 @@
                     <span class='x-red'>*</span>就业时间
                 </label>
                 <div class="layui-input-block">
-                    <input type="text" name="otime" autocomplete="off" placeholder="填写就业时间"
+                    <input type="date" name="otime" autocomplete="off" placeholder="填写就业时间"
                            class="layui-input" lay-verify="required">
                 </div>
             </div>

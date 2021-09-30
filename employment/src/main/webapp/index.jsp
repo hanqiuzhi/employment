@@ -74,13 +74,17 @@
                         <!-- 二级菜单 -->
                         <dd>
                             <c:if test="${sessionScope.university != null}">
-                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/university/selectUniversityById/${sessionScope.university.uid}',550,600)">个人信息</a>
+                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/university/selectUniversityById?uid=${sessionScope.university.uid}',550,600)">个人信息</a>
                             </c:if>
                             <c:if test="${sessionScope.enterprise != null}">
-                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/enterprise/selectEnterpriseById/${sessionScope.enterprise.eid}',550,600)">个人信息</a>
+                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${sessionScope.enterprise.eid}',550,600)">个人信息</a>
                             </c:if>
                             <c:if test="${sessionScope.student != null}">
+<<<<<<< HEAD
+                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/student/studentBySid',550,600)">个人信息</a>
+=======
                                 <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/student/selectStudentById1/${sessionScope.student.sid}',550,600)">个人信息</a>
+>>>>>>> 74717242cbd7fc68f3247b8558f5662a9c32eef7
                             </c:if>
 
                         </dd>
@@ -301,7 +305,7 @@
                                     <cite>招聘信息审核</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('学生就业信息审核','')">
+                                <a onclick="xadmin.add_tab('学生就业信息审核','obtain/selectObtainAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>学生就业信息审核</cite></a>
                             </li>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -44,11 +45,20 @@ public class StudentController {
         model.addAttribute("majorList1",major);
         return "student_edit";
     }
+    @RequestMapping("studentBySid")
+    public String studentBySid(Model model, HttpSession session){
 
+        Student student= (Student) session.getAttribute("student");
+        model.addAttribute("student",student);
+        List<Major> major=majorService.selectMajorAll();
+        model.addAttribute("majorList1",major);
+        return "student_edit";
+    }
     @RequestMapping("studentUpdate")
     @ResponseBody
-    public String studentUpdate(Student student){
+    public String studentUpdate(Student student,HttpSession session){
         int res=studentService.updateStudent(student);
+        session.setAttribute("student",student);
         if(res>0){
             return "true";
         }return "false";

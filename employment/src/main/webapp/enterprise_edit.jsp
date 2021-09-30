@@ -76,7 +76,7 @@
                         <span class='x-red'>*</span>企业所属省
                     </label>
                     <div class="layui-input-block">
-                        <select class="layui-input"  lay-filter="prov" id="province" name="epid.pid" lay-verify="required" autocomplete="off">
+                        <select class="layui-input"  lay-filter="prov" id="province" lay-verify="required" autocomplete="off">
                             <option value="">请选择省</option>
                             <c:forEach items="${provinceList}" var="province">
                                 <option value="${province.pid}"
@@ -163,26 +163,52 @@
             }
         });*/
 
-
-
-        form.on('select(prov)',function (data){
+        form.on('select(prov)',function (data) {
             var pid = data.value;
             //alert(prov);
             //alert($("#province").val());
-            $.post('city/selectCityByPId',{'pid':pid},function (msg) {
-                $('#ecid').empty();
-                $('#ecid').append("<option>请选择城市</option>");
-                alert("aaaa");
-                for(var i in msg){
-                    alert(msg.cid);
-                    var $content = $('<option value="' + msg.cityList[i].cid + '">' + msg.cityList[i].cname + '</option>');
-                    $('#ecid').append($content);
+            $.ajax({
+                dataType: 'json',
+                data: {
+                    'pid': pid,
+                },
+                url: 'city/selectCityByPId',
+                success: function (msg) {
+                    var res = msg.data;
+
+                    console.log(res)
+                    $('#ecid').empty().append("<option>请选择城市</option>");
+                    $(res).each(function () {
+                        var content = $('<option value="' + this.cid + '">' + this.cname + '</option>');
+                        $('#ecid').append(content);
+
+
+                    })
+                    form.render('select');
 
                 }
-                form.render('select');
             })
         })
+       /* form.on('select(prov)',
+            function (){
+                var prov=$("#province").val();
+                $.ajax({
+                    type:"post",
+                    url:"city/selectCityByPId",
+                    data:{pid: prov},
+                    success:function (res){
+                        $("#ecid").empty();
+                        $("#ecid").append("<option>---请选择---</option>")
+                        alert(res.cityList[i].cname);
+                        for (var i=0;i<res.cityList.length;i++){
 
+                            $("#ecid").append("<option value='"+res.cityList[i].cid+"'>"+res.cityList[i].cname+"</option>");
+                        }
+                        form.render('select');
+                    }
+                });
+
+            });*/
 
 
         //监听提交

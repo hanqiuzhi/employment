@@ -18,6 +18,10 @@ public class ObtainServiceImpl implements ObtainService {
     public List<Obtain> selectObtainAll() {
         return obtainDao.selectObtainAll();
     }
+    @Override
+    public List<Obtain> selectObtainByFlag() {
+        return obtainDao.selectObtainByFlag();
+    }
 
     @Override
     public int addObtain(Obtain obtain) {
