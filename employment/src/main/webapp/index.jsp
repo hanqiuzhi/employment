@@ -80,11 +80,7 @@
                                 <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/enterprise/selectEnterpriseById?eid=${sessionScope.enterprise.eid}',550,600)">个人信息</a>
                             </c:if>
                             <c:if test="${sessionScope.student != null}">
-<<<<<<< HEAD
                                 <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/student/studentBySid',550,600)">个人信息</a>
-=======
-                                <a onclick="xadmin.open('个人信息','${pageContext.request.contextPath}/student/selectStudentById1/${sessionScope.student.sid}',550,600)">个人信息</a>
->>>>>>> 74717242cbd7fc68f3247b8558f5662a9c32eef7
                             </c:if>
 
                         </dd>
@@ -156,9 +152,17 @@
                             </li>
 
                             <li>
-                                <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
+                                <c:if test="${sessionScope.university != null ||sessionScope.enterprise != null}">
+                                    <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteAll')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘列表管理</cite></a>
+                                </c:if>
+                                <c:if test="${sessionScope.student!= null}">
+                                    <a onclick="xadmin.add_tab('招聘信息列表','note/selectNoteBySid')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>招聘列表管理</cite></a>
+                                </c:if>
+
                             </li>
 
                         </ul>

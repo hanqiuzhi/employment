@@ -75,11 +75,10 @@ public class NoteController {
     }
 
     @RequestMapping("selectNoteBySid")
-    public String selectNoteBySid(Note note,Model model,HttpSession session){
+    public String selectNoteBySid(Model model,HttpSession session){
         Student student=(Student)session.getAttribute("student");
-        student.getSid();
-        note.setNsid(student);
-        List<Note> noteSid=noteService.selectNoteBySid(note);
+        model.addAttribute("student",student);
+        List<Note> noteSid=noteService.selectNoteBySid(student.getSid());
         model.addAttribute("noteSid",noteSid);
         return "note_list_student";
     }

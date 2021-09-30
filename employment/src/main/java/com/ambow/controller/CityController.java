@@ -4,12 +4,7 @@ import com.ambow.entity.City;
 import com.ambow.entity.Province;
 import com.ambow.service.CityService;
 import com.ambow.service.ProvinceService;
-<<<<<<< HEAD
 import com.ambow.utils.Json;
-=======
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
->>>>>>> 74717242cbd7fc68f3247b8558f5662a9c32eef7
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
