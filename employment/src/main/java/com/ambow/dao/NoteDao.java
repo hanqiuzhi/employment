@@ -16,4 +16,5 @@ public interface NoteDao {
     int delNote(int nid);
     List<Note> selectNoteBySid(int sid);
 
+    List<Note> selectNoteByEid(int eid);
 }

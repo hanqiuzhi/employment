@@ -44,4 +44,9 @@ public class NoteServiceImpl implements NoteService {
         return noteDao.selectNoteBySid(sid);
     }
 
+    @Override
+    public List<Note> selectNoteByEid(int eid) {
+        return noteDao.selectNoteByEid(eid);
+    }
+
 }

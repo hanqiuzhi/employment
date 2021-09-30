@@ -107,7 +107,7 @@
 
                     <li class="layui-nav-item">
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="线路管理"></i>
+                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="学生信息管理"></i>
                             <cite>学生信息管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
@@ -118,10 +118,7 @@
                                     <cite>学生信息管理</cite></a>
                             </li>
                             </c:if>
-                            <c:if test="${sessionScope.student != null}">
-                            <li>
 
-                            </li></c:if>
                             <li>
                                 <a onclick="xadmin.add_tab('简历信息管理','resume/selectResumeAll')">
                                     <i class="iconfont">&#xe6a7;</i>
@@ -141,7 +138,7 @@
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">
-                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="配送点管理"></i>
+                            <i class="iconfont left-nav-li icon-cuxiaoyouhui" lay-tips="求职管理"></i>
                             <cite>求职管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i></a>
                         <ul class="sub-menu">
@@ -219,7 +216,7 @@
                                     <cite>招聘信息管理</cite></a>
                             </li>
                             <li>
-                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAll')">
+                                <a onclick="xadmin.add_tab('招聘记录管理','note/selectNoteAllbyeid')">
                                     <i class="iconfont">&#xe6a7;</i>
                                     <cite>招聘记录管理</cite></a>
                             </li>
