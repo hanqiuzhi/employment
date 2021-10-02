@@ -43,7 +43,7 @@
     </update>
 
     <insert id="addStudent" parameterType="com.ambow.entity.Student">
-        insert into e_student VALUES(null,#{sname},#{sno},#{sidcard},#{sage},#{ssex},#{sphone},#{semail},#{spwd},#{smid.mid},#{sbgdate},#{seducation},0);
+        insert into e_student VALUES(null,#{sname},#{sno},#{ssex},#{spwd},0);
     </insert>
 
     <delete id="delStudent">

@@ -24,7 +24,5 @@ public interface StudentService {
     //删除学生信息
     public int delStudent(int sid);
 
-    String readExcelFile(MultipartFile file);
-
 
 }
